@@ -8,8 +8,6 @@
 #include "../GCCocosInterface/IGCGameLayer.h"
 
 
-// This is a test push - Ysabela
-
 //////////////////////////////////////////////////////////////////////////
 // fwd decl
 class CGCObjSprite;
