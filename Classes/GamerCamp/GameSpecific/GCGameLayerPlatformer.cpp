@@ -161,7 +161,7 @@ void CGCGameLayerPlatformer::VOnCreate()
 	///////////////////////////////////////////////////////////////////////////
 	// TEST - add group collectable
 	///////////////////////////////////////////////////////////////////////////
-	m_pcGroupCollectable = new CGroupCollectable( 5 );
+	m_pcGroupCollectable = new CGroupCollectable( m_iCollectablesNeeded );
 	CGCObjectManager::ObjectGroupRegister( m_pcGroupCollectable );
 
 
@@ -261,7 +261,7 @@ void CGCGameLayerPlatformer::VOnCreate()
 	// TEST - add exit
 	///////////////////////////////////////////////////////////////////////////
 	m_pcExit = new CExit();
-	m_pcExit->SetResetPosition( Vec2 (100.0f, 50.0f) );
+	m_pcExit->SetResetPosition( Vec2 (100.0f, 65.0f) );
 
 	///////////////////////////////////////////////////////////////////////////
 	// TEST - add collectable
@@ -303,8 +303,10 @@ void CGCGameLayerPlatformer::VOnCreate()
 		[this]
 		( CGCObjPlayer& rcPlayer, CCollectable& rcCollectable, const b2Contact& rcContact ) -> void
 		{
-			CGCObjectManager::ObjectKill( &rcCollectable );
+
 			m_pcGCOPlayer->setiItemsCollected( m_pcGCOPlayer->getiItemsCollected() + rcCollectable.getiValue() );
+			//m_pcGCOPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+			CGCObjectManager::ObjectKill( &rcCollectable );
 			//cPlayer.setiItemsCollected( m_pcGCOPlayer.getiItemsCollected() += rcCollectable.getiValue() );
 			
 		}
@@ -555,7 +557,7 @@ void CGCGameLayerPlatformer::ManuallyHandleCollisions()
 
 void CGCGameLayerPlatformer::Condition()
 {
-	if (m_pcGCOPlayer->getiItemsCollected() == m_iCollectablesNeeded)
+	if ( m_pcGCOPlayer->getiItemsCollected() >= m_iCollectablesNeeded )	// ==
 	{
 		m_pcExit->setIsOpen( true );
 	}

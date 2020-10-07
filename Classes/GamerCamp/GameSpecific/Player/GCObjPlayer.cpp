@@ -106,6 +106,9 @@ void CGCObjPlayer::VOnReset()
 		GetPhysicsBody()->SetTransform( IGCGameLayer::B2dPixelsToWorld( b2Vec2( v2SpritePos.x, v2SpritePos.y ) ), 0.0f );
 		GetPhysicsBody()->SetFixedRotation( true );
 	}
+
+	// rest items collected
+	//setiItemsCollected( 0 );
 }
 
 
@@ -304,4 +307,10 @@ void CGCObjPlayer::UpdateMovement( f32 fTimeStep )
 void CGCObjPlayer::NotifyOfCollisionWithInvader()
 {
     CCLOG( "CGCObjPlayer::NotifyOfCollisionWithInvader - Aiee! I have collided with an invader!" );
+}
+
+
+void CGCObjPlayer::IncreaseItemCollected( int numItemCollected )
+{
+	m_iItemsCollected += numItemCollected;
 }

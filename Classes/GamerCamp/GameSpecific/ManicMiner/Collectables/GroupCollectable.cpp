@@ -95,7 +95,7 @@ void CGroupCollectable::CreateCollectables()
 
 		pCollectable->SetResetPosition( v2CollectablePos );
 
-		f_x += 50.0f;
+		f_x += 120.0f;
 	}
 }
 
