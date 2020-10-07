@@ -29,6 +29,8 @@ public:
 
 	virtual void		VOnGroupResourceAcquire() override;
 
+	virtual void		VOnGroupResourceAcquire_PostObject( void );
+
 	virtual void		VOnGroupResourceRelease() override;
 
 
