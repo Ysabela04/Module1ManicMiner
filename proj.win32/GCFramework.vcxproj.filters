@@ -52,6 +52,15 @@
     <Filter Include="Classes\GamerCamp\GameSpecific\ScreenBounds">
       <UniqueIdentifier>{c0fa1bf2-9733-4542-bc0a-d9c4d43e74b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner">
+      <UniqueIdentifier>{62dff523-8601-4865-88a3-3d05c9dd0d19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\Collectables">
+      <UniqueIdentifier>{1b7de53a-2bd9-4799-9251-572cb4c71407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\Exit">
+      <UniqueIdentifier>{717a978f-1738-4459-b87d-36a8bf93e984}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -146,6 +155,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ScreenBounds\GCObjScreenBound.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ScreenBounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Exit\Exit.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Exit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\Collectable.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectable.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +271,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ScreenBounds\GCObjScreenBound.h">
       <Filter>Classes\GamerCamp\GameSpecific\ScreenBounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Exit\Exit.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Exit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\Collectable.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectable.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

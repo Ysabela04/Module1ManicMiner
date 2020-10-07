@@ -15,6 +15,8 @@
 #include "GamerCamp/GameSpecific/Player/GCObjPlayer.h"
 #include "GamerCamp/GameSpecific/Platforms/GCObjPlatform.h" 
 #include "GamerCamp/GameSpecific/Platforms/GCObjGroupPlatform.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Collectables/Collectable.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Collectables/GroupCollectable.h"
 #include "GamerCamp/GameSpecific/Items/GCObjItem.h" 
 #include "GamerCamp/GameSpecific/Items/GCObjGroupItem.h"
 #include "GamerCamp/GameSpecific/Invaders/GCObjInvader.h"
@@ -22,6 +24,8 @@
 #include "GamerCamp/GameSpecific/Player/GCObjGroupProjectilePlayer.h"
 #include "GamerCamp/GameSpecific/Player/GCObjProjectilePlayer.h"
 #include "GamerCamp/GameSpecific/ScreenBounds/GCObjScreenBound.h"
+
+#include "GamerCamp/GameSpecific/ManicMiner/Exit/Exit.h"
 
 #include "AppDelegate.h"
 
@@ -50,11 +54,15 @@ USING_NS_CC;
 CGCGameLayerPlatformer::CGCGameLayerPlatformer()
 : IGCGameLayer					( GetGCTypeIDOf( CGCGameLayerPlatformer ) ) 
 , m_pcGCGroupItem				( nullptr )
-, m_pcGCGroupInvader			( nullptr )
+//, m_pcGCGroupInvader			( nullptr )
 , m_pcGCGroupProjectilePlayer	( nullptr )
 , m_pcGCSprBackGround			( nullptr )
 , m_pcGCOPlayer					( nullptr )
 , m_bResetWasRequested			( false )
+//, m_pcCollectable (nullptr)
+, m_pcGroupCollectable( nullptr )
+, m_pcExit ( nullptr )
+, m_iCollectablesNeeded ( 5 )
 {
 }
 
@@ -143,12 +151,19 @@ void CGCGameLayerPlatformer::VOnCreate()
 	CGCObjectManager::ObjectGroupRegister( m_pcGCGroupItem );
 	
 	// create and register the object group for the invader objects
-	m_pcGCGroupInvader = new CGCObjGroupInvader( 64 );
-	CGCObjectManager::ObjectGroupRegister( m_pcGCGroupInvader );
+	//m_pcGCGroupInvader = new CGCObjGroupInvader( 64 );
+	//CGCObjectManager::ObjectGroupRegister( m_pcGCGroupInvader );
 
 	// create and register the object group for the player projectile objects
 	m_pcGCGroupProjectilePlayer = new CGCObjGroupProjectilePlayer();
 	CGCObjectManager::ObjectGroupRegister( m_pcGCGroupProjectilePlayer );
+
+	///////////////////////////////////////////////////////////////////////////
+	// TEST - add group collectable
+	///////////////////////////////////////////////////////////////////////////
+	m_pcGroupCollectable = new CGroupCollectable( 5 );
+	CGCObjectManager::ObjectGroupRegister( m_pcGroupCollectable );
+
 
 
     ///////////////////////////////////////////////////////////////////////////
@@ -242,12 +257,24 @@ void CGCGameLayerPlatformer::VOnCreate()
 	m_pcGCOPlayer = new CGCObjPlayer();
 	m_pcGCOPlayer->SetResetPosition( v2MarioStartPos );
 
+	///////////////////////////////////////////////////////////////////////////
+	// TEST - add exit
+	///////////////////////////////////////////////////////////////////////////
+	m_pcExit = new CExit();
+	m_pcExit->SetResetPosition( Vec2 (100.0f, 50.0f) );
+
+	///////////////////////////////////////////////////////////////////////////
+	// TEST - add collectable
+	///////////////////////////////////////////////////////////////////////////
+	//m_pcCollectable = new CCollectable();
+	//m_pcCollectable->SetResetPosition( Vec2 ( 200.0f, 200.0f ) );
+
 
 	///////////////////////////////////////////////////////////////////////////
 	// N.B. invaders are created by m_pcGCGroupInvader in OnResourceAcquire
 	///////////////////////////////////////////////////////////////////////////
-	m_pcGCGroupInvader->SetFormationOrigin( v2ScreenCentre_Pixels + Vec2( -( visibleSize.width * 0.3f ), ( visibleSize.height * 0.25f ) ) );
-	m_pcGCGroupInvader->SetRowsAndColumns( 6, 8, -60.0f, 40.0f );
+	//m_pcGCGroupInvader->SetFormationOrigin( v2ScreenCentre_Pixels + Vec2( -( visibleSize.width * 0.3f ), ( visibleSize.height * 0.25f ) ) );
+	//m_pcGCGroupInvader->SetRowsAndColumns( 6, 8, -60.0f, 40.0f );
 
 
 	//////////////////////////////////////////////////////////////////////////
@@ -270,6 +297,32 @@ void CGCGameLayerPlatformer::VOnCreate()
 		} 
 	);
 
+	// Handle collision between player and collectable
+	GetCollisionManager().AddCollisionHandler
+	(
+		[this]
+		( CGCObjPlayer& rcPlayer, CCollectable& rcCollectable, const b2Contact& rcContact ) -> void
+		{
+			CGCObjectManager::ObjectKill( &rcCollectable );
+			m_pcGCOPlayer->setiItemsCollected( m_pcGCOPlayer->getiItemsCollected() + rcCollectable.getiValue() );
+			//cPlayer.setiItemsCollected( m_pcGCOPlayer.getiItemsCollected() += rcCollectable.getiValue() );
+			
+		}
+	);
+
+	// player getting to exit
+	GetCollisionManager().AddCollisionHandler
+	(
+		[this]
+		( CGCObjPlayer& rcPlayer, CExit& rcExit, const b2Contact& rcContact ) -> void
+		{
+			if (m_pcExit->getIsOpen() == true)
+			{
+				ReplaceScene( TransitionRotoZoom::create( 1.0f, CMenuLayer::scene() ) );
+			}
+		}
+	);
+
 
 }// void CGCGameLayerPlatformer::VOnCreate() { ...
 
@@ -284,6 +337,8 @@ void CGCGameLayerPlatformer::VOnUpdate( f32 fTimeStep )
 	
 	// this shows how to iterate and respond to the box2d collision info
 	ManuallyHandleCollisions();	
+
+	Condition();
 
 	if( ResetWasRequested() )
 	{
@@ -308,6 +363,12 @@ void CGCGameLayerPlatformer::VOnDestroy()
 	delete m_pcGCSprBackGround;
 	m_pcGCSprBackGround = nullptr;
 
+	delete m_pcExit;
+	m_pcExit = nullptr;
+
+	//delete m_pcCollectable;
+	//m_pcCollectable = nullptr;
+
 	///////////////////////////////////////////////////////////////////////////
 	// N.B. because object groups must register manually, 
 	// we also unregister them manually
@@ -320,13 +381,17 @@ void CGCGameLayerPlatformer::VOnDestroy()
 	delete m_pcGCGroupProjectilePlayer;
 	m_pcGCGroupProjectilePlayer = nullptr;
 
-	CGCObjectManager::ObjectGroupUnRegister( m_pcGCGroupInvader );
-	delete m_pcGCGroupInvader;
-	m_pcGCGroupInvader = nullptr;
+	//CGCObjectManager::ObjectGroupUnRegister( m_pcGCGroupInvader );
+	//delete m_pcGCGroupInvader;
+	//m_pcGCGroupInvader = nullptr;
 
 	CGCObjectManager::ObjectGroupUnRegister( m_pcGCGroupItem );
 	delete m_pcGCGroupItem;
 	m_pcGCGroupItem = nullptr;
+
+	CGCObjectManager::ObjectGroupUnRegister( m_pcGroupCollectable );
+	delete m_pcGroupCollectable;
+	m_pcGroupCollectable = nullptr;
 
 	IGCGameLayer::VOnDestroy();
 }
@@ -488,3 +553,10 @@ void CGCGameLayerPlatformer::ManuallyHandleCollisions()
 	}
 }
 
+void CGCGameLayerPlatformer::Condition()
+{
+	if (m_pcGCOPlayer->getiItemsCollected() == m_iCollectablesNeeded)
+	{
+		m_pcExit->setIsOpen( true );
+	}
+}

@@ -50,6 +50,8 @@ private:
 	// action map for controllers
 	TGCActionToKeyMap< EPlayerActions >* m_pcControllerActionToKeyMap;
 
+	int m_iItemsCollected;
+
 public:
 	CGCObjPlayer();
 
@@ -87,5 +89,21 @@ public:
 
     // this function exists purely to better illustrate the EXAMPLE collision detection functionality in CGCGameLayerSpaceInvaders
     void NotifyOfCollisionWithInvader();
+
+	// ---
+
+	//////////////////////////////////////////////////////////////////////////
+	// Getters & Setters
+	//
+	//////////////////////////////////////////////////////////////////////////
+	// Getters
+	//
+	int getiItemsCollected() { return m_iItemsCollected; }
+
+	//////////////////////////////////////////////////////////////////////////
+	// Setters
+	//
+	void setiItemsCollected( int ivalue ) { m_iItemsCollected = ivalue; }
+
 };
 #endif // #ifndef _GCOBJPLAYER_H_

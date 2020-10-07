@@ -35,6 +35,7 @@ CGCObjPlayer::CGCObjPlayer()
 , m_fNoInput_ExtraDrag_Square	( 0.2f )
 , m_fNoInput_VelocityThreshold	( 0.25f )
 , m_pcControllerActionToKeyMap	( nullptr )
+, m_iItemsCollected ( 0 )
 {
 }
 
@@ -67,6 +68,20 @@ void CGCObjPlayer::VOnResourceAcquire()
 	// 
 	// n.n.b. ... however if we did use std::unique_ptr we'd need to use std::unique_ptr::reset in VOnResourceRelease if we wanted the memory allocate / free behaviour to be the same...
 	m_pcControllerActionToKeyMap = TCreateActionToKeyMap( s_aePlayerActions, s_aeKeys );
+
+	// ---
+
+	//IGCGameLayer::ActiveInstance()->GetCollisionManager().AddCollisionHandler
+	//(
+	//	[]
+	//( CGCObjProjectilePlayer& rcProjectile, CGCObjScreenBound& rcScreenBound, const b2Contact& rcContact ) -> void
+	//	{
+	//		if (CGCObjScreenBound::EScreenBoundType::Top == rcScreenBound.GetScreenBoundType())
+	//		{
+	//			CGCObjectManager::ObjectKill( &rcProjectile );
+	//		}
+	//	}
+	//);
 }
 
 

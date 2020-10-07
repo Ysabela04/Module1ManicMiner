@@ -12,15 +12,19 @@
 
 //////////////////////////////////////////////////////////////////////////
 // fwd decl
+class CExit;
 class CGCObjSprite;
 class CGCObjPlayer;
 class CGCObjPlatform;
 class CGCObjGroupPlatform;
+class CCollectable;
+class CGroupCollectable;
 class CGCObjItem;
 class CGCObjGroupItem;
-class CGCObjInvader;
-class CGCObjGroupInvader;
+//class CGCObjInvader;
+//class CGCObjGroupInvader;
 class CGCObjGroupProjectilePlayer;
+
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -34,8 +38,10 @@ private:
 	// object groups
 	CGCObjGroupPlatform*			m_pcGCGroupPlatform;
 	CGCObjGroupItem*				m_pcGCGroupItem;
-	CGCObjGroupInvader*				m_pcGCGroupInvader;
+	//CGCObjGroupInvader*				m_pcGCGroupInvader;
 	CGCObjGroupProjectilePlayer*	m_pcGCGroupProjectilePlayer;
+
+	CGroupCollectable* m_pcGroupCollectable;
 
 	// backgrounds
 	CGCObjSprite*					m_pcGCSprBackGround;
@@ -43,9 +49,21 @@ private:
 	// mario
 	CGCObjPlayer*					m_pcGCOPlayer;
 
+	// collectable
+	//CCollectable* m_pcCollectable;
+
+	// exit
+	CExit* m_pcExit;
+
+	int m_iCollectablesNeeded;
+
+	
+
 public:
 	CGCGameLayerPlatformer	( void );
 	~CGCGameLayerPlatformer	( void );
+
+	void Condition();
 
 	//////////////////////////////////////////////////////////////////////////
 	// player actions 
