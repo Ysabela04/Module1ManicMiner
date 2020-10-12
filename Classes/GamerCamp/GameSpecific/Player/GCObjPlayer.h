@@ -62,6 +62,8 @@ public:
 	{}
 
 
+	bool collecting;
+
 	//////////////////////////////////////////////////////////////////////////
 	// overridden virtuals from the game object interface
 

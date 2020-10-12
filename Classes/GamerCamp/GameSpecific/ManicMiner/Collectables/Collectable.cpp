@@ -23,7 +23,7 @@ CCollectable::~CCollectable()
 // So that when a collectable is made the right texture and phyiscs is used
 //IN_CPP_CREATION_PARAMS_DECLARE( CCollectable, "TexturePacker/Sprites/Coin/Coin.plist", "coin", b2_staticBody, true );	// b2_dynamicBody
 //IN_CPP_CREATION_PARAMS_DECLARE( CCollectable, "TexturePacker/Sprites/Collectables/Key/Key.plist", "key", b2_staticBody, true );	// b2_dynamicBody // how to change name to key?
-IN_CPP_CREATION_PARAMS_DECLARE( m_strClassName, m_strFilePath, "key", b2_staticBody, true );	// b2_dynamicBody // how to change name to key?
+IN_CPP_CREATION_PARAMS_DECLARE( m_strClassName, "TexturePacker/Sprites/Collectables/Key/Key.plist", "key", b2_staticBody, true );	// b2_dynamicBody // how to change name to key?
 
 
 

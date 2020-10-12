@@ -36,6 +36,7 @@ CGCObjPlayer::CGCObjPlayer()
 , m_fNoInput_VelocityThreshold	( 0.25f )
 , m_pcControllerActionToKeyMap	( nullptr )
 , m_iItemsCollected ( 0 )
+, collecting (false)
 {
 }
 
@@ -312,5 +313,17 @@ void CGCObjPlayer::NotifyOfCollisionWithInvader()
 
 void CGCObjPlayer::IncreaseItemCollected( int numItemCollected )
 {
+	//if (collecting == true)
+	//{
+	//	m_iItemsCollected += numItemCollected;
+
+	//	CCLOG( "Player item collected." );
+
+	//	collecting = false;
+	//}
+
 	m_iItemsCollected += numItemCollected;
+
+	//CCLOG( "Player item collected." );
+	
 }

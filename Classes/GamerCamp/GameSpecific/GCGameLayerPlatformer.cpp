@@ -32,6 +32,8 @@
 
 USING_NS_CC;
 
+using namespace cocos2d;
+
 
 //////////////////////////////////////////////////////////////////////////
 // this just demos how simple it is to turn on/off logging on a define....
@@ -64,8 +66,10 @@ CGCGameLayerPlatformer::CGCGameLayerPlatformer()
 , m_pcExit ( nullptr )
 , m_iCollectablesNeeded ( 5 )
 {
+	
 }
 
+bool collected = false;
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
@@ -297,16 +301,78 @@ void CGCGameLayerPlatformer::VOnCreate()
 		} 
 	);
 
+
 	// Handle collision between player and collectable
+
 	GetCollisionManager().AddCollisionHandler
-	(
+	(			
 		[this]
 		( CGCObjPlayer& rcPlayer, CCollectable& rcCollectable, const b2Contact& rcContact ) -> void
 		{
-
-			m_pcGCOPlayer->setiItemsCollected( m_pcGCOPlayer->getiItemsCollected() + rcCollectable.getiValue() );
-			//m_pcGCOPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+			//if (collected == true)
+			//{
+			//	return;
+			//}
+			
 			CGCObjectManager::ObjectKill( &rcCollectable );
+
+			//CCLOG( "Player item collected." );
+
+
+			if (!collected)
+			{
+				collected = true;
+
+				m_pcGCOPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+
+				//m_pcGCOPlayer->setiItemsCollected( m_pcGCOPlayer->getiItemsCollected() + rcCollectable.getiValue() );
+
+				CCLOG( "Player item collected." );
+
+				//collected = false;
+
+			}
+			
+			//collected = true;
+
+
+			//if (collected == true)
+			//{
+
+			//	m_pcGCOPlayer->collecting = true;
+
+			//	collected = false;
+
+			//	m_pcGCOPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+
+
+			//	//m_pcGCOPlayer->setiItemsCollected( m_pcGCOPlayer->getiItemsCollected() + rcCollectable.getiValue() );
+
+			//	//CCLOG( std::to_string( m_pcGCOPlayer->getiItemsCollected() ) );
+
+			//	//CCLOG( "Player item collected." );
+
+			//}
+
+
+		
+			//collected == true;
+
+			//m_pcGCOPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+
+			//CCLOG( "Player item collected." );
+
+			//collected == false;
+			
+
+
+
+			//m_pcGCOPlayer->setiItemsCollected( m_pcGCOPlayer->getiItemsCollected() + rcCollectable.getiValue() );
+			//m_pcGCOPlayer->setiItemsCollected( m_pcGCOPlayer->getiItemsCollected() + 1);
+
+
+			//m_pcGCOPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+			//CGCObjectManager::ObjectKill( &rcCollectable );
 			//cPlayer.setiItemsCollected( m_pcGCOPlayer.getiItemsCollected() += rcCollectable.getiValue() );
 			
 		}
@@ -339,6 +405,8 @@ void CGCGameLayerPlatformer::VOnUpdate( f32 fTimeStep )
 	
 	// this shows how to iterate and respond to the box2d collision info
 	ManuallyHandleCollisions();	
+
+	collected = false;
 
 	Condition();
 

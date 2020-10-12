@@ -19,6 +19,7 @@ private:
     std::string m_strClassName;
     std::string m_strPlistFilePath;
     std::string m_strFilePath;
+
     //std::string m_sPhysicsNameShape;
     //bool m_bBodyIsFixedRotation;
 
