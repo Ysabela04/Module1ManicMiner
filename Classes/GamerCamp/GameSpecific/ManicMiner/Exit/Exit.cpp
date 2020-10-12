@@ -29,7 +29,9 @@ CExit::~CExit()
 //////////////////////////////////////////////////////////////////////////
 // 
 //////////////////////////////////////////////////////////////////////////
-IN_CPP_CREATION_PARAMS_DECLARE( CExit, "TexturePacker/Sprites/Exit/Door.plist", "door", b2_staticBody, true );
+//IN_CPP_CREATION_PARAMS_DECLARE( CExit, "TexturePacker/Sprites/Exit/Door.plist", "door", b2_staticBody, true );	// plist missing on clone repos on laptop 
+IN_CPP_CREATION_PARAMS_DECLARE(CExit, "TexturePacker/Sprites/Platform/Platform.plist", "platform", b2_staticBody, true);
+
 
 //////////////////////////////////////////////////////////////////////////
 // Virtual

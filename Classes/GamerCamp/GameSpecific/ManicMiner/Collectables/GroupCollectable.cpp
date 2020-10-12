@@ -91,7 +91,7 @@ void CGroupCollectable::CreateCollectables()
 	{
 		cocos2d::Vec2 v2CollectablePos( f_x, f_y );
 
-		CCollectable* pCollectable = new CCollectable;
+		CCollectable* pCollectable = new CCollectable("CCollectable", "TexturePacker/Sprites/Collectables/Key/Key.plist");
 
 		pCollectable->SetResetPosition( v2CollectablePos );
 

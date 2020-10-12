@@ -16,12 +16,15 @@ class CCollectable : public CGCObjSpritePhysics
 private:
     i32         m_iValue;    // Value of the collectable, e.g. can be 1 for every collectable that is collected
 
-    //std::string m_sClassName;
+    std::string m_strClassName;
+    std::string m_strPlistFilePath;
+    std::string m_strFilePath;
     //std::string m_sPhysicsNameShape;
     //bool m_bBodyIsFixedRotation;
 
 public:
-    CCollectable();
+    //CCollectable();
+    CCollectable(std::string strClassName, std::string strPlistFilePath);
     virtual ~CCollectable();
 
     //////////////////////////////////////////////////////////////////////////
