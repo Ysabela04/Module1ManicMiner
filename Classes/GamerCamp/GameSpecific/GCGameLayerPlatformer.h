@@ -24,6 +24,7 @@ class CGCObjGroupItem;
 //class CGCObjInvader;
 //class CGCObjGroupInvader;
 class CGCObjGroupProjectilePlayer;
+class CHazard;
 
 
 
@@ -54,6 +55,8 @@ private:
 
 	// exit
 	CExit* m_pcExit;
+
+	CHazard* m_pcHazard;
 
 	int m_iCollectablesNeeded;	
 

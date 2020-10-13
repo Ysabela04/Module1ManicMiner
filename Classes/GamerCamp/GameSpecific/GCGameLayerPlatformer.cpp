@@ -25,6 +25,8 @@
 #include "GamerCamp/GameSpecific/Player/GCObjProjectilePlayer.h"
 #include "GamerCamp/GameSpecific/ScreenBounds/GCObjScreenBound.h"
 
+#include "GamerCamp/GameSpecific/ManicMiner/Hazards/Hazard.h"
+
 #include "GamerCamp/GameSpecific/ManicMiner/Exit/Exit.h"
 
 #include "AppDelegate.h"
@@ -64,6 +66,7 @@ CGCGameLayerPlatformer::CGCGameLayerPlatformer()
 //, m_pcCollectable (nullptr)
 , m_pcGroupCollectable( nullptr )
 , m_pcExit ( nullptr )
+, m_pcHazard ( nullptr )
 , m_iCollectablesNeeded ( 5 )
 {
 	
@@ -165,7 +168,7 @@ void CGCGameLayerPlatformer::VOnCreate()
 	///////////////////////////////////////////////////////////////////////////
 	// TEST - add group collectable
 	///////////////////////////////////////////////////////////////////////////
-	m_pcGroupCollectable = new CGroupCollectable( m_iCollectablesNeeded );
+	m_pcGroupCollectable = new CGroupCollectable();	// m_iCollectablesNeeded );
 	CGCObjectManager::ObjectGroupRegister( m_pcGroupCollectable );
 
 
@@ -271,7 +274,13 @@ void CGCGameLayerPlatformer::VOnCreate()
 	// TEST - add collectable
 	///////////////////////////////////////////////////////////////////////////
 	//m_pcCollectable = new CCollectable();
-	//m_pcCollectable->SetResetPosition( Vec2 ( 200.0f, 200.0f ) );
+	//m_pcCollectable->SetResetPosition( Vec2 ( 300.0f, 300.0f ) );
+
+	///////////////////////////////////////////////////////////////////////////
+	// TEST - add hazard
+	///////////////////////////////////////////////////////////////////////////
+	m_pcHazard = new CHazard;
+	m_pcHazard->SetResetPosition( Vec2( 700.0f, 400.0f ) );
 
 
 	///////////////////////////////////////////////////////////////////////////
@@ -312,9 +321,13 @@ void CGCGameLayerPlatformer::VOnCreate()
 			// and increase the players itemscollected
 			if ( m_pcGCOPlayer->getbIsCollecting() == false )	// !m_pcGCOPlayer->getbIsCollecting()
 			{
-				m_pcGCOPlayer->setbIsCollecting( true );				
+				m_pcGCOPlayer->setbIsCollecting( true );	
+
+				//rcPlayer.setbIsCollecting( true );
 
 				m_pcGCOPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+
+				//rcPlayer.IncreaseItemCollected( rcCollectable.getiValue() );
 
 				CGCObjectManager::ObjectKill( &rcCollectable );
 
@@ -336,6 +349,24 @@ void CGCGameLayerPlatformer::VOnCreate()
 		}
 	);
 
+	// player on hazard
+	GetCollisionManager().AddCollisionHandler
+	(
+		[this]
+		( CGCObjPlayer& rcPlayer, CHazard& rcHazard, const b2Contact& rcContact ) -> void
+		{
+
+			//RequestReset();
+			//ReplaceScene( TransitionRotoZoom::create( 1.0f, CMenuLayer::scene() ) );
+			//m_pcGCOPlayer->SetResetPosition( cocos2d::Vec2(700.0f, 400.0f) );
+
+			//m_pcGCOPlayer->pos
+
+			
+		}
+	);
+
+
 }// void CGCGameLayerPlatformer::VOnCreate() { ...
 
 
@@ -350,8 +381,8 @@ void CGCGameLayerPlatformer::VOnUpdate( f32 fTimeStep )
 	// this shows how to iterate and respond to the box2d collision info
 	ManuallyHandleCollisions();	
 
+
 	m_pcGCOPlayer->setbIsCollecting( false );
-	//collected = false;
 
 	Condition();
 
@@ -383,6 +414,9 @@ void CGCGameLayerPlatformer::VOnDestroy()
 
 	//delete m_pcCollectable;
 	//m_pcCollectable = nullptr;
+
+	delete m_pcHazard;
+	m_pcHazard = nullptr;
 
 	///////////////////////////////////////////////////////////////////////////
 	// N.B. because object groups must register manually, 

@@ -15,16 +15,15 @@ class CCollectable : public CGCObjSpritePhysics
 private:
     i32         m_iValue;    // Value of the collectable, e.g. can be 1 for every collectable that is collected
 
-    std::string m_strClassName;
-    std::string m_strPlistFilePath;
-    std::string m_strFilePath;
+    //std::string m_strClassName;
+    //std::string m_strPlistFilePath;
 
     //std::string m_sPhysicsNameShape;
     //bool m_bBodyIsFixedRotation;
 
 public:
     //CCollectable();
-    CCollectable(std::string strClassName, std::string strPlistFilePath);
+    CCollectable(); // (std::string strClassName)  //, std::string strPlistFilePath);
     virtual ~CCollectable();
 
     //////////////////////////////////////////////////////////////////////////
@@ -34,7 +33,6 @@ public:
     // Virtual
     //
     virtual void VOnResourceAcquire( void ) override;
-
 
 
     //////////////////////////////////////////////////////////////////////////
@@ -50,6 +48,7 @@ public:
     //
     void setiValue( i32 ivalue ) { m_iValue = ivalue; }
 
+    // set rewardvalue
 };
 
 #endif // _CCOLLECTABLE_H_
