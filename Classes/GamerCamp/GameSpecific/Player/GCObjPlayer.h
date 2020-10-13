@@ -50,7 +50,9 @@ private:
 	// action map for controllers
 	TGCActionToKeyMap< EPlayerActions >* m_pcControllerActionToKeyMap;
 
-	int m_iItemsCollected;
+	int m_iItemsCollected;	// the number of items the player has collected
+
+	bool m_bIsCollecting;	// if the player is currently collecting an item
 
 public:
 	CGCObjPlayer();
@@ -60,9 +62,6 @@ public:
 	// this class to delete derived types.
 	virtual ~CGCObjPlayer()
 	{}
-
-
-	bool collecting;
 
 	//////////////////////////////////////////////////////////////////////////
 	// overridden virtuals from the game object interface
@@ -108,11 +107,13 @@ public:
 	// Getters
 	//
 	int getiItemsCollected() { return m_iItemsCollected; }
+	bool getbIsCollecting() { return m_bIsCollecting; }
 
 	//////////////////////////////////////////////////////////////////////////
 	// Setters
 	//
 	void setiItemsCollected( int ivalue ) { m_iItemsCollected = ivalue; }
+	void setbIsCollecting( bool bIsCollecting ) { m_bIsCollecting = bIsCollecting; }
 
 };
 #endif // #ifndef _GCOBJPLAYER_H_

@@ -6,7 +6,7 @@
 class CGroupCollectable : public CGCObjectGroup
 {
 private:
-	int m_iMaxNumCollectables;
+	int m_iMaxNumCollectables;	
 
 
 public:
@@ -32,8 +32,6 @@ public:
 	virtual void		VOnGroupResourceAcquire_PostObject( void );
 
 	virtual void		VOnGroupResourceRelease() override;
-
-
 };
 
 #endif // _GROUPCOLLECTABLE_H_

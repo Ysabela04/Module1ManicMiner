@@ -1,16 +1,8 @@
-//#include "Exit.h"
-
-#ifndef _GCOBJPLATFORMS_H_
-	#include "Exit.h"
-#endif
-
-//#include "GamerCamp/GCCocosInterface/GCCocosHelpers.h"
-//#include "GamerCamp/GCObject/GCObjectManager.h"
-//#include "GamerCamp/GCCocosInterface/IGCGameLayer.h"
-//#include "GamerCamp/GCCocosInterface/GB2ShapeCache-x.h"
+#include "Exit.h"
 
 USING_NS_CC;
-//using namespace cocos2d;
+
+// -----
 
 CExit::CExit()
 	: CGCObjSpritePhysics( GetGCTypeIDOf( CExit ) )
@@ -19,19 +11,18 @@ CExit::CExit()
 
 }
 
-
 CExit::~CExit()
 {
 
 }
 
+// -----
 
 //////////////////////////////////////////////////////////////////////////
 // 
 //////////////////////////////////////////////////////////////////////////
 //IN_CPP_CREATION_PARAMS_DECLARE( CExit, "TexturePacker/Sprites/Exit/Door.plist", "door", b2_staticBody, true );	// plist missing on clone repos on laptop 
 IN_CPP_CREATION_PARAMS_DECLARE(CExit, "TexturePacker/Sprites/Platform/Platform.plist", "platform", b2_staticBody, true);
-
 
 //////////////////////////////////////////////////////////////////////////
 // Virtual
@@ -41,8 +32,3 @@ void CExit::VOnResourceAcquire( void )
 
 	CGCObjSpritePhysics::VOnResourceAcquire();
 }
-
-//void CExit::VOnResourceRelease( void )
-//{
-//	CGCObjSpritePhysics::VOnResourceRelease();
-//}

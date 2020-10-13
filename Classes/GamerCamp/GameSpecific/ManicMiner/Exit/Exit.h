@@ -29,7 +29,7 @@ public:
     //
     virtual void VOnResourceAcquire( void ) override;
 
-    //virtual void VOnResourceRelease( void );
+    // -----
 
     //////////////////////////////////////////////////////////////////////////
     // Getters & Setters

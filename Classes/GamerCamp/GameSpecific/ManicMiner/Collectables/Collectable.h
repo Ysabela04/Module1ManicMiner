@@ -1,8 +1,7 @@
 #ifndef _CCOLLECTABLE_H_
 #define _CCOLLECTABLE_H_
 
-#include "GamerCamp/GCCocosInterface/GCObjSpritePhysics.h"  //#include "../../GCCocosInterface/GCObjSpritePhysics.h"
-
+#include "GamerCamp/GCCocosInterface/GCObjSpritePhysics.h"
 
 //////////////////////////////////////////////////////////////////////////
 // Class: CCollectable

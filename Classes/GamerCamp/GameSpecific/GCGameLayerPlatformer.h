@@ -55,9 +55,7 @@ private:
 	// exit
 	CExit* m_pcExit;
 
-	int m_iCollectablesNeeded;
-
-	
+	int m_iCollectablesNeeded;	
 
 public:
 	CGCGameLayerPlatformer	( void );
