@@ -32,9 +32,9 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>spritesheet-only</string>
+        <string>cocos2d-x</string>
         <key>textureFileName</key>
-        <filename></filename>
+        <filename>../../../../Resources/windows/TexturePacker/Sprites/Exit/Exit.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -128,7 +128,19 @@
             </struct>
         </struct>
         <key>dataFileNames</key>
-        <map type="GFileNameMap"/>
+        <map type="GFileNameMap">
+            <key>data</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../../../../Resources/windows/TexturePacker/Sprites/Exit/Exit.plist</filename>
+            </struct>
+            <key>header</key>
+            <key>source</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename></filename>
+            </struct>
+        </map>
         <key>multiPack</key>
         <false/>
         <key>forceIdenticalLayout</key>
@@ -157,7 +169,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
