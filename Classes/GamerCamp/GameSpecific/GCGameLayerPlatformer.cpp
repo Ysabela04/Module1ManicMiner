@@ -12,7 +12,7 @@
 #include "MenuScene.h"
 #include "GamerCamp/GCObject/GCObjectManager.h"
 #include "GamerCamp/GCCocosInterface/GCObjSprite.h"
-#include "GamerCamp/GameSpecific/Player/GCObjPlayer.h"
+//#include "GamerCamp/GameSpecific/Player/GCObjPlayer.h"
 #include "GamerCamp/GameSpecific/Platforms/GCObjPlatform.h" 
 #include "GamerCamp/GameSpecific/Platforms/GCObjGroupPlatform.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Collectables/Collectable.h"
@@ -346,10 +346,13 @@ void CGCGameLayerPlatformer::VOnCreate()
 		[this]
 		( CPlayer& rcPlayer, CExit& rcExit, const b2Contact& rcContact ) -> void
 		{
-			if (m_pcExit->getIsOpen() == true)
-			{
-				ReplaceScene( TransitionRotoZoom::create( 1.0f, CMenuLayer::scene() ) );
-			}
+			//if (m_pcExit->getIsOpen() == true)
+			//{
+			//	ReplaceScene( TransitionRotoZoom::create( 1.0f, CMenuLayer::scene() ) );
+			//}
+
+			ReplaceScene(TransitionRotoZoom::create(1.0f, CMenuLayer::scene()));
+
 		}
 	);
 
@@ -366,7 +369,7 @@ void CGCGameLayerPlatformer::VOnCreate()
 
 			//m_pcGCOPlayer->pos
 
-			
+			CCLOG(" Player item collected.");
 		}
 	);
 

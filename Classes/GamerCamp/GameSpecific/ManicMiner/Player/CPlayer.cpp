@@ -46,6 +46,11 @@ CPlayer::CPlayer()
 
 }
 
+CPlayer::~CPlayer()
+{
+
+}
+
 //	Macro
 IN_CPP_CREATION_PARAMS_DECLARE(CPlayer, "TexturePacker/Sprites/Mario/mario.plist", "mario", b2_dynamicBody, true);
 
