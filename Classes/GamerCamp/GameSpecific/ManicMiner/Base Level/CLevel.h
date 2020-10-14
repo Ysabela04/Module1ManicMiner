@@ -10,13 +10,6 @@ class CGCObjPlatform;
 class CGCObjGroupPlatform;
 class CTimer;
 
-//enum class GameState
-	//{
-		//Running,
-		//Won,
-		//Over
-	//};
-
 class CLevel
 	: public IGCGameLayer
 	, public b2ContactListener
