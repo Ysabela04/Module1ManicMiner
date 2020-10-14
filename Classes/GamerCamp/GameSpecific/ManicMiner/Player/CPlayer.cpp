@@ -40,7 +40,8 @@ CPlayer::CPlayer()
 	, m_fNoInput_ExtraDrag_Square(0.2f)
 	, m_fNoInput_VelocityThreshold(0.25f)
 	, m_pcControllerActionToKeyMap(nullptr)
-
+	, m_iItemsCollected(0)
+	, m_bIsCollecting(false)
 {
 	
 
@@ -237,3 +238,7 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 
 }
 
+void CPlayer::IncreaseItemCollected(int numItemCollected)
+{
+	m_iItemsCollected += numItemCollected;
+}

@@ -40,6 +40,30 @@ public:
 	//	Updates the movement of the CCSprite
 	void UpdateMovement(f32 fTimeStep);
 
+	// ---
+
+	//////////////////////////////////////////////////////////////////////////
+	// Functions
+	//////////////////////////////////////////////////////////////////////////
+	void IncreaseItemCollected(int numItemCollected);
+
+	// ---
+
+	//////////////////////////////////////////////////////////////////////////
+	// Getters & Setters
+	//
+	//////////////////////////////////////////////////////////////////////////
+	// Getters
+	//
+	int getiItemsCollected() { return m_iItemsCollected; }
+	bool getbIsCollecting() { return m_bIsCollecting; }
+
+	//////////////////////////////////////////////////////////////////////////
+	// Setters
+	//
+	void setiItemsCollected(int ivalue) { m_iItemsCollected = ivalue; }
+	void setbIsCollecting(bool bIsCollecting) { m_bIsCollecting = bIsCollecting; }
+
 private:
 
 	// member variables for 'physicsy' handling
@@ -53,6 +77,10 @@ private:
 
 	// action map for controllers
 	TGCActionToKeyMap< EPlayerActions >* m_pcControllerActionToKeyMap;
+
+	int m_iItemsCollected;	// the number of items the player has collected
+
+	bool m_bIsCollecting;	// if the player is currently collecting an item
 };
 
 #endif
