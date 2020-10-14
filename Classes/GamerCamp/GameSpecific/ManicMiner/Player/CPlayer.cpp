@@ -47,12 +47,12 @@ CPlayer::CPlayer()
 }
 
 //	Macro
-IN_CPP_CREATION_PARAMS_DECLARE(CObjPlayer, "TexturePacker/Sprites/Mario/mario.plist", "player", b2_dynamicBody, true);
+IN_CPP_CREATION_PARAMS_DECLARE(CPlayer, "TexturePacker/Sprites/Mario/mario.plist", "player", b2_dynamicBody, true);
 
 
 void CPlayer::VOnResourceAcquire()
 {
-	IN_CPP_CREATION_PARAMS_AT_TOP_OF_VONRESOURCEACQUIRE(CObjPlayer);
+	IN_CPP_CREATION_PARAMS_AT_TOP_OF_VONRESOURCEACQUIRE(CPlayer);
 
 	CGCObjSpritePhysics::VOnResourceAcquire();
 
