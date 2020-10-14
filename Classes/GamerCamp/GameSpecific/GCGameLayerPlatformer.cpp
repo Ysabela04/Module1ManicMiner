@@ -29,6 +29,8 @@
 
 #include "GamerCamp/GameSpecific/ManicMiner/Exit/Exit.h"
 
+#include "GamerCamp/GameSpecific/ManicMiner/Player/CPlayer.h"
+
 #include "AppDelegate.h"
 
 
@@ -58,16 +60,17 @@ using namespace cocos2d;
 CGCGameLayerPlatformer::CGCGameLayerPlatformer()
 : IGCGameLayer					( GetGCTypeIDOf( CGCGameLayerPlatformer ) ) 
 , m_pcGCGroupItem				( nullptr )
-//, m_pcGCGroupInvader			( nullptr )
-, m_pcGCGroupProjectilePlayer	( nullptr )
-, m_pcGCSprBackGround			( nullptr )
-, m_pcGCOPlayer					( nullptr )
-, m_bResetWasRequested			( false )
-//, m_pcCollectable (nullptr)
-, m_pcGroupCollectable( nullptr )
-, m_pcExit ( nullptr )
-, m_pcHazard ( nullptr )
-, m_iCollectablesNeeded ( 5 )
+//, m_pcGCGroupInvader				( nullptr )
+, m_pcGCGroupProjectilePlayer			( nullptr )
+, m_pcGCSprBackGround				( nullptr )
+//, m_pcGCOPlayer				( nullptr )
+, m_pcObjPlayer					(nullptr)
+, m_bResetWasRequested				( false )
+//, m_pcCollectable 				(nullptr)
+, m_pcGroupCollectable				( nullptr )
+, m_pcExit 					( nullptr )
+, m_pcHazard 					( nullptr )
+, m_iCollectablesNeeded 			( 5 )
 {
 	
 }
@@ -111,7 +114,7 @@ void CGCGameLayerPlatformer::onEnter()
 }
 
 //////////////////////////////////////////////////////////////////////////
-void CB_TestCollisionHandler( CGCObjPlayer& rcPlayer, CGCObjItem& rcItem, const b2Contact& rcContact )
+void CB_TestCollisionHandler( CPlayer & rcPlayer, CGCObjItem& rcItem, const b2Contact& rcContact )
 {
 	COLLISIONTESTLOG( "( standard function!) the player hit an item!" );
 }
@@ -261,8 +264,9 @@ void CGCGameLayerPlatformer::VOnCreate()
 	Vec2 v2MarioStartPos = ( v2ScreenCentre_Pixels - Vec2( 0.0f, ( visibleSize.height * 0.45f ) ) );
 
 	// create player object
-	m_pcGCOPlayer = new CGCObjPlayer();
-	m_pcGCOPlayer->SetResetPosition( v2MarioStartPos );
+	//m_pcGCOPlayer = new CGCObjPlayer();
+	m_pcCObjPlayer = new CPlayer();
+	m_pcCObjPlayer->SetResetPosition( v2MarioStartPos );
 
 	///////////////////////////////////////////////////////////////////////////
 	// TEST - add exit
@@ -315,17 +319,17 @@ void CGCGameLayerPlatformer::VOnCreate()
 	GetCollisionManager().AddCollisionHandler
 	(			
 		[this]
-		( CGCObjPlayer& rcPlayer, CCollectable& rcCollectable, const b2Contact& rcContact ) -> void
+		( CPlayer& rcPlayer, CCollectable& rcCollectable, const b2Contact& rcContact ) -> void
 		{		
 			// check if the player is not collecting anything else before collecting the item, then get the value of the collectable
 			// and increase the players itemscollected
-			if ( m_pcGCOPlayer->getbIsCollecting() == false )	// !m_pcGCOPlayer->getbIsCollecting()
+			if ( m_pcCObjPlayer->getbIsCollecting() == false )	// !m_pcGCOPlayer->getbIsCollecting()
 			{
-				m_pcGCOPlayer->setbIsCollecting( true );	
+				m_pcCObjPlayer->setbIsCollecting( true );	
 
 				//rcPlayer.setbIsCollecting( true );
 
-				m_pcGCOPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+				m_pcCObjPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
 
 				//rcPlayer.IncreaseItemCollected( rcCollectable.getiValue() );
 
@@ -340,7 +344,7 @@ void CGCGameLayerPlatformer::VOnCreate()
 	GetCollisionManager().AddCollisionHandler
 	(
 		[this]
-		( CGCObjPlayer& rcPlayer, CExit& rcExit, const b2Contact& rcContact ) -> void
+		( CPlayer& rcPlayer, CExit& rcExit, const b2Contact& rcContact ) -> void
 		{
 			if (m_pcExit->getIsOpen() == true)
 			{
@@ -353,7 +357,7 @@ void CGCGameLayerPlatformer::VOnCreate()
 	GetCollisionManager().AddCollisionHandler
 	(
 		[this]
-		( CGCObjPlayer& rcPlayer, CHazard& rcHazard, const b2Contact& rcContact ) -> void
+		( CPlayer& rcPlayer, CHazard& rcHazard, const b2Contact& rcContact ) -> void
 		{
 
 			//RequestReset();
@@ -382,7 +386,7 @@ void CGCGameLayerPlatformer::VOnUpdate( f32 fTimeStep )
 	ManuallyHandleCollisions();	
 
 
-	m_pcGCOPlayer->setbIsCollecting( false );
+	m_pcCObjPlayer->setbIsCollecting( false );
 
 	Condition();
 
@@ -403,8 +407,8 @@ void CGCGameLayerPlatformer::VOnDestroy()
 	///////////////////////////////////////////////////////////////////////////
 	// clean up anything we allocated in opposite order to creation
 	///////////////////////////////////////////////////////////////////////////	
-	delete m_pcGCOPlayer;
-	m_pcGCOPlayer = nullptr;
+	delete m_pcCObjPlayer;
+	m_pcCObjPlayer = nullptr;
 
 	delete m_pcGCSprBackGround;
 	m_pcGCSprBackGround = nullptr;
@@ -604,7 +608,7 @@ void CGCGameLayerPlatformer::ManuallyHandleCollisions()
 
 void CGCGameLayerPlatformer::Condition()
 {
-	if ( m_pcGCOPlayer->getiItemsCollected() >= m_iCollectablesNeeded )	// ==
+	if ( m_pcCObjPlayer->getiItemsCollected() >= m_iCollectablesNeeded )	// ==
 	{
 		m_pcExit->setIsOpen( true );
 	}
