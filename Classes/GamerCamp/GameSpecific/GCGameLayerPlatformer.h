@@ -68,7 +68,8 @@ public:
 	CGCGameLayerPlatformer	( void );
 	~CGCGameLayerPlatformer	( void );
 
-	void Condition();
+	void WinCondition();
+	void LoseCondition();
 
 	//////////////////////////////////////////////////////////////////////////
 	// player actions 

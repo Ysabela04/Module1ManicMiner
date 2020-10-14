@@ -332,7 +332,7 @@ void CGCGameLayerPlatformer::VOnCreate()
 				m_pcCObjPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
 
 				//rcPlayer.IncreaseItemCollected( rcCollectable.getiValue() );
-
+				
 				CGCObjectManager::ObjectKill( &rcCollectable );
 
 				CCLOG( " Player item collected." );
@@ -372,13 +372,19 @@ void CGCGameLayerPlatformer::VOnCreate()
 
 			if (m_pcCObjPlayer->getbIsColliding() == false)	// !m_pcGCOPlayer->getbIsCollecting()
 			{
-				m_pcCObjPlayer->setbIsCollecting(true);
+				m_pcCObjPlayer->setbIsColliding(true);
 
 				m_pcCObjPlayer->DecreaseLife();
 
 				// reset players position to the start position
 
-				CGCObjectManager::ObjectKill(&rcHazard);
+				//CGCObjectManager::ObjectKill(&rcHazard);
+
+				//m_pcCObjPlayer->VOnReset();
+				
+				RequestReset();
+
+				//m_pcCObjPlayer->SetSpritePosition(m_pcCObjPlayer->GetResetPosition());
 
 				CCLOG(" Player hit hazard!");
 			}
@@ -405,7 +411,8 @@ void CGCGameLayerPlatformer::VOnUpdate( f32 fTimeStep )
 	m_pcCObjPlayer->setbIsCollecting( false );
 	m_pcCObjPlayer->setbIsColliding( false );
 
-	Condition();
+	WinCondition();
+	LoseCondition();
 
 	if( ResetWasRequested() )
 	{
@@ -623,10 +630,18 @@ void CGCGameLayerPlatformer::ManuallyHandleCollisions()
 	}
 }
 
-void CGCGameLayerPlatformer::Condition()
+void CGCGameLayerPlatformer::WinCondition()
 {
 	if ( m_pcCObjPlayer->getiItemsCollected() >= m_iCollectablesNeeded )	// ==
 	{
 		m_pcExit->setIsOpen( true );
+	}
+}
+
+void CGCGameLayerPlatformer::LoseCondition()
+{
+	if (m_pcCObjPlayer->getiLives() <= 0)
+	{
+		ReplaceScene(TransitionRotoZoom::create(1.0f, CMenuLayer::scene()));
 	}
 }
