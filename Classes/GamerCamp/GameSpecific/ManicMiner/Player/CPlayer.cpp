@@ -47,12 +47,12 @@ CPlayer::CPlayer()
 }
 
 //	Macro
-IN_CPP_CREATION_PARAMS_DECLARE(CPlayer, "TexturePacker/Sprites/Mario/mario.plist", "player", b2_dynamicBody, true);
+IN_CPP_CREATION_PARAMS_DECLARE(CObjPlayer, "TexturePacker/Sprites/Mario/mario.plist", "player", b2_dynamicBody, true);
 
 
 void CPlayer::VOnResourceAcquire()
 {
-	IN_CPP_CREATION_PARAMS_AT_TOP_OF_VONRESOURCEACQUIRE(CPlayer);
+	IN_CPP_CREATION_PARAMS_AT_TOP_OF_VONRESOURCEACQUIRE(CObjPlayer);
 
 	CGCObjSpritePhysics::VOnResourceAcquire();
 
@@ -108,25 +108,25 @@ void CPlayer::VOnResourceRelease()
 
 
 // updates the movement of the CCSprite owned by this instance
-	f32 g_CPlayer_fMass = 1.0f;										// kg
-	f32	g_CPlayer_fMaximumMoveForce_Horizontal = 20.0f;				// newton
-	f32	g_CPlayer_fMaximumMoveForce_Vertical = 40.0f;				// newton
-	f32	g_CPlayer_fDragCoefficient_Linear = 0.25f;					// unitless
-	f32	g_CPlayer_fDragCoefficient_Square = 0.2f;					// unitless
-	f32 g_CPlayer_m_fNoInput_ExtraDrag_Square = 0.2f;				// unitless
-	f32 g_CPlayer_fNoInput_VelocityThreshold = 0.25f;				// m/s
-	f32 g_CPlayer_fPixelsPerMetre = 20.0f;							// pixels / metre
-	f32 g_CPlayer_fDamping = 0.999f;								// unitless
+	f32 	g_CPlayer_fMass 				= 1.0f;			// kg
+	f32	g_CPlayer_fMaximumMoveForce_Horizontal 		= 20.0f;		// newton
+	f32	g_CPlayer_fMaximumMoveForce_Vertical 		= 40.0f;		// newton
+	f32	g_CPlayer_fDragCoefficient_Linear 		= 0.25f;		// unitless
+	f32	g_CPlayer_fDragCoefficient_Square 		= 0.2f;			// unitless
+	f32	g_CPlayer_m_fNoInput_ExtraDrag_Square 		= 0.2f;			// unitless
+	f32 	g_CPlayer_fNoInput_VelocityThreshold 		= 0.25f;		// m/s
+	f32 	g_CPlayer_fPixelsPerMetre 			= 20.0f;		// pixels / metre
+	f32 	g_CPlayer_fDamping 				= 0.999f;		// unitless
 
 
 void CPlayer::UpdateMovement(f32 fTimeStep)
 {
-	m_fMaximumMoveForce_Horizontal = g_CPlayer_fMaximumMoveForce_Horizontal;
-	m_fMaximumMoveForce_Vertical = g_CPlayer_fMaximumMoveForce_Vertical;
-	m_fDragCoefficient_Linear = g_CPlayer_fDragCoefficient_Linear;
-	m_fDragCoefficient_Square = g_CPlayer_fDragCoefficient_Square;
-	m_fNoInput_ExtraDrag_Square = g_CPlayer_m_fNoInput_ExtraDrag_Square;
-	m_fNoInput_VelocityThreshold = g_CPlayer_fNoInput_VelocityThreshold;
+	m_fMaximumMoveForce_Horizontal 	=		g_CPlayer_fMaximumMoveForce_Horizontal;
+	m_fMaximumMoveForce_Vertical 	= 		g_CPlayer_fMaximumMoveForce_Vertical;
+	m_fDragCoefficient_Linear 	= 		g_CPlayer_fDragCoefficient_Linear;
+	m_fDragCoefficient_Square 	= 		g_CPlayer_fDragCoefficient_Square;
+	m_fNoInput_ExtraDrag_Square 	= 		g_CPlayer_m_fNoInput_ExtraDrag_Square;
+	m_fNoInput_VelocityThreshold 	= 		g_CPlayer_fNoInput_VelocityThreshold;
 
 
 	// we accumulate total force over the frame and apply it at the end
