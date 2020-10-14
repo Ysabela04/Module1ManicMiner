@@ -52,7 +52,7 @@ private:
 	//CGCObjPlayer*					m_pcGCOPlayer;
 	
 	// player
-	CObjPlayer*					m_pcCObjPlayer;
+	CPlayer*					m_pcCObjPlayer;
 
 	// collectable
 	//CCollectable* m_pcCollectable;
