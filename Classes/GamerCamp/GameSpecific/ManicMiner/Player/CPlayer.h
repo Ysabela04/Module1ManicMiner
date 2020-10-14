@@ -46,6 +46,8 @@ public:
 	// Functions
 	//////////////////////////////////////////////////////////////////////////
 	void IncreaseItemCollected(int numItemCollected);
+	void IncreaseLife();
+	void DecreaseLife();
 
 	// ---
 
@@ -55,14 +57,18 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 	// Getters
 	//
+	int getiLives() { return m_iLives; }
 	int getiItemsCollected() { return m_iItemsCollected; }
 	bool getbIsCollecting() { return m_bIsCollecting; }
+	bool getbIsColliding() { return m_bIsColliding; }
 
 	//////////////////////////////////////////////////////////////////////////
 	// Setters
 	//
 	void setiItemsCollected(int ivalue) { m_iItemsCollected = ivalue; }
+	void setiLives(int iLives) { m_iLives = iLives; }
 	void setbIsCollecting(bool bIsCollecting) { m_bIsCollecting = bIsCollecting; }
+	void setbIsColliding(bool bIsColliding) { m_bIsColliding = bIsColliding; }
 
 private:
 
@@ -80,7 +86,11 @@ private:
 
 	int m_iItemsCollected;	// the number of items the player has collected
 
+	int m_iLives;
+
 	bool m_bIsCollecting;	// if the player is currently collecting an item
+
+	bool m_bIsColliding;	// check to see if the player is colliding with anythin
 };
 
 #endif

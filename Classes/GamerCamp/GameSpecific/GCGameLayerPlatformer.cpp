@@ -369,7 +369,20 @@ void CGCGameLayerPlatformer::VOnCreate()
 
 			//m_pcGCOPlayer->pos
 
-			CCLOG(" Player hit hazard!");
+
+			if (m_pcCObjPlayer->getbIsColliding() == false)	// !m_pcGCOPlayer->getbIsCollecting()
+			{
+				m_pcCObjPlayer->setbIsCollecting(true);
+
+				m_pcCObjPlayer->DecreaseLife();
+
+				// reset players position to the start position
+
+				CGCObjectManager::ObjectKill(&rcHazard);
+
+				CCLOG(" Player hit hazard!");
+			}
+
 		}
 	);
 
@@ -390,6 +403,7 @@ void CGCGameLayerPlatformer::VOnUpdate( f32 fTimeStep )
 
 
 	m_pcCObjPlayer->setbIsCollecting( false );
+	m_pcCObjPlayer->setbIsColliding( false );
 
 	Condition();
 

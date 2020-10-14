@@ -6,7 +6,7 @@ USING_NS_CC;
 
 CExit::CExit()
 	: CGCObjSpritePhysics( GetGCTypeIDOf( CExit ) )
-	, m_isOpen ( false ) 
+	, m_bIsOpen( false )
 {
 
 }

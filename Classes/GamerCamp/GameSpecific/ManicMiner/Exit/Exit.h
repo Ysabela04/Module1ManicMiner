@@ -13,7 +13,7 @@
 class CExit : public CGCObjSpritePhysics
 {
 private:
-    bool m_isOpen;  // check if the door is open for the player to go through
+    bool m_bIsOpen;  // check if the door is open for the player to go through
 
 
 public:
@@ -37,12 +37,12 @@ public:
      //////////////////////////////////////////////////////////////////////////
     // Getters
     //
-    bool getIsOpen() { return m_isOpen; }
+    bool getIsOpen() { return m_bIsOpen; }
 
     //////////////////////////////////////////////////////////////////////////
     // Setters
     //
-    void setIsOpen( bool isOpen ) { m_isOpen = isOpen; }
+    void setIsOpen( bool isOpen ) { m_bIsOpen = isOpen; }
 };
 
 #endif //_EXIT_H

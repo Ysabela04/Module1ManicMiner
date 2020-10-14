@@ -41,7 +41,9 @@ CPlayer::CPlayer()
 	, m_fNoInput_VelocityThreshold(0.25f)
 	, m_pcControllerActionToKeyMap(nullptr)
 	, m_iItemsCollected(0)
+	, m_iLives(3)
 	, m_bIsCollecting(false)
+	, m_bIsColliding(false)
 {
 	
 
@@ -241,4 +243,18 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 void CPlayer::IncreaseItemCollected(int numItemCollected)
 {
 	m_iItemsCollected += numItemCollected;
+}
+
+void CPlayer::IncreaseLife()
+{
+	m_iLives += 1;
+
+	CCLOG(" Player has increased a life!");
+}
+
+void CPlayer::DecreaseLife()
+{
+	m_iLives -= 1;
+
+	CCLOG(" Player has decreased a life!");
 }
