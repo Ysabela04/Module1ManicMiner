@@ -14,7 +14,8 @@
 // fwd decl
 class CExit;
 class CGCObjSprite;
-class CGCObjPlayer;
+//class CGCObjPlayer;
+class CPlayer;
 class CGCObjPlatform;
 class CGCObjGroupPlatform;
 class CCollectable;
@@ -48,7 +49,10 @@ private:
 	CGCObjSprite*					m_pcGCSprBackGround;
 
 	// mario
-	CGCObjPlayer*					m_pcGCOPlayer;
+	//CGCObjPlayer*					m_pcGCOPlayer;
+	
+	// player
+	CObjPlayer*					m_pcCObjPlayer;
 
 	// collectable
 	//CCollectable* m_pcCollectable;
