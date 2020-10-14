@@ -110,7 +110,7 @@ void CLevel::VOnCreate()
 	const u32 uNumRows = 4;
 
 	float fColumnSpacing = ( visibleSize.width / ( ( (float) uNumColumns + 1.0f ) ) );
-	float fRowSpacing = ( visibleSize.height / ( ( (float) uNumRows ) + 1.0f ) );
+	float fRowSpacing = ( visibleSize.height / ( ( (float) uNumRows ) + 2.0f ) );
 
 	float fNextPlatformPos_x = fColumnSpacing;
 	float fRowStartPos_y = fRowSpacing;
@@ -145,6 +145,10 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 				m_eGameState = EGameState::Over;
 			}
 			COLLISIONTESTLOG("Game is Running");
+			break;
+
+		case (EGameState::Collected):
+			
 			break;
 
 		case (EGameState::Won):
