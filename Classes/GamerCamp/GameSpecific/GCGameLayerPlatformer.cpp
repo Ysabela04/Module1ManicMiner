@@ -64,7 +64,7 @@ CGCGameLayerPlatformer::CGCGameLayerPlatformer()
 , m_pcGCGroupProjectilePlayer			( nullptr )
 , m_pcGCSprBackGround				( nullptr )
 //, m_pcGCOPlayer				( nullptr )
-, m_pcObjPlayer					(nullptr)
+, m_pcCObjPlayer					(nullptr)
 , m_bResetWasRequested				( false )
 //, m_pcCollectable 				(nullptr)
 , m_pcGroupCollectable				( nullptr )
@@ -323,20 +323,20 @@ void CGCGameLayerPlatformer::VOnCreate()
 		{		
 			// check if the player is not collecting anything else before collecting the item, then get the value of the collectable
 			// and increase the players itemscollected
-			if ( m_pcCObjPlayer->getbIsCollecting() == false )	// !m_pcGCOPlayer->getbIsCollecting()
-			{
-				m_pcCObjPlayer->setbIsCollecting( true );	
+			//if ( m_pcCObjPlayer->getbIsCollecting() == false )	// !m_pcGCOPlayer->getbIsCollecting()
+			//{
+			//	m_pcCObjPlayer->setbIsCollecting( true );	
 
-				//rcPlayer.setbIsCollecting( true );
+			//	//rcPlayer.setbIsCollecting( true );
 
-				m_pcCObjPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+			//	m_pcCObjPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
 
-				//rcPlayer.IncreaseItemCollected( rcCollectable.getiValue() );
+			//	//rcPlayer.IncreaseItemCollected( rcCollectable.getiValue() );
 
-				CGCObjectManager::ObjectKill( &rcCollectable );
+			//	CGCObjectManager::ObjectKill( &rcCollectable );
 
-				CCLOG( " Player item collected." );
-			}			
+			//	CCLOG( " Player item collected." );
+			//}			
 		}
 	);
 
@@ -386,7 +386,7 @@ void CGCGameLayerPlatformer::VOnUpdate( f32 fTimeStep )
 	ManuallyHandleCollisions();	
 
 
-	m_pcCObjPlayer->setbIsCollecting( false );
+	//m_pcCObjPlayer->setbIsCollecting( false );
 
 	Condition();
 
@@ -608,8 +608,8 @@ void CGCGameLayerPlatformer::ManuallyHandleCollisions()
 
 void CGCGameLayerPlatformer::Condition()
 {
-	if ( m_pcCObjPlayer->getiItemsCollected() >= m_iCollectablesNeeded )	// ==
-	{
-		m_pcExit->setIsOpen( true );
-	}
+	//if ( m_pcCObjPlayer->getiItemsCollected() >= m_iCollectablesNeeded )	// ==
+	//{
+	//	m_pcExit->setIsOpen( true );
+	//}
 }

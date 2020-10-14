@@ -47,7 +47,7 @@ CPlayer::CPlayer()
 }
 
 //	Macro
-IN_CPP_CREATION_PARAMS_DECLARE(CPlayer, "TexturePacker/Sprites/Mario/mario.plist", "player", b2_dynamicBody, true);
+IN_CPP_CREATION_PARAMS_DECLARE(CPlayer, "TexturePacker/Sprites/Mario/mario.plist", "mario", b2_dynamicBody, true);
 
 
 void CPlayer::VOnResourceAcquire()
@@ -57,7 +57,7 @@ void CPlayer::VOnResourceAcquire()
 	CGCObjSpritePhysics::VOnResourceAcquire();
 
 	//	Player
-	const char* pszAnim_player = "player";
+	const char* pszAnim_player = "Jog";
 	
 	//	Animate Player
 	ValueMap dicPList = GCCocosHelpers::CreateDictionaryFromPlist(GetFactoryCreationParams()->strPlistFile);

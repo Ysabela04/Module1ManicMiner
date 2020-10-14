@@ -23,6 +23,7 @@ public:
 
 	//	CPlayer Constructor
 	CPlayer();
+	virtual ~CPlayer();
 
 	//	VOnResourceAcquire derived function
 	virtual void VOnResourceAcquire() override;

@@ -64,6 +64,9 @@
     <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\Hazards">
       <UniqueIdentifier>{24e0af9f-de13-4cc0-b755-b5272eb5f577}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\Player">
+      <UniqueIdentifier>{47efb61f-0561-4cc8-90aa-36a5d68573f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -170,6 +173,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\Hazard.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\CPlayer.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +295,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\Hazard.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\CPlayer.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\EPlayerActions.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
