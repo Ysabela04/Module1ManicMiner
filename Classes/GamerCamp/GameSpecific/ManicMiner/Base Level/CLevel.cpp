@@ -1,4 +1,4 @@
-#include "GCLevel.h"
+#include "CLevel.h"
 #include <algorithm>
 #include <stdlib.h>
 
@@ -26,23 +26,23 @@ USING_NS_CC;
 
 #endif
 
-GCLevel::GCLevel()
-	: IGCGameLayer(GetGCTypeIDOf(GCLevel))
+CLevel::CLevel()
+	: IGCGameLayer(GetGCTypeIDOf(CLevel))
 	, m_pcDefaultGCBackground (NULL)
 	, m_bResetWasRequested (false)
 {
 	m_eGameState = EGameState::Running;
 }
 
-GCLevel::~GCLevel()
+CLevel::~CLevel()
 {
 }
 
-void GCLevel::VOnEnter()
+void CLevel::VOnEnter()
 {
 }
 
-void GCLevel::VOnCreate()
+void CLevel::VOnCreate()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Point origin = Director::getInstance()->getVisibleOrigin();
@@ -54,7 +54,7 @@ void GCLevel::VOnCreate()
 	CGCObjectManager::ObjectGroupRegister(m_pcDefaultGCGroupPlatform);
 
 	// Adding a Timer //
-	m_pcTimer = new CGCTimer();
+	m_pcTimer = new CTimer();
 	this->addChild(m_pcTimer->GetTimerObj(), 1);
 
 	// Setting up the Background //
@@ -133,7 +133,7 @@ void GCLevel::VOnCreate()
 	}
 }
 
-void GCLevel::VOnUpdate(f32 fTimeStep)
+void CLevel::VOnUpdate(f32 fTimeStep)
 {
 	switch (m_eGameState) 
 	{
@@ -162,7 +162,7 @@ void GCLevel::VOnUpdate(f32 fTimeStep)
 	}
 }
 
-void GCLevel::VOnDestroy()
+void CLevel::VOnDestroy()
 {
 	// De-allocate memory in opposite order of creation //
 	delete m_pcTimer;
@@ -180,7 +180,7 @@ void GCLevel::VOnDestroy()
 	IGCGameLayer::VOnDestroy();
 }
 
-void GCLevel::SetGameState(EGameState newGameState)
+void CLevel::SetGameState(EGameState newGameState)
 {
 	m_eGameState = newGameState;
 }

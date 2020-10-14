@@ -1,4 +1,4 @@
-#include "GCTimer.h"
+#include "CTimer.h"
 
 #include "GamerCamp/GCCocosInterface/GCCocosHelpers.h"
 
@@ -8,7 +8,7 @@
 #include "AppDelegate.h"
 
 
-CGCTimer::CGCTimer()
+CTimer::CTimer()
 {
 	m_fMaximumTime = 600.0f;
 	m_fCurrentTime = m_fMaximumTime;
@@ -24,11 +24,11 @@ CGCTimer::CGCTimer()
 	m_cTimerBar->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2, Director::getInstance()->getVisibleSize().height / 2));
 }
 
-CGCTimer::~CGCTimer()
+CTimer::~CTimer()
 {
 }
 
-void CGCTimer::TimerUpdate(float dt)
+void CTimer::TimerUpdate(float dt)
 {
 	m_fCurrentTime -= dt;
 	m_cTimerBar->setPercentage(100 * m_fCurrentTime / m_fMaximumTime);
@@ -38,12 +38,12 @@ void CGCTimer::TimerUpdate(float dt)
 	}
 }
 
-cocos2d::ProgressTimer* CGCTimer::GetTimerObj()
+cocos2d::ProgressTimer* CTimer::GetTimerObj()
 {
 	return m_cTimerBar;
 }
 
-bool CGCTimer::TimerHasEnded()
+bool CTimer::TimerHasEnded()
 {
 	return m_bHasTimerEnded;
 }

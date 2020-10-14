@@ -125,9 +125,11 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	// GamerCamp Edit
 	//////////////////////////////////////////////////////////////////////////
+		Scene* pScene = CMenuLayer::scene();
 
 	// run
-    pDirector->runWithScene( TGCGameLayerSceneCreator< CGCGameLayerPlatformer >::CreateScene() );
+    //pDirector->runWithScene( TGCGameLayerSceneCreator< CGCGameLayerPlatformer >::CreateScene() );
+	pDirector->runWithScene(pScene);
 
     return true;
 }

@@ -3,9 +3,9 @@
 
 #include "cocos2d/cocos/2d/CCProgressTimer.h"
 #include "cocos2d/cocos/2d/CCSprite.h"
-#include "GamerCamp/GameSpecific/ManicMiner/Base Level/GCLevel.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Base Level/CLevel.h"
 
-class CGCTimer
+class CTimer
 {
 private:
 	float m_fMaximumTime;
@@ -17,8 +17,8 @@ private:
 	cocos2d::ProgressTimer* m_cTimerBar;
 
 public:
-	CGCTimer();
-	~CGCTimer();
+	CTimer();
+	~CTimer();
 
 	void TimerUpdate(float deltaTime);
 

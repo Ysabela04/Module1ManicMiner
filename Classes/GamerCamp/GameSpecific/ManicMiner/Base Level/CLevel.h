@@ -2,13 +2,13 @@
 #define _GCLEVELWITHSTATES_H_
 
 #include "Classes/GamerCamp/GCCocosInterface/IGCGameLayer.h"
-#include "GamerCamp/GameSpecific/ManicMiner/Timer/GCTimer.h"
-#include "GameState.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Timer/CTimer.h"
+#include "EGameState.h"
 
 class CGCObjSprite;
 class CGCObjPlatform;
 class CGCObjGroupPlatform;
-class CGCTimer;
+class CTimer;
 
 //enum class GameState
 	//{
@@ -17,7 +17,7 @@ class CGCTimer;
 		//Over
 	//};
 
-class GCLevel
+class CLevel
 	: public IGCGameLayer
 	, public b2ContactListener
 {
@@ -32,11 +32,11 @@ private:
 
 	// Game Objects
 	CGCObjSprite* m_pcDefaultGCBackground;
-	CGCTimer* m_pcTimer;
+	CTimer* m_pcTimer;
 
 public:
-	GCLevel();
-	~GCLevel();
+	CLevel();
+	~CLevel();
 
 	virtual void VOnEnter();
 
