@@ -256,6 +256,12 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 {
 	IGCGameLayer::VOnUpdate(fTimeStep);
 
+	if (ResetWasRequested())
+		{
+			VOnReset();
+			ResetRequestWasHandled();
+		}
+
 	switch (m_eGameState) 
 	{
 		case (EGameState::Running):
@@ -305,11 +311,7 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 			COLLISIONTESTLOG("Game is Over");
 			break;
 
-			if (ResetWasRequested())
-			{
-				VOnReset();
-				ResetRequestWasHandled();
-			}
+			
 	}
 }
 
