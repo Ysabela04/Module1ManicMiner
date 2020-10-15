@@ -24,8 +24,8 @@ CGroupCollectable::~CGroupCollectable()
 
 	//}
 
-	//delete[] m_paCollectables;
-	//m_paCollectables = nullptr;
+	delete[] m_paCollectables;
+	m_paCollectables = nullptr;
 
 
 }
@@ -119,11 +119,12 @@ void CGroupCollectable::CreateCollectables()
 
 	//}
 
-	for (int i = 0; i < m_iMaxNumCollectables; i++)
-	{
-		m_paCollectables[i] = new CCollectable;	// [i] ;
-	}
+	//for (int i = 0; i < m_iMaxNumCollectables; i++)
+	//{
+	//	m_paCollectables[i] = new CCollectable;	// [i] ;
+	//}
 
+	m_paCollectables = new CCollectable[m_iMaxNumCollectables];
 
 	//CGCObjectGroup::OnObjectRegister( m_paCollectables );
 	
@@ -131,11 +132,11 @@ void CGroupCollectable::CreateCollectables()
 
 
 	// manually setting positions of collectables
-	m_paCollectables[0]->SetResetPosition( cocos2d::Vec2( 200.0f, 150.0f ) );
-	m_paCollectables[1]->SetResetPosition( cocos2d::Vec2( 250.0f, 250.0f ) );
-	m_paCollectables[2]->SetResetPosition( cocos2d::Vec2( 400.0f, 150.0f ) );
-	m_paCollectables[3]->SetResetPosition( cocos2d::Vec2( 450.0f, 450.0f ) );
-	m_paCollectables[4]->SetResetPosition( cocos2d::Vec2( 550.0f, 650.0f ) );
+	m_paCollectables[0].SetResetPosition( cocos2d::Vec2( 200.0f, 150.0f ) );
+	m_paCollectables[1].SetResetPosition( cocos2d::Vec2( 250.0f, 250.0f ) );
+	m_paCollectables[2].SetResetPosition( cocos2d::Vec2( 400.0f, 150.0f ) );
+	m_paCollectables[3].SetResetPosition( cocos2d::Vec2( 450.0f, 450.0f ) );
+	m_paCollectables[4].SetResetPosition( cocos2d::Vec2( 550.0f, 650.0f ) );
 
 
 }
@@ -144,9 +145,9 @@ void CGroupCollectable::DestroyCollectables()
 {
 	// this iterates the array of registered CGCObjects 
 	// calling the supplied functor then deleting them
-	DestroyObjectsReverseOrder( [&]( CGCObject* pObject )
-	{
-			// do nothing - DestroyObjectsReverseOrder calls delete!
-			GCASSERT( GetGCTypeIDOf( CCollectable ) == pObject->GetGCTypeID(), "wrong type!" );
-	});
+	//DestroyObjectsReverseOrder( [&]( CGCObject* pObject )
+	//{
+	//		// do nothing - DestroyObjectsReverseOrder calls delete!
+	//		GCASSERT( GetGCTypeIDOf( CCollectable ) == pObject->GetGCTypeID(), "wrong type!" );
+	//});
 }

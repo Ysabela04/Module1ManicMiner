@@ -9,9 +9,9 @@ class CGroupCollectable : public CGCObjectGroup
 private:
 	int m_iMaxNumCollectables;	
 
-	//CCollectable* m_paCollectables;
+	CCollectable* m_paCollectables;
 
-	CCollectable* m_paCollectables[5];
+	//CCollectable* m_paCollectables[5];
 
 
 
