@@ -4,6 +4,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "MenuScene.h"
 #include "GamerCamp/GameSpecific/GCGameLayerPlatformer.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Base Level/CLevel.h"
 
 
 USING_NS_CC;
@@ -95,5 +96,6 @@ bool CMenuLayer::init()
 //////////////////////////////////////////////////////////////////////////
 void CMenuLayer::CB_OnGameStartButton( Ref* pSender)
 {
-	Director::getInstance()->replaceScene( TransitionRotoZoom::create( 1.0f, TGCGameLayerSceneCreator< CGCGameLayerPlatformer >::CreateScene() ) );
+	//Director::getInstance()->replaceScene( TransitionRotoZoom::create( 1.0f, TGCGameLayerSceneCreator< CGCGameLayerPlatformer >::CreateScene() ) );
+    Director::getInstance()->replaceScene(TransitionRotoZoom::create(1.0f, TGCGameLayerSceneCreator< CLevel >::CreateScene()));
 }
