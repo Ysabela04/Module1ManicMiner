@@ -189,6 +189,9 @@
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Timer\CTimer.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Timer</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\GroupHazards.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -322,6 +325,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Timer\CTimer.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\GroupHazards.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

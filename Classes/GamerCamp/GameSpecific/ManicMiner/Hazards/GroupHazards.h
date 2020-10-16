@@ -1,0 +1,50 @@
+#ifndef _GROUPHAZARDS_H_
+#define _GROUPHAZARDS_H_
+
+#include "GamerCamp/GameSpecific/ManicMiner/Hazards/Hazard.h"
+#include "GamerCamp/GCObject/GCObjectGroup.h"
+
+class CGroupHazards : public CGCObjectGroup
+{
+private:
+
+
+
+public:
+	CGroupHazards();
+	virtual ~CGroupHazards();
+
+	//////////////////////////////////////////////////////////////////////////
+	// Functions
+	//////////////////////////////////////////////////////////////////////////
+
+
+	//////////////////////////////////////////////////////////////////////////
+	// Virtual
+	//
+	virtual bool		VHandlesThisTypeId(GCTypeID idQueryType) override;
+
+	virtual GCTypeID	VGetTypeId(void) override;
+
+	virtual void		VOnGroupResourceAcquire() override;
+
+	virtual void		VOnGroupResourceAcquire_PostObject(void);
+
+	virtual void		VOnGroupResourceRelease() override;
+
+	//////////////////////////////////////////////////////////////////////////
+	// Getters & Setters
+	//
+	//////////////////////////////////////////////////////////////////////////
+	// Getters
+	//
+
+
+	//////////////////////////////////////////////////////////////////////////
+	// Setters
+	//
+
+
+};
+
+#endif // _GROUPHAZARDS_H_
