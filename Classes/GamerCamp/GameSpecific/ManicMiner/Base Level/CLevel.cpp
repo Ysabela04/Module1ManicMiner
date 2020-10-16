@@ -18,6 +18,8 @@
 #include "GamerCamp/GameSpecific/ManicMiner/Exit/Exit.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Hazards/Hazard.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Timer/CTimer.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Enemy/CEnemy.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Enemy/CEnemyGroup.h"
 
 #include "AppDelegate.h"
 
@@ -48,6 +50,7 @@ CLevel::CLevel()
 	, m_pcHazard(nullptr)
 	, m_iCollectablesNeeded(5)
 	, m_bResetWasRequested(false)
+	, m_pcEnemyGroup(nullptr)
 {
 }
 
@@ -94,7 +97,10 @@ void CLevel::VOnCreate()
 
 	m_pcGroupCollectable = new CGroupCollectable();
 	CGCObjectManager::ObjectGroupRegister(m_pcGroupCollectable);
-
+	
+	m_pcEnemyGroup = new CEnemyGroup( 64 );
+	CGCObjectManager::ObjectGroupRegister( m_pcEnemyGroup );
+	
 	// Adding a Timer //
 	m_pcTimer = new CTimer();
 	this->addChild(m_pcTimer->GetTimerObj(), 1);
@@ -175,6 +181,11 @@ void CLevel::VOnCreate()
 	// Creating Platforms //
 	const u32 uNumColumns = 3;
 	const u32 uNumRows = 4;
+	
+	// Creating Enemy //
+	m_pcEnemyGroup->SetFormationOrigin( v2ScreenCentre_Pixels + Vec2( -( visibleSize.width * 0.25f ), ( visibleSize.height * 0.25f ) ) );
+	m_pcEnemyGroup->SetRowsAndColumns( 1, 1, -40.0f, 40.0f );
+
 
 	float fColumnSpacing = ( visibleSize.width / ( ( (float) uNumColumns + 1.0f ) ) );
 	float fRowSpacing = ( visibleSize.height / ( ( (float) uNumRows ) + 1.0f ) );
@@ -246,6 +257,24 @@ void CLevel::VOnCreate()
 				RequestReset();
 
 				CCLOG("Player hit Hazard!");
+			}
+		}
+	);
+	
+	// Collisions for Player and Enemy
+	GetCollisionManager().AddCollisionHandler
+	(
+		[this]
+	(CPlayer& rcPlayer, CEnemy& rcEnemy, const b2Contact& rcContact) -> void
+		{
+			if (m_pcPlayer->getbIsCollecting() == false)
+			{
+				m_pcPlayer->setbIsCollecting(true);
+				m_pcPlayer->DecreaseLife();
+
+				RequestReset();
+
+				CCLOG("Player hit Enemy!");
 			}
 		}
 	);
@@ -329,6 +358,9 @@ void CLevel::VOnDestroy()
 
 	delete m_pcTimer;
 	m_pcTimer = nullptr;
+	
+	delete m_pcEnemyGroup;
+	m_pcEnemyGroup = nullptr;
 
 	delete m_pcDefaultGCBackground;
 	m_pcDefaultGCBackground = nullptr;
@@ -346,6 +378,10 @@ void CLevel::VOnDestroy()
 	CGCObjectManager::ObjectGroupUnRegister( m_pcGroupCollectable );
 	delete m_pcGroupCollectable;
 	m_pcGroupCollectable = nullptr;
+	
+	CGCObjectManager::ObjectGroupUnRegister(m_pcEnemyGroup);
+	delete m_pcEnemyGroup;
+	m_pcEnemyGroup = nullptr;
 
 	IGCGameLayer::VOnDestroy();
 }
