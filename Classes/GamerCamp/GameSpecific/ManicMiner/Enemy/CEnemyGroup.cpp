@@ -94,7 +94,7 @@ void CEnemyGroup::VOnGroupResourceAcquire()
 	IGCGameLayer::ActiveInstance()->GetCollisionManager().AddCollisionHandler
 	(
 		[this]
-	(CEnemy& rcInvader, CGCObjScreenBound& rcEdgeOfScreen, const b2Contact& rcContact) -> void
+	(CEnemy& rcEnemy, CGCObjScreenBound& rcEdgeOfScreen, const b2Contact& rcContact) -> void
 		{
 			CheckForGroupWallCollisionInCurrentMoveDirection(rcEdgeOfScreen);
 		}
@@ -165,9 +165,9 @@ void CEnemyGroup::VOnObjectReset()
 	ForEachObject
 	(
 		[&, this]
-	(CGCObject* pInvaderAsObject) -> bool
+	(CGCObject* pEnemyAsObject) -> bool
 		{
-			CEnemy* pEnemy = CGCObject::SafeCastToDerived< CEnemy* >(pInvaderAsObject);
+			CEnemy* pEnemy = CGCObject::SafeCastToDerived< CEnemy* >(pEnemyAsObject);
 			CCAssert((nullptr != pEnemy), "Aiiieeeee!! Houston we have a problem!");
 
 			VOnObjectResurrect(pEnemy);
@@ -248,7 +248,7 @@ void CEnemyGroup::VOnGroupUpdate(f32 fTimeStep)
 	}
 
 
-	// update invaders
+	// update Enemy
 
 	Vec2 v2CurrentGroupVelocity = Vec2::ZERO;
 
