@@ -1,62 +1,82 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#include <memory.h>
+#ifndef	_CENEMYGROUP_H_
+#define	_CENEMYGROUP_H_
 
-#include "GamerCamp/GCObject/GCObjectManager.h"
-#include "GamerCamp/GameSpecific/Player/GCObjProjectilePlayer.h"
-#include "GamerCamp/GameSpecific/Player/GCObjGroupProjectilePlayer.h"
+#ifndef MATH_VEC2_H
+#include "cocos2d/cocos/math/Vec2.h"
+#endif
 
-#include "GamerCamp/GameSpecific/GCGameLayerPlatformer.h"
+#ifndef	_GCOBJECTGROUP_H_
+#include "GamerCamp/GCObject/GCObjectGroup.h"
+#endif
 
-#include "CEnemy.h"
-
-USING_NS_CC;
 
 //////////////////////////////////////////////////////////////////////////
-// GetGCTypeIDOf uses the template in GCTypeID to generate a unique ID for 
-// this type - need this to construct our base type
-CEnemy::CEnemy()
-	: CGCObjSpritePhysics(GetGCTypeIDOf(CEnemy))
+// forward declare
+class CGCObjSprite;
+class CEnemy;
+class CGCObjScreenBound;
+
+//////////////////////////////////////////////////////////////////////////
+// responsible for newing, managing, & deleting the invaders
+//
+// This shows how an object group can be used as an allocation pool.
+//
+//////////////////////////////////////////////////////////////////////////
+class CEnemyGroup
+	: public CGCObjectGroup
 {
-}
+private:
+	enum EMoveDirection
+	{
+		Left,
+		Right,
+		DownBeforeLeft,
+		DownBeforeRight,
+	};
 
+	int				m_iMaxEnemy;
+	int				m_iNumRows;
+	int				m_iNumColumns;
+	f32				m_fSpacingRow;
+	f32				m_fSpacingColumn;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// CEnemy interface
+	cocos2d::Vec2	m_v2FormationOrigin; // origin of the formation
+	EMoveDirection	m_eMoveDirection;
+	float			m_fTimeInCurrentMoveDirection;
+	bool			m_bAtLeastOneEnemyTouchedTheEdgeOfTheScreenLastFrame;
 
+	void	CreateEnemy();
+	void	DestroyEnemy();
+
+	void	CheckForGroupWallCollisionInCurrentMoveDirection(const CGCObjScreenBound& pScreenBound);
+
+public:
+	CEnemyGroup(int iMaxNumEnemy);
+	virtual ~CEnemyGroup() override;
+
+	void SetFormationOrigin(cocos2d::Vec2 m_v2FormationOrigin);
+
+	void SetRowsAndColumns(f32 iNumRows, int iNumColumns, f32 fPixelSpacingRow, f32 fPixelSpacingColumn);
+
+	//////////////////////////////////////////////////////////////////////////
+	// overrides for CGCObjectGroup public interface
+
+		// handles CEnemy
+	virtual bool		VHandlesThisTypeId(GCTypeID idQueryType) override;
+
+	// must return the typeid of the CGCObjectGroup derived class
+	virtual GCTypeID	VGetTypeId() override;
+
+	virtual void		VOnGroupResourceAcquire() override;
+	virtual void		VOnGroupResourceAcquire_PostObject() override;
+	virtual void		VOnGroupReset() override;
+	virtual void		VOnObjectReset() override;
+	virtual void		VOnGroupUpdate(f32 fTimeStep) override;
+	virtual void		VOnGroupResourceRelease() override;
+	// CGCObjectGroup public interface
 //////////////////////////////////////////////////////////////////////////
-// 
-//////////////////////////////////////////////////////////////////////////
-IN_CPP_CREATION_PARAMS_DECLARE(CEnemy, "TexturePacker/Sprites/KoopaTrooper/KoopaTrooper.plist", "koopa", b2_dynamicBody, true);
-//virtual 
-void CEnemy::VOnResourceAcquire(void)
-{
-	IN_CPP_CREATION_PARAMS_AT_TOP_OF_VONRESOURCEACQUIRE(CEnemy);
-	CGCObjSpritePhysics::VOnResourceAcquire();
-}
+};
 
+#endif // _CENEMYGROUP_H_
 
-//////////////////////////////////////////////////////////////////////////
-// 
-//////////////////////////////////////////////////////////////////////////
-//virtual 
-void CEnemy::VOnResurrected(void)
-{
-	CGCObjSpritePhysics::VOnResurrected();
-
-	GetPhysicsBody()->SetGravityScale(0.0f);
-}
-
-
-//////////////////////////////////////////////////////////////////////////
-// 
-//////////////////////////////////////////////////////////////////////////
-//virtual 
-
-void CEnemy::VOnUpdate(f32 fTimestep)
-{}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// this class' public interface
