@@ -16,6 +16,8 @@ class CPlayer;
 class CExit;
 class CHazard;
 class CTimer;
+class CEnemy;
+class CEnemyGroup;
 
 class CLevel
 	: public IGCGameLayer
@@ -39,6 +41,7 @@ private:
 	CExit* m_pcExit;
 	CHazard* m_pcHazard;
 	CTimer* m_pcTimer;
+	CEnemyGroup* m_pcEnemyGroup;
 
 public:
 	CLevel();
