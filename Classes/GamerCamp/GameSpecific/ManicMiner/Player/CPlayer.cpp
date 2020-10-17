@@ -220,14 +220,14 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 	// * set sprite flip based on velocity
 	// N.B. the else-if looks redundant, but we want the sprite's flip 
 	// state to stay the same if its velocity is set to (0.0f, 0.0f)
-	if (GetVelocity().y >= 0.0f)
-	{
-		SetFlippedY(false);
-	}
-	else if (GetVelocity().y < 0.0f)
-	{
-		SetFlippedY(true);
-	}
+	//if (GetVelocity().y >= 0.0f)
+	//{
+		//SetFlippedY(false);
+	//}
+	//else if (GetVelocity().y < 0.0f)
+	//{
+		//SetFlippedY(true);
+	//}
 
 	if (GetVelocity().x >= 0.0f)
 	{
