@@ -21,6 +21,7 @@ public:
 	~CTimer();
 
 	void TimerUpdate(float deltaTime);
+	void ResetTimer();
 
 	cocos2d::ProgressTimer* GetTimerObj();
 	bool TimerHasEnded();

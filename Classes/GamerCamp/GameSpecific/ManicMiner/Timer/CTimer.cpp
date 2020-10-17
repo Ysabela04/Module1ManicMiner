@@ -38,6 +38,11 @@ void CTimer::TimerUpdate(float dt)
 	}
 }
 
+void CTimer::ResetTimer()
+{
+	m_fCurrentTime = m_fMaximumTime;
+}
+
 cocos2d::ProgressTimer* CTimer::GetTimerObj()
 {
 	return m_cTimerBar;
