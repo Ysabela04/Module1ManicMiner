@@ -259,9 +259,9 @@ void CLevel::VOnCreate()
 		[this]
 		(CPlayer& rcPlayer, CHazard& rcHazard, const b2Contact& rcContact) -> void
 		{
-			if (m_pcPlayer->getbIsCollecting() == false)
+			if (m_pcPlayer->getbIsColliding() == false)
 			{
-				m_pcPlayer->setbIsCollecting(true);
+				m_pcPlayer->setbIsColliding(true);
 				m_pcPlayer->DecreaseLife();
 
 				RequestReset();
@@ -277,9 +277,9 @@ void CLevel::VOnCreate()
 		[this]
 	(CPlayer& rcPlayer, CEnemy& rcEnemy, const b2Contact& rcContact) -> void
 		{
-			if (m_pcPlayer->getbIsCollecting() == false)
+			if (m_pcPlayer->getbIsColliding() == false)
 			{
-				m_pcPlayer->setbIsCollecting(true);
+				m_pcPlayer->setbIsColliding(true);
 				m_pcPlayer->DecreaseLife();
 
 				RequestReset();
