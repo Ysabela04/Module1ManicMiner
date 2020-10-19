@@ -1,5 +1,5 @@
-#ifndef _CCOLLECTABLE_H_
-#define _CCOLLECTABLE_H_
+#ifndef _COLLECTABLE_H_
+#define _COLLECTABLE_H_
 
 #include "GamerCamp/GCCocosInterface/GCObjSpritePhysics.h"
 
@@ -13,7 +13,7 @@
 class CCollectable : public CGCObjSpritePhysics
 {
 private:
-    i32         m_iValue;    // Value of the collectable, e.g. can be 1 for every collectable that is collected
+    int         m_iRewardValue;    // Value of the collectable, e.g. can be 1 for every collectable that is collected
 
     //std::string m_strClassName;
     //std::string m_strPlistFilePath;
@@ -41,14 +41,13 @@ public:
     //////////////////////////////////////////////////////////////////////////
     // Getters
     //
-    i32 getiValue() { return m_iValue; }
+    i32 getiRewardValue() { return m_iRewardValue; }
 
     //////////////////////////////////////////////////////////////////////////
     // Setters
     //
-    void setiValue( i32 ivalue ) { m_iValue = ivalue; }
+    void setiRewardValue( i32 ivalue ) { m_iRewardValue = ivalue; }
 
-    // set rewardvalue
 };
 
-#endif // _CCOLLECTABLE_H_
+#endif // _COLLECTABLE_H_
