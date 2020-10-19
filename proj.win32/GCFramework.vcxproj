@@ -162,7 +162,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\Items\GCObjItem.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Base Level\CLevel.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\Collectable.cpp" />
-    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectable.cpp" />
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectables.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Enemy\CEnemy.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Enemy\CEnemyGroup.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Exit\Exit.cpp" />
@@ -209,7 +209,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Base Level\CLevel.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Base Level\EGameState.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\Collectable.h" />
-    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectable.h" />
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectables.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Enemy\CEnemy.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Enemy\CEnemyGroup.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Exit\Exit.h" />
