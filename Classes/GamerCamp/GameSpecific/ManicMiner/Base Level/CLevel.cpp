@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "Classes/GamerCamp/GCCocosInterface/GCCocosHelpers.h"
+#include "SimpleAudioEngine.h"
 
 #include "MenuScene.h"
 #include "GamerCamp/GCObject/GCObjectManager.h"
@@ -136,34 +137,6 @@ void CLevel::VOnCreate()
 	//{
 	//	f32 PTM_RATIO = IGCGAMELAYER_B2D_PIXELS_PER_METER;
 
-	//	b2Vec2 b2v2ScreenCentre_Pixels((origin.x + (visibleSize.width * 0.5f)), (origin.y + (visibleSize.height * 0.5f)));
-	//	Vec2 v2ScreenCentre_Pixels((origin.x + (visibleSize.width * 0.5f)), (origin.y + (visibleSize.height * 0.5f)));
-
-	//	b2BodyDef groundBodyDef;
-	//	groundBodyDef.position = IGCGameLayer::B2dPixelsToWorld(b2v2ScreenCentre_Pixels);
-	//	groundBodyDef.type = b2_kinematicBody;
-
-	//	b2Body* groundBody = B2dGetWorld()->CreateBody(&groundBodyDef);
-
-	//	b2PolygonShape groundBox;
-
-	//	// Bottom
-	//	groundBox.SetAsBox(((visibleSize.width * 0.5f) / PTM_RATIO), 0.5f, b2Vec2(0.0f, -((visibleSize.height * 0.5f) / PTM_RATIO)), 0.0f);
-	//	groundBody->CreateFixture(&groundBox, 0);
-
-	//	// Top
-	//	groundBox.SetAsBox(((visibleSize.width * 0.5f) / PTM_RATIO), 0.5f, b2Vec2(0.0f, ((visibleSize.height * 0.5f) / PTM_RATIO)), 0.0f);
-	//	groundBody->CreateFixture(&groundBox, 0);
-
-	//	// Left
-	//	groundBox.SetAsBox(0.5f, ((visibleSize.height * 0.5f) / PTM_RATIO), b2Vec2(-((visibleSize.width * 0.5f) / PTM_RATIO), 0.0f), 0.0f);
-	//	groundBody->CreateFixture(&groundBox, 0);
-
-	//	// Right
-	//	groundBox.SetAsBox(0.5f, ((visibleSize.height * 0.5f) / PTM_RATIO), b2Vec2(((visibleSize.width * 0.5f) / PTM_RATIO), 0.0f), 0.0f);
-	//	groundBody->CreateFixture(&groundBox, 0);
-	//}
-
 	// Creating Player //
 	Vec2 v2MarioStartPos = (v2ScreenCentre_Pixels - Vec2(0.0f, (visibleSize.height * 0.45f)));
 
@@ -289,6 +262,7 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 		{
 			VOnReset();
 			ResetRequestWasHandled();
+			m_pcTimer->ResetTimer();
 		}
 
 	switch (m_eGameState) 
@@ -358,9 +332,6 @@ void CLevel::VOnDestroy()
 
 	delete m_pcTimer;
 	m_pcTimer = nullptr;
-	
-	delete m_pcEnemyGroup;
-	m_pcEnemyGroup = nullptr;
 
 	delete m_pcDefaultGCBackground;
 	m_pcDefaultGCBackground = nullptr;
