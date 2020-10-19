@@ -16,7 +16,7 @@
 #include "GamerCamp/GameSpecific/Platforms/GCObjPlatform.h" 
 #include "GamerCamp/GameSpecific/Platforms/GCObjGroupPlatform.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Collectables/Collectable.h"
-#include "GamerCamp/GameSpecific/ManicMiner/Collectables/GroupCollectable.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Collectables/GroupCollectables.h"
 #include "GamerCamp/GameSpecific/Items/GCObjItem.h" 
 #include "GamerCamp/GameSpecific/Items/GCObjGroupItem.h"
 #include "GamerCamp/GameSpecific/Invaders/GCObjInvader.h"
@@ -67,7 +67,7 @@ CGCGameLayerPlatformer::CGCGameLayerPlatformer()
 , m_pcCObjPlayer					(nullptr)
 , m_bResetWasRequested				( false )
 //, m_pcCollectable 				(nullptr)
-, m_pcGroupCollectable				( nullptr )
+//, m_pcGroupCollectable				( nullptr )
 , m_pcExit 					( nullptr )
 , m_pcHazard 					( nullptr )
 , m_iCollectablesNeeded 			( 5 )
@@ -171,8 +171,8 @@ void CGCGameLayerPlatformer::VOnCreate()
 	///////////////////////////////////////////////////////////////////////////
 	// TEST - add group collectable
 	///////////////////////////////////////////////////////////////////////////
-	m_pcGroupCollectable = new CGroupCollectable();	// m_iCollectablesNeeded );
-	CGCObjectManager::ObjectGroupRegister( m_pcGroupCollectable );
+	//m_pcGroupCollectable = new CGroupCollectables();	// m_iCollectablesNeeded );
+	//CGCObjectManager::ObjectGroupRegister( m_pcGroupCollectable );
 
 
 
@@ -329,7 +329,7 @@ void CGCGameLayerPlatformer::VOnCreate()
 
 				//rcPlayer.setbIsCollecting( true );
 
-				m_pcCObjPlayer->IncreaseItemCollected( rcCollectable.getiValue() );
+				m_pcCObjPlayer->IncreaseItemCollected( rcCollectable.getiRewardValue() );
 
 				//rcPlayer.IncreaseItemCollected( rcCollectable.getiValue() );
 				
@@ -466,9 +466,9 @@ void CGCGameLayerPlatformer::VOnDestroy()
 	delete m_pcGCGroupItem;
 	m_pcGCGroupItem = nullptr;
 
-	CGCObjectManager::ObjectGroupUnRegister( m_pcGroupCollectable );
-	delete m_pcGroupCollectable;
-	m_pcGroupCollectable = nullptr;
+	//CGCObjectManager::ObjectGroupUnRegister( m_pcGroupCollectable );
+	//delete m_pcGroupCollectable;
+	//m_pcGroupCollectable = nullptr;
 
 	IGCGameLayer::VOnDestroy();
 }

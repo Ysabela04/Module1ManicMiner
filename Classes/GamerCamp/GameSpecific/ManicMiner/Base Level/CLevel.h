@@ -10,11 +10,11 @@ class CGCObjSprite;
 class CGCObjPlatform;
 class CGCObjGroupPlatform;
 class CCollectable;
-class CGroupCollectable;
+class CGroupCollectables;
 class CGCObjGroupProjectilePlayer;
 class CPlayer;
 class CExit;
-class CHazard;
+class CGroupHazards;
 class CTimer;
 class CEnemy;
 class CEnemyGroup;
@@ -25,23 +25,27 @@ class CLevel
 {
 private:
 	// Private Member Variables
-	int m_iCollectablesNeeded;
+	int								m_iCollectablesNeeded;
 
 	// Game States
-	EGameState m_eGameState;
+	EGameState						m_eGameState;
 
 	// Game Objects Groups
-	CGCObjGroupPlatform* m_pcDefaultGCGroupPlatform;
-	CGroupCollectable* m_pcGroupCollectable;
-	CGCObjGroupProjectilePlayer* m_pcGCGroupProjectilePlayer;
+	CGCObjGroupPlatform*			m_pcDefaultGCGroupPlatform;
+
+	CGroupCollectables*				m_pcGroupCollectables;
+
+	CGCObjGroupProjectilePlayer*	m_pcGCGroupProjectilePlayer;
 
 	// Game Objects
-	CGCObjSprite* m_pcDefaultGCBackground;
-	CPlayer* m_pcPlayer;
-	CExit* m_pcExit;
-	CHazard* m_pcHazard;
-	CTimer* m_pcTimer;
-	CEnemyGroup* m_pcEnemyGroup;
+	CGCObjSprite*					m_pcDefaultGCBackground;
+	CPlayer*						m_pcPlayer;
+	CExit*							m_pcExit;
+
+	CGroupHazards*					m_pcGroupHazards;
+
+	CTimer*							m_pcTimer;
+	CEnemyGroup*					m_pcEnemyGroup;
 
 public:
 	CLevel();

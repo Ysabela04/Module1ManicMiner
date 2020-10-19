@@ -10,12 +10,13 @@
 #include "GamerCamp/GameSpecific/Platforms/GCObjPlatform.h"
 #include "GamerCamp/GameSpecific/Platforms/GCObjGroupPlatform.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Collectables/Collectable.h"
-#include "GamerCamp/GameSpecific/ManicMiner/Collectables/GroupCollectable.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Collectables/GroupCollectables.h"
 #include "GamerCamp/GameSpecific/Player/GCObjGroupProjectilePlayer.h"
 #include "GamerCamp/GameSpecific/Player/GCObjProjectilePlayer.h"
 #include "GamerCamp/GameSpecific/ScreenBounds/GCObjScreenBound.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Player/CPlayer.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Exit/Exit.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Hazards/GroupHazards.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Hazards/Hazard.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Timer/CTimer.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Enemy/CEnemy.h"
@@ -40,17 +41,17 @@ using namespace cocos2d;
 #endif
 
 CLevel::CLevel()
-	: IGCGameLayer(GetGCTypeIDOf(CLevel))
-	, m_pcDefaultGCBackground(nullptr)
-	, m_pcGCGroupProjectilePlayer(nullptr)
-	, m_eGameState(EGameState::Running)
-	, m_pcGroupCollectable(nullptr)
-	, m_pcPlayer(nullptr)
-	, m_pcExit(nullptr)
-	, m_pcHazard(nullptr)
-	, m_iCollectablesNeeded(5)
-	, m_bResetWasRequested(false)
-	, m_pcEnemyGroup(nullptr)
+	: IGCGameLayer						( GetGCTypeIDOf ( CLevel ) )
+	, m_pcDefaultGCBackground			( nullptr )
+	, m_pcGCGroupProjectilePlayer		( nullptr )
+	, m_eGameState						( EGameState::Running )
+	, m_pcGroupCollectables				( nullptr )
+	, m_pcPlayer						( nullptr )
+	, m_pcExit							( nullptr )
+	, m_pcGroupHazards					( nullptr )
+	, m_iCollectablesNeeded				( 5 )
+	, m_bResetWasRequested				( false )
+	, m_pcEnemyGroup					( nullptr )
 {
 }
 
@@ -95,11 +96,23 @@ void CLevel::VOnCreate()
 	m_pcGCGroupProjectilePlayer = new CGCObjGroupProjectilePlayer();
 	CGCObjectManager::ObjectGroupRegister(m_pcGCGroupProjectilePlayer);
 
-	m_pcGroupCollectable = new CGroupCollectable();
-	CGCObjectManager::ObjectGroupRegister(m_pcGroupCollectable);
+	// Create number of colleactables needed and set the position of each one
+	m_pcGroupCollectables = new CGroupCollectables();// 1 );
+	CGCObjectManager::ObjectGroupRegister(m_pcGroupCollectables);
+	//m_pcGroupCollectables->getpaCollectables( 0 )->SetResetPosition( cocos2d::Vec2( 100.0f, 200.0f ) );
+	//m_pcGroupCollectables->getpaCollectables( 1 )->SetResetPosition( cocos2d::Vec2( 250.0f, 450.0f ) );
+	//m_pcGroupCollectable->getpaCollectables( 1 )->SetResetPosition( cocos2d::Vec2( 100.0f, 200.0f ) );
 	
 	m_pcEnemyGroup = new CEnemyGroup( 64 );
 	CGCObjectManager::ObjectGroupRegister( m_pcEnemyGroup );
+
+	// Create the CGroupHazards and set the position of the 5 CHazards
+	m_pcGroupHazards = new CGroupHazards( cocos2d::Vec2( 100.0f, 100.0f ),
+										  cocos2d::Vec2( 250.0f, 350.0f ),
+										  cocos2d::Vec2( 550.0f, 450.0f ),
+										  cocos2d::Vec2( 750.0f, 250.0f ),
+										  cocos2d::Vec2( 650.0f, 200.0f ) );
+	CGCObjectManager::ObjectGroupRegister( m_pcGroupHazards );
 	
 	// Adding a Timer //
 	m_pcTimer = new CTimer();
@@ -174,9 +187,6 @@ void CLevel::VOnCreate()
 	m_pcExit = new CExit();
 	m_pcExit->SetResetPosition( Vec2( 100.0f, 65.0f ) );
 
-	// Creating Hazard //
-	m_pcHazard = new CHazard();
-	m_pcHazard->SetResetPosition( Vec2( 700.0f, 400.0f ) );
 
 	// Creating Platforms //
 	const u32 uNumColumns = 3;
@@ -223,7 +233,7 @@ void CLevel::VOnCreate()
 			if (m_pcPlayer->getbIsCollecting() == false)
 			{
 				m_pcPlayer->setbIsCollecting(true);
-				m_pcPlayer->IncreaseItemCollected(rcCollectable.getiValue());
+				m_pcPlayer->IncreaseItemCollected(rcCollectable.getiRewardValue());
 				CGCObjectManager::ObjectKill(&rcCollectable);
 				CCLOG("Player Item Collected");
 			}
@@ -353,14 +363,14 @@ void CLevel::VOnDestroy()
 	delete m_pcExit;
 	m_pcExit = nullptr;
 
-	delete m_pcHazard;
-	m_pcHazard = nullptr;
+	//delete m_pcHazard;
+	//m_pcHazard = nullptr;
 
 	delete m_pcTimer;
 	m_pcTimer = nullptr;
 	
-	delete m_pcEnemyGroup;
-	m_pcEnemyGroup = nullptr;
+	//delete m_pcEnemyGroup;
+	//m_pcEnemyGroup = nullptr;
 
 	delete m_pcDefaultGCBackground;
 	m_pcDefaultGCBackground = nullptr;
@@ -375,9 +385,13 @@ void CLevel::VOnDestroy()
 	delete m_pcGCGroupProjectilePlayer;
 	m_pcGCGroupProjectilePlayer = nullptr;
 
-	CGCObjectManager::ObjectGroupUnRegister( m_pcGroupCollectable );
-	delete m_pcGroupCollectable;
-	m_pcGroupCollectable = nullptr;
+	CGCObjectManager::ObjectGroupUnRegister( m_pcGroupCollectables );
+	delete m_pcGroupCollectables;
+	m_pcGroupCollectables = nullptr;
+
+	CGCObjectManager::ObjectGroupUnRegister( m_pcGroupHazards );
+	delete m_pcGroupHazards;
+	m_pcGroupHazards = nullptr;
 	
 	CGCObjectManager::ObjectGroupUnRegister(m_pcEnemyGroup);
 	delete m_pcEnemyGroup;

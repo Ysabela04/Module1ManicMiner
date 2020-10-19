@@ -174,9 +174,6 @@
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\Collectable.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectable.cpp">
-      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\Hazard.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
     </ClCompile>
@@ -191,6 +188,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\GroupHazards.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectables.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -305,9 +305,6 @@
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\Collectable.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectable.h">
-      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\Hazard.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
     </ClInclude>
@@ -328,6 +325,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\GroupHazards.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectables.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

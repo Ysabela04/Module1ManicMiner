@@ -3,6 +3,14 @@
 
 #include "GamerCamp/GCCocosInterface/GCObjSpritePhysics.h"
 
+
+//////////////////////////////////////////////////////////////////////////
+// Class: CHazard
+//
+// This is a base class for Hazards. The player should avoid these
+// obstacles, otherwise they will lose a life and restart the level.
+//
+//////////////////////////////////////////////////////////////////////////
 class CHazard : public CGCObjSpritePhysics
 {
 private:

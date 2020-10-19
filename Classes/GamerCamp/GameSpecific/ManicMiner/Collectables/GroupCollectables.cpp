@@ -1,4 +1,4 @@
-#include "GroupCollectable.h"
+#include "GroupCollectables.h"
 
 #include "GamerCamp/GameSpecific/ManicMiner/Collectables/Collectable.h"
 #include "GamerCamp/Core/GCTypes.h"
@@ -8,13 +8,17 @@
 
 using namespace cocos2d;
 
-CGroupCollectable::CGroupCollectable()	// int iMaxNumCollectables )
-	: m_iMaxNumCollectables( 5 )
+CGroupCollectables::CGroupCollectables()	// int iMaxNumCollectables )
+	: m_iMaxNumCollectables( 5)	// iMaxNumCollectables )
 {
 	//m_paCollectables = new CCollectable[m_iMaxNumCollectables];
+
+	//m_pReturnCollectables = m_paCollectables;
+
+	//m_pReturnCollectables = m_paCollectables;
 }
 
-CGroupCollectable::~CGroupCollectable()
+CGroupCollectables::~CGroupCollectables()
 {
 	//for (int i = 0; i < m_iMaxNumCollectables; i++)
 	//{
@@ -36,7 +40,7 @@ CGroupCollectable::~CGroupCollectable()
 // Handle only - Collectables
 // Virtual
 //////////////////////////////////////////////////////////////////////////
-bool CGroupCollectable::VHandlesThisTypeId( GCTypeID idQueryType )
+bool CGroupCollectables::VHandlesThisTypeId( GCTypeID idQueryType )
 {
 	return( GetGCTypeIDOf ( CCollectable ) == idQueryType );
 }
@@ -45,26 +49,26 @@ bool CGroupCollectable::VHandlesThisTypeId( GCTypeID idQueryType )
 // must return the typeid of the CGCObjectGroup derived class
 // Virtual
 //////////////////////////////////////////////////////////////////////////
-GCTypeID CGroupCollectable::VGetTypeId( void )
+GCTypeID CGroupCollectables::VGetTypeId( void )
 {
-	return GetGCTypeIDOf( CGroupCollectable );
+	return GetGCTypeIDOf( CGroupCollectables );
 }
 
-void CGroupCollectable::VOnGroupResourceAcquire()
+void CGroupCollectables::VOnGroupResourceAcquire()
 {
 	CreateCollectables();
 
 	CGCObjectGroup::VOnGroupResourceAcquire();
 }
 
-void CGroupCollectable::VOnGroupResourceRelease()
+void CGroupCollectables::VOnGroupResourceRelease()
 {
 	CGCObjectGroup::VOnGroupResourceRelease();
 
 	DestroyCollectables();
 }
 
-void CGroupCollectable::VOnGroupResourceAcquire_PostObject()
+void CGroupCollectables::VOnGroupResourceAcquire_PostObject()
 {
 	CGCObjectGroup::VOnGroupResourceAcquire_PostObject();
 
@@ -93,7 +97,7 @@ void CGroupCollectable::VOnGroupResourceAcquire_PostObject()
 
 // ---
 
-void CGroupCollectable::CreateCollectables()
+void CGroupCollectables::CreateCollectables()
 {	
 	// temporary
 	//float f_x = 200.0f;
@@ -124,7 +128,10 @@ void CGroupCollectable::CreateCollectables()
 	//	m_paCollectables[i] = new CCollectable;	// [i] ;
 	//}
 
-	m_paCollectables = new CCollectable[m_iMaxNumCollectables];
+	m_paCollectables = new CCollectable[ m_iMaxNumCollectables ];
+
+	//m_pReturnCollectables = m_paCollectables;
+
 
 	//CGCObjectGroup::OnObjectRegister( m_paCollectables );
 	
@@ -141,7 +148,7 @@ void CGroupCollectable::CreateCollectables()
 
 }
 
-void CGroupCollectable::DestroyCollectables()
+void CGroupCollectables::DestroyCollectables()
 {
 	// this iterates the array of registered CGCObjects 
 	// calling the supplied functor then deleting them
@@ -151,3 +158,13 @@ void CGroupCollectable::DestroyCollectables()
 	//		GCASSERT( GetGCTypeIDOf( CCollectable ) == pObject->GetGCTypeID(), "wrong type!" );
 	//});
 }
+
+//CCollectable* CGroupCollectables::ReturnCollectables()
+//{
+//	//for (int i = 0; i < m_iMaxNumCollectables; i++)
+//	//{
+//	//	return m_paCollectables;
+//	//}
+//
+//	return m_paCollectables;
+//}

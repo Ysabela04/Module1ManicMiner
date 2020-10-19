@@ -4,7 +4,7 @@
 
 CCollectable::CCollectable()	//std::string strClassName)	//, std::string strPlistFilePath)
 	: CGCObjSpritePhysics ( GetGCTypeIDOf( CCollectable ) )
-	, m_iValue( 1 )
+	, m_iRewardValue( 1 )
 	//, m_strClassName( strClassName )
 	//, m_strPlistFilePath( strPlistFilePath )
 {

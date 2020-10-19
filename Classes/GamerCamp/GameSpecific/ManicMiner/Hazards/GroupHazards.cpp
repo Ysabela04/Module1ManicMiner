@@ -1,13 +1,27 @@
 #include "GroupHazards.h"
 
-CGroupHazards::CGroupHazards()
+CGroupHazards::CGroupHazards( cocos2d::Vec2 v2FirstHazardPos,
+							  cocos2d::Vec2 v2SecondHazardPos,
+							  cocos2d::Vec2 v2ThirdHazardPos,
+							  cocos2d::Vec2 v2FourthHazardPos,
+							  cocos2d::Vec2 v2FifthHazardPos )
+
+	: m_iMaxNumHazards		( 5 )
+	, m_v2FirstHazardPos	( v2FirstHazardPos )
+	, m_v2SecondHazardPos	( v2SecondHazardPos )
+	, m_v2ThirdHazardPos	( v2ThirdHazardPos )
+	, m_v2FourthHazardPos	( v2FourthHazardPos )
+	, m_v2FifthHazardPos	( v2FifthHazardPos )
 {
 
 }
 
 CGroupHazards::~CGroupHazards()
 {
-
+	//////////////////////////////////////////////////////////////////////////
+	// Delete pointers and set them to nullptr.
+	delete[] m_paHazards;
+	m_paHazards = nullptr;
 }
 
 // ---
@@ -22,7 +36,7 @@ bool CGroupHazards::VHandlesThisTypeId(GCTypeID idQueryType)
 }
 
 //////////////////////////////////////////////////////////////////////////
-// must return the typeid of the CGCObjectGroup derived class
+// Must return the typeid of the CGCObjectGroup derived class
 // Virtual
 //////////////////////////////////////////////////////////////////////////
 GCTypeID CGroupHazards::VGetTypeId(void)
@@ -32,7 +46,7 @@ GCTypeID CGroupHazards::VGetTypeId(void)
 
 void CGroupHazards::VOnGroupResourceAcquire()
 {
-	
+	CreateHazards();
 
 	CGCObjectGroup::VOnGroupResourceAcquire();
 }
@@ -41,12 +55,31 @@ void CGroupHazards::VOnGroupResourceRelease()
 {
 	CGCObjectGroup::VOnGroupResourceRelease();
 
-	
+	DestroyHazards();
 }
 
 void CGroupHazards::VOnGroupResourceAcquire_PostObject()
 {
 	CGCObjectGroup::VOnGroupResourceAcquire_PostObject();
 
+
+}
+
+// ---
+
+void CGroupHazards::CreateHazards()
+{
+	m_paHazards = new CHazard[ m_iMaxNumHazards ];
+
+	m_paHazards[0].SetResetPosition( m_v2FirstHazardPos );
+	m_paHazards[1].SetResetPosition( m_v2SecondHazardPos );
+	m_paHazards[2].SetResetPosition( m_v2ThirdHazardPos );
+	m_paHazards[3].SetResetPosition( m_v2FourthHazardPos );
+	m_paHazards[4].SetResetPosition( m_v2FifthHazardPos );
+
+}
+
+void CGroupHazards::DestroyHazards()
+{
 
 }

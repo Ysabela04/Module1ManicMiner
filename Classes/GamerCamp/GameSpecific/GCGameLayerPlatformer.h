@@ -18,8 +18,8 @@ class CGCObjSprite;
 class CPlayer;
 class CGCObjPlatform;
 class CGCObjGroupPlatform;
-class CCollectable;
-class CGroupCollectable;
+//class CCollectable;
+//class CGroupCollectables;
 class CGCObjItem;
 class CGCObjGroupItem;
 //class CGCObjInvader;
@@ -43,7 +43,7 @@ private:
 	//CGCObjGroupInvader*				m_pcGCGroupInvader;
 	CGCObjGroupProjectilePlayer*	m_pcGCGroupProjectilePlayer;
 
-	CGroupCollectable* m_pcGroupCollectable;
+	//CGroupCollectables* m_pcGroupCollectable;
 
 	// backgrounds
 	CGCObjSprite*					m_pcGCSprBackGround;
