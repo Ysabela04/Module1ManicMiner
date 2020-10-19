@@ -73,6 +73,12 @@
     <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\Timer">
       <UniqueIdentifier>{68682e1e-1148-4b64-bb2a-77d062078bd8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\Sound">
+      <UniqueIdentifier>{e379a7d5-32c0-42f9-bbfc-937320860e9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\Enemy">
+      <UniqueIdentifier>{95a9df93-0b45-47ad-9bd1-cbe93f832675}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -191,6 +197,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\GroupHazards.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Enemy\CEnemy.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Enemy\CEnemyGroup.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -328,6 +340,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\GroupHazards.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Hazards</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Enemy\CEnemy.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Enemy\CEnemyGroup.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
