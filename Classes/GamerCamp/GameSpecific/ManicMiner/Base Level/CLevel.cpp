@@ -22,6 +22,7 @@
 #include "GamerCamp/GameSpecific/ManicMiner/Enemy/CEnemy.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Enemy/CEnemyGroup.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Sound/CSoundManager.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Player/Life.h"
 
 #include "AppDelegate.h"
 
@@ -54,6 +55,7 @@ CLevel::CLevel()
 	, m_bResetWasRequested				( false )
 	, m_pcEnemyGroup					( nullptr )
 	, m_pcSoundManager					(nullptr)
+	, m_pcaPlayerLives					( nullptr) 
 {
 }
 
@@ -160,6 +162,22 @@ void CLevel::VOnCreate()
 
 	m_pcPlayer = new CPlayer();
 	m_pcPlayer->SetResetPosition(v2MarioStartPos);
+
+	// Player lives --- needs refactoring, put in livesmanager class??
+	m_pcaPlayerLives = new CLife[3];
+
+	float PosX = 850.0f;
+	float PosY = 650.0f;
+	float PosXIncrease = 50.0f;
+
+	for (int i = 0; i < m_pcPlayer->getiLives(); i++)
+	{
+		Vec2 v2LivesPos( PosX, PosY );
+		m_pcaPlayerLives[i].SetResetPosition( v2LivesPos );
+		PosX += PosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
 
 	// Creating Exit //
 	m_pcExit = new CExit();
@@ -291,6 +309,8 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 
 			ManuallyHandleCollisions();
 
+			UpdatePlayerLives();
+
 			m_pcPlayer->setbIsCollecting(false);
 			m_pcPlayer->setbIsColliding(false);
 
@@ -335,6 +355,9 @@ void CLevel::VOnDestroy()
 	// De-allocate memory in opposite order of creation //
 	delete m_pcPlayer;
 	m_pcPlayer = nullptr;
+
+	delete[] m_pcaPlayerLives;
+	m_pcaPlayerLives = nullptr;
 
 	delete m_pcExit;
 	m_pcExit = nullptr;
@@ -481,6 +504,14 @@ void CLevel::ManuallyHandleCollisions()
 			int i = 0;
 			++i;
 		}
+	}
+}
+
+void CLevel::UpdatePlayerLives()
+{
+	for (int i = 2; i >= m_pcPlayer->getiLives(); i--)
+	{
+		m_pcaPlayerLives[i].SetVisible( false );
 	}
 }
 

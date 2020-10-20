@@ -213,6 +213,9 @@
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu\MainMenuScene.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -361,6 +364,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu\MainMenuScene.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
