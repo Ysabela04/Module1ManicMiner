@@ -6,7 +6,7 @@
 class CSoundManager
 {
 private:
-	char* pachSoundFiles[1];
+	char* pachSoundFiles[5];
 	CocosDenshion::SimpleAudioEngine* m_cAudioEngine;
 
 public:
