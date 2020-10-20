@@ -21,6 +21,7 @@
 #include "GamerCamp/GameSpecific/ManicMiner/Timer/CTimer.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Enemy/CEnemy.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Enemy/CEnemyGroup.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Sound/CSoundManager.h"
 
 #include "AppDelegate.h"
 
@@ -52,6 +53,7 @@ CLevel::CLevel()
 	, m_iCollectablesNeeded				( 5 )
 	, m_bResetWasRequested				( false )
 	, m_pcEnemyGroup					( nullptr )
+	, m_pcSoundManager					(nullptr)
 {
 }
 
@@ -114,6 +116,10 @@ void CLevel::VOnCreate()
 										  cocos2d::Vec2( 650.0f, 200.0f ) );
 	CGCObjectManager::ObjectGroupRegister( m_pcGroupHazards );
 	
+	// Sound Manager //
+	m_pcSoundManager = new CSoundManager();
+	m_pcSoundManager->PlayBackgroundMusic();
+
 	// Adding a Timer //
 	m_pcTimer = new CTimer();
 	this->addChild(m_pcTimer->GetTimerObj(), 1);
@@ -133,49 +139,21 @@ void CLevel::VOnCreate()
 	B2dLoadShapesFromPlist( "PhysicsEditor/GameShapes.plist" );
 
 	// Creating Screen Boundary//
-	Vec2 v2ScreenCentre_Pixels((origin.x + (visibleSize.width * 0.5f)), (origin.y + (visibleSize.height * 0.5f)));
-	Vec2 v2ScreenCentre_B2d = B2dPixelsToWorld(v2ScreenCentre_Pixels);
+		Vec2 v2ScreenCentre_Pixels((origin.x + (visibleSize.width * 0.5f)), (origin.y + (visibleSize.height * 0.5f)));
+		Vec2 v2ScreenCentre_B2d = B2dPixelsToWorld(v2ScreenCentre_Pixels);
+	
+	{
+		f32 fScreenWidthB2d = B2dPixelsToWorld(visibleSize.width);
+		f32 fHalfScreenWidthB2d = (fScreenWidthB2d / 2.0f);
 
-	f32 fScreenWidthB2d = B2dPixelsToWorld(visibleSize.width);
-	f32 fHalfScreenWidthB2d = (fScreenWidthB2d / 2.0f);
+		f32 fScreenHeightB2d = B2dPixelsToWorld(visibleSize.height);
+		f32 fHalfScreenHeightB2d = (fScreenHeightB2d / 2.0f);
 
-	f32 fScreenHeightB2d = B2dPixelsToWorld(visibleSize.height);
-	f32 fHalfScreenHeightB2d = (fScreenHeightB2d / 2.0f);
-
-	new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Bottom, (v2ScreenCentre_B2d + Vec2(0.0f, -fHalfScreenHeightB2d)), fScreenWidthB2d, 0.5f, 0.0f);
-	new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Top, (v2ScreenCentre_B2d + Vec2(0.0f, fHalfScreenHeightB2d)), fScreenWidthB2d, 0.5f, 0.0f);
-	new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Left, (v2ScreenCentre_B2d + Vec2(-fHalfScreenWidthB2d, 0.0f)), 0.5f, fScreenHeightB2d, 0.0f);
-	new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Right, (v2ScreenCentre_B2d + Vec2(fHalfScreenWidthB2d, 0.0f)), 0.5f, fScreenHeightB2d, 0.0f);
-	//{
-	//	f32 PTM_RATIO = IGCGAMELAYER_B2D_PIXELS_PER_METER;
-
-	//	b2Vec2 b2v2ScreenCentre_Pixels((origin.x + (visibleSize.width * 0.5f)), (origin.y + (visibleSize.height * 0.5f)));
-	//	Vec2 v2ScreenCentre_Pixels((origin.x + (visibleSize.width * 0.5f)), (origin.y + (visibleSize.height * 0.5f)));
-
-	//	b2BodyDef groundBodyDef;
-	//	groundBodyDef.position = IGCGameLayer::B2dPixelsToWorld(b2v2ScreenCentre_Pixels);
-	//	groundBodyDef.type = b2_kinematicBody;
-
-	//	b2Body* groundBody = B2dGetWorld()->CreateBody(&groundBodyDef);
-
-	//	b2PolygonShape groundBox;
-
-	//	// Bottom
-	//	groundBox.SetAsBox(((visibleSize.width * 0.5f) / PTM_RATIO), 0.5f, b2Vec2(0.0f, -((visibleSize.height * 0.5f) / PTM_RATIO)), 0.0f);
-	//	groundBody->CreateFixture(&groundBox, 0);
-
-	//	// Top
-	//	groundBox.SetAsBox(((visibleSize.width * 0.5f) / PTM_RATIO), 0.5f, b2Vec2(0.0f, ((visibleSize.height * 0.5f) / PTM_RATIO)), 0.0f);
-	//	groundBody->CreateFixture(&groundBox, 0);
-
-	//	// Left
-	//	groundBox.SetAsBox(0.5f, ((visibleSize.height * 0.5f) / PTM_RATIO), b2Vec2(-((visibleSize.width * 0.5f) / PTM_RATIO), 0.0f), 0.0f);
-	//	groundBody->CreateFixture(&groundBox, 0);
-
-	//	// Right
-	//	groundBox.SetAsBox(0.5f, ((visibleSize.height * 0.5f) / PTM_RATIO), b2Vec2(((visibleSize.width * 0.5f) / PTM_RATIO), 0.0f), 0.0f);
-	//	groundBody->CreateFixture(&groundBox, 0);
-	//}
+		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Bottom, (v2ScreenCentre_B2d + Vec2(0.0f, -fHalfScreenHeightB2d)), fScreenWidthB2d, 0.5f, 0.0f);
+		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Top, (v2ScreenCentre_B2d + Vec2(0.0f, fHalfScreenHeightB2d)), fScreenWidthB2d, 0.5f, 0.0f);
+		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Left, (v2ScreenCentre_B2d + Vec2(-fHalfScreenWidthB2d, 0.0f)), 0.5f, fScreenHeightB2d, 0.0f);
+		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Right, (v2ScreenCentre_B2d + Vec2(fHalfScreenWidthB2d, 0.0f)), 0.5f, fScreenHeightB2d, 0.0f);
+	}
 
 	// Creating Player //
 	Vec2 v2MarioStartPos = (v2ScreenCentre_Pixels - Vec2(0.0f, (visibleSize.height * 0.45f)));
@@ -186,17 +164,15 @@ void CLevel::VOnCreate()
 	// Creating Exit //
 	m_pcExit = new CExit();
 	m_pcExit->SetResetPosition( Vec2( 100.0f, 65.0f ) );
-
-
-	// Creating Platforms //
-	const u32 uNumColumns = 3;
-	const u32 uNumRows = 4;
 	
 	// Creating Enemy //
 	m_pcEnemyGroup->SetFormationOrigin( v2ScreenCentre_Pixels + Vec2( -( visibleSize.width * 0.25f ), ( visibleSize.height * 0.25f ) ) );
 	m_pcEnemyGroup->SetRowsAndColumns( 1, 1, -40.0f, 40.0f );
 
-
+	// Creating Platforms //
+	const u32 uNumColumns = 3;
+	const u32 uNumRows = 4;
+	
 	float fColumnSpacing = ( visibleSize.width / ( ( (float) uNumColumns + 1.0f ) ) );
 	float fRowSpacing = ( visibleSize.height / ( ( (float) uNumRows ) + 1.0f ) );
 
@@ -368,9 +344,10 @@ void CLevel::VOnDestroy()
 
 	delete m_pcTimer;
 	m_pcTimer = nullptr;
-	
-	//delete m_pcEnemyGroup;
-	//m_pcEnemyGroup = nullptr;
+
+	m_pcSoundManager->EndSound();
+	delete m_pcSoundManager;
+	m_pcSoundManager = nullptr;
 
 	delete m_pcDefaultGCBackground;
 	m_pcDefaultGCBackground = nullptr;

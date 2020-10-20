@@ -6,15 +6,17 @@
 class CSoundManager
 {
 private:
-	char* a_chSoundFiles[1];
-	CocosDenshion::SimpleAudioEngine* audioTest;
+	char* pachSoundFiles[1];
+	CocosDenshion::SimpleAudioEngine* m_cAudioEngine;
 
 public:
 	CSoundManager();
 	~CSoundManager();
 
-	void PlaySoundFile();
-	void canyouseethismotherfucker();
+	void EndSound();
+
+	void PlayBackgroundMusic();
+	void PlaySoundEffect(int index);
 
 };
 

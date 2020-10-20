@@ -169,6 +169,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\GroupHazards.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\Hazard.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\CPlayer.cpp" />
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Sound\CSoundManager.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Timer\CTimer.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\Platforms\GCObjGroupPlatform.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\Platforms\GCObjPlatform.cpp" />
@@ -217,6 +218,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\Hazard.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\CPlayer.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\EPlayerActions.h" />
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Sound\CSoundManager.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Timer\CTimer.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\Platforms\GCObjGroupPlatform.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\Platforms\GCObjPlatform.h" />

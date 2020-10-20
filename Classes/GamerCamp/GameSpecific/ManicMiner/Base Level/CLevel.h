@@ -18,6 +18,7 @@ class CGroupHazards;
 class CTimer;
 class CEnemy;
 class CEnemyGroup;
+class CSoundManager;
 
 class CLevel
 	: public IGCGameLayer
@@ -46,6 +47,7 @@ private:
 
 	CTimer*							m_pcTimer;
 	CEnemyGroup*					m_pcEnemyGroup;
+	CSoundManager*					m_pcSoundManager;
 
 public:
 	CLevel();
