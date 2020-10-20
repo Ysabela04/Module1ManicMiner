@@ -2,24 +2,26 @@
 #define _MAINMENUSCENE_H_
 
 #include "cocos2d.h"
+#include "GamerCamp/GCCocosInterface/IGCGameLayer.h"
 
-class CMainMenuSceneLayer : public cocos2d::CCLayer
+class CMainMenuSceneLayer : public IGCGameLayer
 {
-//private:
+private:
 
 
 public:
+	CMainMenuSceneLayer();
+	~CMainMenuSceneLayer();
 
-	CREATE_FUNC( CMainMenuSceneLayer );
+	// -----
 
+	void Callback_OnGameStartButton( Ref* pSender );
+	void Callback_OnQuitButton( Ref* pSender );
 
-	virtual bool init();
+	virtual void onEnter();
 
+	virtual	void VOnCreate( void );
 
-	void CB_OnGameStartButton( Ref* pSender );
-
-
-	static cocos2d::Scene* scene();
 };
 
 

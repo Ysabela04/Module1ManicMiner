@@ -8,6 +8,7 @@
 #include "GamerCamp/GCObject/GCObjGroupDefault.h"
 #include "GamerCamp/GameSpecific/GCGameLayerPlatformer.h"
 #include "MenuScene.h"
+#include "GamerCamp/GameSpecific/ManicMiner/MainMenu/MainMenuScene.h"
 
 
 USING_NS_CC;
@@ -133,11 +134,12 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	// GamerCamp Edit
 	//////////////////////////////////////////////////////////////////////////
-		Scene* pScene = CMenuLayer::scene();
+		//Scene* pScene = CMenuLayer::scene();
+		//Scene* pScene = CMainMenuSceneLayer::scene();
 
 	// run
     //pDirector->runWithScene( TGCGameLayerSceneCreator< CGCGameLayerPlatformer >::CreateScene() );
-	pDirector->runWithScene(pScene);
+	pDirector->runWithScene( TGCGameLayerSceneCreator< CMainMenuSceneLayer >::CreateScene() );
 
     return true;
 }
