@@ -24,7 +24,7 @@ private:
 
 	//CCollectable* m_pReturnCollectables;
 
-	int m_iMaxNumCollectables;	
+	int m_iNumCollectables;	
 
 	
 	//CCollectable* m_paCollectables[5];
@@ -32,7 +32,7 @@ private:
 
 
 public:
-	CGroupCollectables(); // int iMaxNumCollectables );
+	CGroupCollectables();// int iNumCollectables );
 	virtual ~CGroupCollectables();
 
 	// -----
@@ -66,17 +66,18 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 	// Getters
 	//
-	//CCollectable* getpaCollectables() { return m_paCollectables; }
+	CCollectable* getpaCollectables() { return m_paCollectables; }
 	//CCollectable* getpaCollectables( int index ) { return *(m_paCollectables + index); }
 	//CCollectable* getpaCollectables( int index ) { return *(&m_pReturnCollectables + index); }
 	//CCollectable* getpaCollectables( int index ) const { return *(m_paCollectables + index); }
+	//CCollectable* getpaCollectables( int index ) { return &m_paCollectables[index]; }
 
-	int getiMaxNumCollectables() const { return m_iMaxNumCollectables; }
+	int getiMaxNumCollectables() const { return m_iNumCollectables; }
 
 	//////////////////////////////////////////////////////////////////////////
 	// Setters
 	//
-	void setiMaxNumCollectables( int iMaxNumCollectables ) { m_iMaxNumCollectables = iMaxNumCollectables; }
+	void setiMaxNumCollectables( int iNumCollectables ) { m_iNumCollectables = iNumCollectables; }
 
 };
 
