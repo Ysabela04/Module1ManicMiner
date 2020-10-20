@@ -1,0 +1,27 @@
+#include "Life.h"
+
+CLife::CLife()	// std::string strPlistFilePath )
+	: CGCObjSpritePhysics( GetGCTypeIDOf( CLife ) )
+	//, m_strPlistFilePath( strPlistFilePath )
+{
+
+}
+
+CLife::~CLife()
+{
+
+}
+
+// -----
+
+IN_CPP_CREATION_PARAMS_DECLARE( CLife, "TexturePacker/Sprites/Mario/Mario.plist", "mario", b2_staticBody, true );
+//IN_CPP_CREATION_PARAMS_DECLARE( CHazard, m_strPlistFilePath, "hazard", b2_staticBody, true );
+
+//////////////////////////////////////////////////////////////////////////
+// Virtual 
+void CLife::VOnResourceAcquire( void )
+{
+	IN_CPP_CREATION_PARAMS_AT_TOP_OF_VONRESOURCEACQUIRE( CLife );
+
+	CGCObjSpritePhysics::VOnResourceAcquire();
+}

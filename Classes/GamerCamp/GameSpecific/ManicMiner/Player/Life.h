@@ -1,5 +1,5 @@
-#ifndef _HAZARD_H_
-#define _HAZARD_H_
+#ifndef _Life_H_
+#define _Life_H_
 
 #include "GamerCamp/GCCocosInterface/GCObjSpritePhysics.h"
 
@@ -11,7 +11,7 @@
 // obstacles, otherwise they will lose a life and restart the level.
 //
 //////////////////////////////////////////////////////////////////////////
-class CHazard : public CGCObjSpritePhysics
+class CLife : public CGCObjSpritePhysics
 {
 private:
     //std::string m_strClassName;
@@ -19,11 +19,11 @@ private:
 
 
 public:
-	CHazard();
+    CLife();
     //CHazard(std::string strPlistFilePath);
-	virtual ~CHazard();
+    virtual ~CLife();
 
-	//////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
     // Functions
     //
     //////////////////////////////////////////////////////////////////////////
