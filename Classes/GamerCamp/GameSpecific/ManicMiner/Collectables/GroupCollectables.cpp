@@ -8,8 +8,10 @@
 
 using namespace cocos2d;
 
-CGroupCollectables::CGroupCollectables()	// int iMaxNumCollectables )
-	: m_iMaxNumCollectables( 5)	// iMaxNumCollectables )
+CGroupCollectables::CGroupCollectables() // int iNumCollectables )
+	: m_iNumCollectables( 5 )
+	//: m_iMaxNumCollectables( 5 )	// iMaxNumCollectables )
+	// iMaxNumCollectables )
 {
 	//m_paCollectables = new CCollectable[m_iMaxNumCollectables];
 
@@ -65,7 +67,7 @@ void CGroupCollectables::VOnGroupResourceRelease()
 {
 	CGCObjectGroup::VOnGroupResourceRelease();
 
-	DestroyCollectables();
+	//DestroyCollectables();
 }
 
 void CGroupCollectables::VOnGroupResourceAcquire_PostObject()
@@ -99,44 +101,8 @@ void CGroupCollectables::VOnGroupResourceAcquire_PostObject()
 
 void CGroupCollectables::CreateCollectables()
 {	
-	// temporary
-	//float f_x = 200.0f;
-	//float f_y = 100.0f;
 
-	//for (int i = 0; i < m_iMaxNumCollectables; i++)
-	//{
-	//	cocos2d::Vec2 v2CollectablePos( f_x, f_y );
-
-	//	CCollectable* pCollectable = new CCollectable; // ("CCollectable");	//, "TexturePacker/Sprites/Collectables/Key/Key.plist");
-
-	//	pCollectable->SetResetPosition( v2CollectablePos );
-
-	//	f_x += 120.0f;
-	//}
-
-
-	//for (int i = 0; i < m_iMaxNumCollectables; i++)
-	//{
-	//	//CCollectable* apCollectables = new CCollectable;	// ("CCollectable");
-	//	//m_paCollectables[i] = new CCollectable;
-	//	m_paCollectables[i].SetResetPosition
-
-	//}
-
-	//for (int i = 0; i < m_iMaxNumCollectables; i++)
-	//{
-	//	m_paCollectables[i] = new CCollectable;	// [i] ;
-	//}
-
-	m_paCollectables = new CCollectable[ m_iMaxNumCollectables ];
-
-	//m_pReturnCollectables = m_paCollectables;
-
-
-	//CGCObjectGroup::OnObjectRegister( m_paCollectables );
-	
-	//CGCObjectManager::On
-
+	m_paCollectables = new CCollectable[m_iNumCollectables];
 
 	// manually setting positions of collectables
 	m_paCollectables[0].SetResetPosition( cocos2d::Vec2( 200.0f, 150.0f ) );

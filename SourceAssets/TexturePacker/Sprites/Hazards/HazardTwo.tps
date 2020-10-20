@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>cocos2d-x</string>
         <key>textureFileName</key>
-        <filename>../../../../Resources/windows/TexturePacker/Sprites/Lives/Heart.png</filename>
+        <filename>../../../../Resources/windows/TexturePacker/Sprites/Hazards/HazardTwo.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -132,7 +132,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../../Resources/windows/TexturePacker/Sprites/Lives/Heart.plist</filename>
+                <filename>../../../../Resources/windows/TexturePacker/Sprites/Hazards/HazardTwo.plist</filename>
             </struct>
             <key>header</key>
             <key>source</key>
@@ -187,9 +187,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">Frames/Moving/00.png</key>
-            <key type="filename">Frames/Moving/01.png</key>
-            <key type="filename">Frames/Moving/02.png</key>
+            <key type="filename">Frames/00.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -198,16 +196,16 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>8,8,15,15</rect>
+                <rect>6,6,13,13</rect>
                 <key>scale9Paddings</key>
-                <rect>8,8,15,15</rect>
+                <rect>6,6,13,13</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>Frames/Moving</filename>
+            <filename>Frames</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

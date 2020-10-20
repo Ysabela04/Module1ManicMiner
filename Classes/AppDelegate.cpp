@@ -43,7 +43,8 @@ AppDelegate::~AppDelegate()
 
 bool AppDelegate::applicationDidFinishLaunching() 
 {
-   // initialize director
+
+    // initialize director
 	auto pDirector = Director::getInstance();
 	auto glview = pDirector->getOpenGLView();
 	
@@ -55,10 +56,16 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	pDirector->setOpenGLView(glview);
 
-    // Set the design resolution
-	glview->setDesignResolutionSize( designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER );
+	//static_cast<GLViewImpl*>(cocos2d::Director::getInstance()->getOpenGLView())) //->setFullscreen();
 
-	Size frameSize = glview->getFrameSize();
+	Director::getInstance()->getOpenGLView()->setFrameSize( 1920, 1080 );
+
+	Director::getInstance()->getOpenGLView()->setDesignResolutionSize( 1920, 1080, ResolutionPolicy::EXACT_FIT );
+
+    // Set the design resolution
+	//glview->setDesignResolutionSize( designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER );
+
+	//Size frameSize = glview->getFrameSize();
     
     vector<string> searchPath;
 
@@ -104,6 +111,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	#endif //#if defined WIN32
 	// GamerCamp Edit - add windows
 	//////////////////////////////////////////////////////////////////////////
+
     
     // set searching path
     CCFileUtils::getInstance()->setSearchPaths( searchPath );
