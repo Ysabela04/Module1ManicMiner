@@ -10,21 +10,25 @@ using namespace CocosDenshion;
 
 CSoundManager::CSoundManager()
 {
-	a_chSoundFiles[0] = {"Loose/BackgroundMusic.mp3"};
-	audioTest = SimpleAudioEngine::getInstance();
+	pachSoundFiles[0] = {"Loose/BackgroundMusic.mp3"};
+	m_cAudioEngine = SimpleAudioEngine::getInstance();
 }
 
 CSoundManager::~CSoundManager()
 {
 }
 
-void CSoundManager::PlaySoundFile()
+void CSoundManager::EndSound()
 {
-	audioTest->playEffect("Loose/BackgroundMusic.mp3", true);
+	m_cAudioEngine->end();
 }
 
-void CSoundManager::canyouseethismotherfucker()
+void CSoundManager::PlayBackgroundMusic()
 {
-	auto test = SimpleAudioEngine::getInstance();
-	test->playBackgroundMusic("Loose/BackgroundMusic.mp3", true);
+	m_cAudioEngine->playEffect(pachSoundFiles[0], true);
+}
+
+void CSoundManager::PlaySoundEffect(int index)
+{
+	m_cAudioEngine->playEffect(pachSoundFiles[index], false);
 }

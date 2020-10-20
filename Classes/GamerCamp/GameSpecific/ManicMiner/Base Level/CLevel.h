@@ -18,7 +18,7 @@ class CGroupHazards;
 class CTimer;
 class CEnemy;
 class CEnemyGroup;
-class CLife;
+class CSoundManager;
 
 class CLevel
 	: public IGCGameLayer
@@ -47,8 +47,7 @@ private:
 
 	CTimer*							m_pcTimer;
 	CEnemyGroup*					m_pcEnemyGroup;
-
-	CLife*							m_pcPlayerLives;
+	CSoundManager*					m_pcSoundManager;
 
 public:
 	CLevel();
@@ -79,8 +78,6 @@ public:
 	virtual void EndContact(b2Contact* pB2Contact);
 	virtual void PreSolve(b2Contact* pB2Contact, const b2Manifold* pOldManifold);
 	virtual void PostSolve(b2Contact* pB2Contact, const b2ContactImpulse* pImpulse);
-
-	void UpdatePlayerLives();
 
 	void WinCondition();
 	void LoseCondition();

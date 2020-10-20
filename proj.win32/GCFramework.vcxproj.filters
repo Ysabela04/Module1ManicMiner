@@ -207,8 +207,8 @@
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectables.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.cpp">
-      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Sound\CSoundManager.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu\MainMenuScene.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu</Filter>
@@ -356,8 +356,8 @@
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Collectables\GroupCollectables.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Collectables</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.h">
-      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Sound\CSoundManager.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Sound</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu\MainMenuScene.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu</Filter>
