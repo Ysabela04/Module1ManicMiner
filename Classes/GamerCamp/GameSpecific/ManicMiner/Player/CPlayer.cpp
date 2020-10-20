@@ -81,6 +81,8 @@ void CPlayer::VOnReset()
 {
 	CGCObjSpritePhysics::VOnReset();
 
+	m_iItemsCollected = 0;
+
 	//	reset velocity and flip state
 	SetFlippedX(false);
 	SetFlippedY(false);
