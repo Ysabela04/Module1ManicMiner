@@ -168,6 +168,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Exit\Exit.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\GroupHazards.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\Hazard.cpp" />
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu\MainMenuScene.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\CPlayer.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.cpp" />
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Timer\CTimer.cpp" />
@@ -216,6 +217,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Exit\Exit.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\GroupHazards.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Hazards\Hazard.h" />
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu\MainMenuScene.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\CPlayer.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\EPlayerActions.h" />
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.h" />

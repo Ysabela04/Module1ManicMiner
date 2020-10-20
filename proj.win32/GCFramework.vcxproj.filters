@@ -79,6 +79,9 @@
     <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\Enemy">
       <UniqueIdentifier>{95a9df93-0b45-47ad-9bd1-cbe93f832675}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu">
+      <UniqueIdentifier>{d0a87307-4fd0-4d13-915a-051ab9dbc5ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -206,6 +209,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu\MainMenuScene.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -352,6 +358,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu\MainMenuScene.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
