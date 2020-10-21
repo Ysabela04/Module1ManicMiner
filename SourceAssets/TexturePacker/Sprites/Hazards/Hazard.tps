@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>cocos2d-x</string>
         <key>textureFileName</key>
-        <filename>../../../../Resources/windows/TexturePacker/Sprites/Collectables/Coin/Hazard.png</filename>
+        <filename>../../../../Resources/windows/TexturePacker/Sprites/Hazards/Hazard.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>

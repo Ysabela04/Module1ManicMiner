@@ -9,15 +9,15 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{0,0}</string>
+                <string>{0,-1}</string>
                 <key>spriteSize</key>
-                <string>{25,25}</string>
+                <string>{56,58}</string>
                 <key>spriteSourceSize</key>
-                <string>{25,25}</string>
+                <string>{60,60}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{25,25}}</string>
+                <string>{{1,1},{56,58}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>Rotate/01.png</key>
             <dict>
@@ -26,11 +26,41 @@
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{25,25}</string>
+                <string>{60,56}</string>
                 <key>spriteSourceSize</key>
-                <string>{25,25}</string>
+                <string>{60,60}</string>
                 <key>textureRect</key>
-                <string>{{28,1},{25,25}}</string>
+                <string>{{61,1},{60,56}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>Rotate/02.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,1}</string>
+                <key>spriteSize</key>
+                <string>{58,58}</string>
+                <key>spriteSourceSize</key>
+                <string>{60,60}</string>
+                <key>textureRect</key>
+                <string>{{1,59},{58,58}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>Rotate/03.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{1,0}</string>
+                <key>spriteSize</key>
+                <string>{58,58}</string>
+                <key>spriteSourceSize</key>
+                <string>{60,60}</string>
+                <key>textureRect</key>
+                <string>{{61,59},{58,58}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -46,9 +76,9 @@
             <key>realTextureFileName</key>
             <string>Key.png</string>
             <key>size</key>
-            <string>{54,27}</string>
+            <string>{122,118}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:89c7475d627be8f45e9dee6892ac1f58:295bace91581b7a0a56c0342229da2f1:97f99da776b4ec2d3a7b3d024735617d$</string>
+            <string>$TexturePacker:SmartUpdate:db1bb2efea64bc999a3322c0a3de8646:79d0f70dc702e7492f7cdcd216e02c8d:97f99da776b4ec2d3a7b3d024735617d$</string>
             <key>textureFileName</key>
             <string>Key.png</string>
         </dict>
