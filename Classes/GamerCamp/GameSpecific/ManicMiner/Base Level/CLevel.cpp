@@ -7,8 +7,6 @@
 #include "MenuScene.h"
 #include "GamerCamp/GCObject/GCObjectManager.h"
 #include "GamerCamp/GCCocosInterface/GCObjSprite.h"
-#include "GamerCamp/GameSpecific/Platforms/GCObjPlatform.h"
-#include "GamerCamp/GameSpecific/Platforms/GCObjGroupPlatform.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Collectables/Collectable.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Collectables/GroupCollectables.h"
 #include "GamerCamp/GameSpecific/Player/GCObjGroupProjectilePlayer.h"
@@ -24,6 +22,8 @@
 #include "GamerCamp/GameSpecific/ManicMiner/Sound/CSoundManager.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Player/Life.h"
 #include "GamerCamp/GameSpecific/ManicMiner/MainMenu/MainMenuScene.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Platform/CPlatform.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Platform/CPlatformGroup.h"
 
 
 #include "AppDelegate.h"
@@ -58,7 +58,8 @@ CLevel::CLevel()
 	, m_bResetWasRequested				( false )
 	, m_pcEnemyGroup					( nullptr )
 	, m_pcSoundManager					(nullptr)
-	, m_pcaPlayerLives					( nullptr) 
+	, m_pcaPlayerLives					( nullptr)
+	, m_pcPlatformGroup 					(nullptr)
 {
 }
 
@@ -97,8 +98,8 @@ void CLevel::VOnCreate()
 	IGCGameLayer::VOnCreate();
 
 	// Creating and Registering the Object Groups //
-	m_pcDefaultGCGroupPlatform = new CGCObjGroupPlatform();
-	CGCObjectManager::ObjectGroupRegister(m_pcDefaultGCGroupPlatform);
+	m_pcPlatformGroup = new CPlatformGroup();
+	CGCObjectManager::ObjectGroupRegister(m_pcPlatformGroup);
 
 	m_pcGCGroupProjectilePlayer = new CGCObjGroupProjectilePlayer();
 	CGCObjectManager::ObjectGroupRegister(m_pcGCGroupProjectilePlayer);
@@ -305,6 +306,22 @@ void CLevel::VOnCreate()
 			}
 		}
 	);
+	
+	// Collisions for Player and Platform
+	GetCollisionManager().AddCollisionHandler
+	(
+		[this]
+	(CPlayer& rcPlayer, CPlatform& rcPlatform, const b2Contact& rcContact) -> void
+		{
+			if (m_pcPlayer->getbIsGrounded() == false)
+			{
+				m_pcPlayer->setIsGrounded(true);
+
+				CCLOG("Player hit Ground!");
+			}
+		}
+	);
+	
 }
 // End VOnCreate();
 
@@ -406,11 +423,11 @@ void CLevel::VOnDestroy()
 	m_pcUIBar = nullptr;
 
 	// Don't forget to Unregister Groups Manually! //
-
-	CGCObjectManager::ObjectGroupUnRegister( m_pcDefaultGCGroupPlatform );
-	delete m_pcDefaultGCGroupPlatform;
-	m_pcDefaultGCGroupPlatform = nullptr;
-
+	
+	CGCObjectManager::ObjectGroupUnRegister(m_pcPlatformGroup);
+	delete m_pcPlatformGroup;
+	m_pcPlatformGroup = nullptr;
+	
 	CGCObjectManager::ObjectGroupUnRegister(m_pcGCGroupProjectilePlayer);
 	delete m_pcGCGroupProjectilePlayer;
 	m_pcGCGroupProjectilePlayer = nullptr;
