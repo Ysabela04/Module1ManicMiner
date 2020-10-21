@@ -4,10 +4,23 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>OceanBG.jpg</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,0},{1920,1080}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{1920,1080}}</string>
+                <key>sourceSize</key>
+                <string>{1920,1080}</string>
+            </dict>
             <key>background.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{1024,768}}</string>
+                <string>{{0,1080},{1024,768}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -29,9 +42,9 @@
             <key>realTextureFileName</key>
             <string>background.png</string>
             <key>size</key>
-            <string>{1024,1024}</string>
+            <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1b33581df97c91711d462449325c4d08:eaffe18357f4232f6c4cce5ac8cb9b72:0efa5fec0be417390841f237bfdb917e$</string>
+            <string>$TexturePacker:SmartUpdate:f0fa9ff22e3cb861df1910bb02a06ffb:cb82e825e3ca6b61e2a37f3fd5425cda:0efa5fec0be417390841f237bfdb917e$</string>
             <key>textureFileName</key>
             <string>background.png</string>
         </dict>

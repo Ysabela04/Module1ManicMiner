@@ -203,6 +203,7 @@ void CLevel::VOnCreate()
 	m_pcExit = new CExit();
 	m_pcExit->SetResetPosition( Vec2( 1860.0f, 120.0f ) );
 	
+	
 	// Creating Enemy //
 	m_pcEnemyGroup->SetFormationOrigin( v2ScreenCentre_Pixels + Vec2( -( visibleSize.width * 0.25f ), ( visibleSize.height * 0.25f ) ) );
 	m_pcEnemyGroup->SetRowsAndColumns( 1, 1, -40.0f, 40.0f );
@@ -255,17 +256,17 @@ void CLevel::VOnCreate()
 	);
 
 	// Collisions for Player and Exit
-	//GetCollisionManager().AddCollisionHandler
-	//(
-	//	[this]
-	//	(CPlayer& rcPlayer, CExit& rcExit, const b2Contact& rcContact) -> void
-	//	{
-	//		if (m_pcExit->getIsOpen() == true)
-	//		{
-	//			m_eGameState = EGameState::Won;
-	//		}
-	//	}
-	//);
+	GetCollisionManager().AddCollisionHandler
+	(
+		[this]
+		(CPlayer& rcPlayer, CExit& rcExit, const b2Contact& rcContact) -> void
+		{
+			if (m_pcExit->getIsOpen() == true)
+			{
+				m_eGameState = EGameState::Won;
+			}
+		}
+	);
 
 	// Collisions for Player and Hazard
 	GetCollisionManager().AddCollisionHandler
