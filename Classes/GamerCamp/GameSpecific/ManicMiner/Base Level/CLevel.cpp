@@ -227,7 +227,7 @@ void CLevel::VOnCreate()
 
 		for ( u32 uRow = 0; uRow < uNumRows; uRow++ )
 		{
-			CGCObjPlatform* pPlatform = new CGCObjPlatform();
+			CPlatform* pPlatform = new CPlatform();
 
 			pPlatform->SetResetPosition( v2NextPlatformPos );
 
