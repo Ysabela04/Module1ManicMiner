@@ -61,6 +61,7 @@ public:
 	int getiItemsCollected() { return m_iItemsCollected; }
 	bool getbIsCollecting() { return m_bIsCollecting; }
 	bool getbIsColliding() { return m_bIsColliding; }
+	bool getbIsGrounded() { return m_bIsGrounded; }
 
 	//////////////////////////////////////////////////////////////////////////
 	// Setters
@@ -69,6 +70,7 @@ public:
 	void setiLives(int iLives) { m_iLives = iLives; }
 	void setbIsCollecting(bool bIsCollecting) { m_bIsCollecting = bIsCollecting; }
 	void setbIsColliding(bool bIsColliding) { m_bIsColliding = bIsColliding; }
+	void setIsGrounded(bool bIsGrounded) { m_bIsGrounded = bIsGrounded; }
 
 private:
 
@@ -90,7 +92,9 @@ private:
 
 	bool m_bIsCollecting;	// if the player is currently collecting an item
 
-	bool m_bIsColliding;	// check to see if the player is colliding with anythin
+	bool m_bIsColliding;	// check to see if the player is colliding with anything
+	
+	bool m_bIsGrounded;		//check to see if the player is grounded 
 };
 
 #endif
