@@ -126,7 +126,7 @@ void CLevel::VOnCreate()
 	
 	// Sound Manager //
 	m_pcSoundManager = new CSoundManager();
-	m_pcSoundManager->PlayBackgroundMusic();
+	//m_pcSoundManager->PlayBackgroundMusic();
 
 	// Adding a Timer //
 	m_pcTimer = new CTimer();
