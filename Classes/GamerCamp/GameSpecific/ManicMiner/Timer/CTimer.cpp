@@ -10,7 +10,10 @@
 
 CTimer::CTimer()
 {
-	m_fMaximumTime = 6480.0f;
+	m_fMaximumTime = 600.0f;
+	//m_fMaximumTime = 6480.0f;
+
+
 	m_fCurrentTime = m_fMaximumTime;
 	m_bHasTimerEnded = false;
 
@@ -32,7 +35,7 @@ void CTimer::TimerUpdate(float dt)
 {
 	m_fCurrentTime -= dt;
 	m_cTimerBar->setPercentage(100 * m_fCurrentTime / m_fMaximumTime);
-	if (m_fCurrentTime <= 0 && m_bHasTimerEnded == false)
+	if (m_fCurrentTime <= 0.0f && m_bHasTimerEnded == false)
 	{
 		m_bHasTimerEnded = true;
 	}
@@ -41,6 +44,7 @@ void CTimer::TimerUpdate(float dt)
 void CTimer::ResetTimer()
 {
 	m_fCurrentTime = m_fMaximumTime;
+	m_bHasTimerEnded = false;
 }
 
 cocos2d::ProgressTimer* CTimer::GetTimerObj()

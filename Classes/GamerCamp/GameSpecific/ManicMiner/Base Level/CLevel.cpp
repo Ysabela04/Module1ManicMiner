@@ -118,7 +118,7 @@ void CLevel::VOnCreate()
 	CGCObjectManager::ObjectGroupRegister( m_pcEnemyGroup );
 
 	// Create the CGroupHazards and set the position of the 5 CHazards
-	m_pcGroupHazards = new CGroupHazards( cocos2d::Vec2( 100.0f, 100.0f ),
+	m_pcGroupHazards = new CGroupHazards( cocos2d::Vec2( 400.0f, 100.0f ),
 										  cocos2d::Vec2( 250.0f, 350.0f ),
 										  cocos2d::Vec2( 550.0f, 450.0f ),
 										  cocos2d::Vec2( 750.0f, 250.0f ),
@@ -308,17 +308,18 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 		case (EGameState::Running):
 			// Insert Game Logic while Game is Running
 			WinCondition();
-			// LoseCondition();
+			LoseCondition();
 
 			m_pcTimer->TimerUpdate(Director::getInstance()->getFrameRate() / 60);
-			if (m_pcTimer->TimerHasEnded() || m_pcPlayer->getiLives() <= 0)
+
+			if (m_pcTimer->TimerHasEnded())
 			{
-				m_eGameState = EGameState::Over;
+				m_pcPlayer->DecreaseLife();		
+								
+				m_pcTimer->ResetTimer();		
+		
+				RequestReset();
 			}
-			// if (m_pcTimer->TimerHasEnded())
-			//{
-			//	m_pcPlayer->DecreaseLife();
-			//}
 
 			ManuallyHandleCollisions();
 
@@ -542,6 +543,8 @@ void CLevel::LoseCondition()
 	{
 		m_eGameState = EGameState::Over;
 	}
+
+
 }
 
 void CLevel::SetGameState(EGameState newGameState)
