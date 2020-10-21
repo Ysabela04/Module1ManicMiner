@@ -104,11 +104,11 @@ void CLevel::VOnCreate()
 	CGCObjectManager::ObjectGroupRegister(m_pcGCGroupProjectilePlayer);
 
 	// Create number of colleactables needed and set the position of each one
-	m_pcGroupCollectables = new CGroupCollectables( cocos2d::Vec2( 1860.0f, 600.0f ),
-													cocos2d::Vec2( 450.0f, 350.0f ),
-													cocos2d::Vec2( 750.0f, 450.0f ),
-													cocos2d::Vec2( 950.0f, 250.0f ),
-													cocos2d::Vec2( 850.0f, 200.0f ) );
+	m_pcGroupCollectables = new CGroupCollectables( cocos2d::Vec2( 450.0f, 930.0f ),
+													cocos2d::Vec2( 870.0f, 870.0f ),
+													cocos2d::Vec2( 1350.0f, 690.0f ),
+													cocos2d::Vec2( 1710.0f, 930.0f ),
+													cocos2d::Vec2( 1770.0f, 570.0f ) );
 	// 1 );
 	CGCObjectManager::ObjectGroupRegister(m_pcGroupCollectables);
 	//m_pcGroupCollectables->getpaCollectables( 0 )->SetResetPosition( cocos2d::Vec2( 100.0f, 200.0f ) );
@@ -119,17 +119,17 @@ void CLevel::VOnCreate()
 	CGCObjectManager::ObjectGroupRegister( m_pcEnemyGroup );
 
 	// Create the CGroupHazards and set the position of the 5 CHazards
-	m_pcGroupHazards = new CGroupHazards( cocos2d::Vec2( 400.0f, 100.0f ),
-										  cocos2d::Vec2( 250.0f, 350.0f ),
-										  cocos2d::Vec2( 550.0f, 450.0f ),
-										  cocos2d::Vec2( 750.0f, 250.0f ),
-										  cocos2d::Vec2( 650.0f, 200.0f ),
-										  cocos2d::Vec2( 950.0f, 700.0f ) );
+	m_pcGroupHazards = new CGroupHazards( cocos2d::Vec2( 570.0f, 930.0f ),
+										  cocos2d::Vec2( 630.0f, 210.0f ),
+										  cocos2d::Vec2( 870.0f, 930.0f ),
+										  cocos2d::Vec2( 1170.0f, 450.0f ),
+										  cocos2d::Vec2( 1290.0f, 690.0f ),
+										  cocos2d::Vec2( 1590.0f, 690.0f ) );
 	CGCObjectManager::ObjectGroupRegister( m_pcGroupHazards );
 	
 	// Sound Manager //
 	m_pcSoundManager = new CSoundManager();
-	m_pcSoundManager->PlayBackgroundMusic();
+	//m_pcSoundManager->PlayBackgroundMusic();
 
 	// Adding a Timer //
 	m_pcTimer = new CTimer();
@@ -187,7 +187,7 @@ void CLevel::VOnCreate()
 	m_pcaPlayerLives = new CLife[m_pcPlayer->getiLives()];
 
 	float LifeStartPosX = 1650.0f;
-	float LifeStarPosY = 980.0f;
+	float LifeStarPosY = 990.0f;
 	float LifePosXIncrease = 80.0f;
 
 	for (int i = 0; i < m_pcPlayer->getiLives(); i++)
@@ -199,9 +199,11 @@ void CLevel::VOnCreate()
 		//m_pcPlayerLives->SetVisible( true );
 	}
 
+
+
 	// Creating Exit //
 	m_pcExit = new CExit();
-	m_pcExit->SetResetPosition( Vec2( 1860.0f, 120.0f ) );
+	m_pcExit->SetResetPosition( Vec2( 1770.0f, 120.0f ) );
 	
 	
 	// Creating Enemy //
