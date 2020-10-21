@@ -8,18 +8,18 @@
 
 using namespace cocos2d;
 
-CGroupCollectables::CGroupCollectables( cocos2d::Vec2 v2FirstHazardPos,
-										cocos2d::Vec2 v2SecondHazardPos,
-										cocos2d::Vec2 v2ThirdHazardPos,
-										cocos2d::Vec2 v2FourthHazardPos,
-										cocos2d::Vec2 v2FifthHazardPos	)
+CGroupCollectables::CGroupCollectables( cocos2d::Vec2 v2FirstCollectablePos,
+										cocos2d::Vec2 v2SecondCollectablePos,
+										cocos2d::Vec2 v2ThirdCollectablePos,
+										cocos2d::Vec2 v2FourthCollectablePos,
+										cocos2d::Vec2 v2FifthCollectablePos	)
 	 // int iNumCollectables )
 	: m_iNumCollectables	( 5 )
-	, m_v2FirstHazardPos	( v2FirstHazardPos )
-	, m_v2SecondHazardPos	( v2SecondHazardPos )
-	, m_v2ThirdHazardPos	( v2ThirdHazardPos )
-	, m_v2FourthHazardPos	( v2FourthHazardPos )
-	, m_v2FifthHazardPos	( v2FifthHazardPos )
+	, m_v2FirstCollectablePos	( v2FirstCollectablePos )
+	, m_v2SecondCollectablePos	( v2SecondCollectablePos )
+	, m_v2ThirdCollectablePos	( v2ThirdCollectablePos )
+	, m_v2FourthCollectablePos	( v2FourthCollectablePos )
+	, m_v2FifthCollectablePos	( v2FifthCollectablePos )
 	//: m_iMaxNumCollectables( 5 )	// iMaxNumCollectables )
 	// iMaxNumCollectables )
 {
@@ -115,11 +115,11 @@ void CGroupCollectables::CreateCollectables()
 	m_paCollectables = new CCollectable[m_iNumCollectables];
 
 	// manually setting positions of collectables
-	m_paCollectables[0].SetResetPosition( m_v2FirstHazardPos );
-	m_paCollectables[1].SetResetPosition( m_v2SecondHazardPos );
-	m_paCollectables[2].SetResetPosition( m_v2ThirdHazardPos );
-	m_paCollectables[3].SetResetPosition( m_v2FourthHazardPos );
-	m_paCollectables[4].SetResetPosition( m_v2FifthHazardPos );
+	m_paCollectables[0].SetResetPosition( m_v2FirstCollectablePos );
+	m_paCollectables[1].SetResetPosition( m_v2SecondCollectablePos );
+	m_paCollectables[2].SetResetPosition( m_v2ThirdCollectablePos );
+	m_paCollectables[3].SetResetPosition( m_v2FourthCollectablePos );
+	m_paCollectables[4].SetResetPosition( m_v2FifthCollectablePos );
 
 
 }

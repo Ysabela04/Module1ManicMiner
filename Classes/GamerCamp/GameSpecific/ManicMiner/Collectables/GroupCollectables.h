@@ -27,11 +27,11 @@ private:
 	int m_iNumCollectables;	
 
 	// The positions of the 
-	cocos2d::Vec2	m_v2FirstHazardPos;
-	cocos2d::Vec2	m_v2SecondHazardPos;
-	cocos2d::Vec2	m_v2ThirdHazardPos;
-	cocos2d::Vec2	m_v2FourthHazardPos;
-	cocos2d::Vec2	m_v2FifthHazardPos;
+	cocos2d::Vec2	m_v2FirstCollectablePos;
+	cocos2d::Vec2	m_v2SecondCollectablePos;
+	cocos2d::Vec2	m_v2ThirdCollectablePos;
+	cocos2d::Vec2	m_v2FourthCollectablePos;
+	cocos2d::Vec2	m_v2FifthCollectablePos;
 	//cocos2d::Vec2	m_v2SixthHazardPos;
 	
 	//CCollectable* m_paCollectables[5];
@@ -40,11 +40,11 @@ private:
 
 public:
 	//CGroupCollectables();
-	CGroupCollectables( cocos2d::Vec2 v2FirstHazardPos,
-						cocos2d::Vec2 v2SecondHazardPos,
-						cocos2d::Vec2 v2ThirdHazardPos,
-						cocos2d::Vec2 v2FourthHazardPos,
-						cocos2d::Vec2 v2FifthHazardPos );
+	CGroupCollectables( cocos2d::Vec2 v2FirstCollectablePos,
+						cocos2d::Vec2 v2SecondCollectablePos,
+						cocos2d::Vec2 v2ThirdCollectablePos,
+						cocos2d::Vec2 v2FourthCollectablePos,
+						cocos2d::Vec2 v2FifthCollectablePos );
 						//cocos2d::Vec2 v2SixthHazardPos ); // int iNumCollectables );
 	virtual ~CGroupCollectables();
 
