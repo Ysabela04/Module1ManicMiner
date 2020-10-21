@@ -192,10 +192,10 @@ void CEnemyGroup::VOnObjectReset()
 
 
 //////////////////////////////////////////////////////////////////////////
-Vec2	s_EnemyGroup_v2VelocityRight = Vec2(5.0f, 0.0f);
+Vec2	s_EnemyGroup_v2VelocityRight = Vec2(2.0f, 0.0f);
 Vec2	s_EnemyGroup_v2VelocityLeft = (-s_EnemyGroup_v2VelocityRight);
 
-Vec2	s_EnemyGroup_v2VelocityDown = Vec2(0.0f, -6.0f);
+Vec2	s_EnemyGroup_v2VelocityDown = Vec2(0.0f, 0.0f);
 f32		s_EnemyGroup_fMoveDownTime = 0.2f;
 //////////////////////////////////////////////////////////////////////////
 //virtual override
