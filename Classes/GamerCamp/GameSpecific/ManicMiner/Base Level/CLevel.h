@@ -7,8 +7,6 @@
 
 // Forward Declaration
 class CGCObjSprite;
-class CGCObjPlatform;
-class CGCObjGroupPlatform;
 class CCollectable;
 class CGroupCollectables;
 class CGCObjGroupProjectilePlayer;
@@ -20,6 +18,8 @@ class CEnemy;
 class CEnemyGroup;
 class CSoundManager;
 class CLife;
+class CPlatform;
+class CPlatformGroup;
 
 class CLevel
 	: public IGCGameLayer
@@ -33,7 +33,7 @@ private:
 	EGameState						m_eGameState;
 
 	// Game Objects Groups
-	CGCObjGroupPlatform*			m_pcDefaultGCGroupPlatform;
+	CPlatformGroup* 				m_pcPlatformGroup;
 
 	CGroupCollectables*				m_pcGroupCollectables;
 
