@@ -27,7 +27,7 @@ CEnemy::CEnemy()
 //////////////////////////////////////////////////////////////////////////
 // 
 //////////////////////////////////////////////////////////////////////////
-IN_CPP_CREATION_PARAMS_DECLARE(CEnemy, "TexturePacker/Sprites/KoopaTrooper/KoopaTrooper.plist", "koopa", b2_dynamicBody, true);
+IN_CPP_CREATION_PARAMS_DECLARE(CEnemy, "TexturePacker/Sprites/Enemies/CC_Enemy_Duck/CC_Enemy_Duck.plist", "enemy", b2_dynamicBody, true);
 //virtual 
 void CEnemy::VOnResourceAcquire(void)
 {

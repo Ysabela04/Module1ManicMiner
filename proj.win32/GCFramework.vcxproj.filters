@@ -82,6 +82,9 @@
     <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\MainMenu">
       <UniqueIdentifier>{d0a87307-4fd0-4d13-915a-051ab9dbc5ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\GamerCamp\GameSpecific\ManicMiner\Platform">
+      <UniqueIdentifier>{02325512-5b7d-46b3-bf93-5d3168ad81a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -215,6 +218,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Platform\CPlatform.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Platform\CPlatformGroup.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Platform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +376,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Player\Life.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Platform\CPlatform.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Platform\CPlatformGroup.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

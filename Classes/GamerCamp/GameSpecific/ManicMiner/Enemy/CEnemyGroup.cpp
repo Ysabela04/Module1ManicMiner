@@ -119,22 +119,22 @@ void CEnemyGroup::VOnGroupResourceAcquire_PostObject()
 	CGCObjectGroup::VOnGroupResourceAcquire_PostObject();
 
 	// set up animations for all items
-	const char* pszPlist = "TexturePacker/Sprites/KoopaTrooper/KoopaTrooper.plist";
-	const char* pszAnim_Fly = "Fly";
+	//const char* pszPlist = "TexturePacker/Sprites/KoopaTrooper/KoopaTrooper.plist";
+	//const char* pszAnim_Fly = "Fly";
 
-	// make an animation
-	ValueMap& rdictPList = GCCocosHelpers::CreateDictionaryFromPlist(pszPlist);
-	Animation* pAnimation = GCCocosHelpers::CreateAnimation(rdictPList, pszAnim_Fly);
+	//// make an animation
+	//ValueMap& rdictPList = GCCocosHelpers::CreateDictionaryFromPlist(pszPlist);
+	//Animation* pAnimation = GCCocosHelpers::CreateAnimation(rdictPList, pszAnim_Fly);
 
-	ForEachObject([&](CGCObject* pObject) -> bool
-		{
-			CCAssert((GetGCTypeIDOf(CEnemy) == pObject->GetGCTypeID()),
-				"CGCObject derived type mismatch!");
+	//ForEachObject([&](CGCObject* pObject) -> bool
+	//	{
+	//		CCAssert((GetGCTypeIDOf(CEnemy) == pObject->GetGCTypeID()),
+	//			"CGCObject derived type mismatch!");
 
-			CGCObjSprite* pItemSprite = (CGCObjSprite*)pObject;
-			pItemSprite->RunAction(GCCocosHelpers::CreateAnimationActionLoop(pAnimation));
-			return true;
-		});
+	//		CGCObjSprite* pItemSprite = (CGCObjSprite*)pObject;
+	//		pItemSprite->RunAction(GCCocosHelpers::CreateAnimationActionLoop(pAnimation));
+	//		return true;
+	//	});
 }
 
 
