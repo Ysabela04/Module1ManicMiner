@@ -69,7 +69,7 @@ void CMainMenuSceneLayer::VOnCreate()
 	// create and register the object group for the player projectile objects
 
 
-
+	
 
 
 
@@ -79,20 +79,25 @@ void CMainMenuSceneLayer::VOnCreate()
 
 	// add a "close" icon to exit the progress. it's an autorelease object
 	cocos2d::MenuItemImage* pStartItem
-		= cocos2d::MenuItemImage::create( "Loose/CloseNormal.png",
-			"Loose/CloseSelected.png",
+		= cocos2d::MenuItemImage::create( "TexturePacker/UI/MainMenu/PlayButton/PlayButtonNormal.png",
+			"TexturePacker/UI/MainMenu/PlayButton/PlayButtonSelected.png",
 			CC_CALLBACK_1( CMainMenuSceneLayer::Callback_OnGameStartButton, this ) );
 
-	pStartItem->setPosition( cocos2d::Vec2( ((visibleSize.width - (pStartItem->getContentSize().width * 0.5f)) + origin.x),
-		(((pStartItem->getContentSize().height * 0.5f) + origin.y)) ) );
+	pStartItem->setPosition( cocos2d::Vec2( visibleSize.width / 2, visibleSize.height / 2 ) );
+
+	//pStartItem->setPosition( cocos2d::Vec2( ((visibleSize.width - (pStartItem->getContentSize().width * 0.5f)) + origin.x),
+	//	(((pStartItem->getContentSize().height * 0.5f) + origin.y)) ) );
 
 	cocos2d::MenuItemImage* pQuitItem
-		= cocos2d::MenuItemImage::create( "Loose/CloseNormal.png",
-			"Loose/CloseSelected.png",
+		= cocos2d::MenuItemImage::create( "TexturePacker/UI/MainMenu/QuitButton/QuitButtonNormal.png",
+			"TexturePacker/UI/MainMenu/QuitButton/QuitButtonSelected.png",
 			CC_CALLBACK_1( CMainMenuSceneLayer::Callback_OnQuitButton, this ) );
 
-	pQuitItem->setPosition( cocos2d::Vec2( ((visibleSize.width - (pQuitItem->getContentSize().width * 0.5f)) + origin.x),
-		((visibleSize.height - (pQuitItem->getContentSize().height * 0.5f)) + origin.y) ) );
+	pQuitItem->setPosition( cocos2d::Vec2( visibleSize.width / 2  , ( visibleSize.height / 2 ) - 200.0f ) );
+
+
+	/*pQuitItem->setPosition( cocos2d::Vec2( ((visibleSize.width - (pQuitItem->getContentSize().width * 0.5f)) + origin.x),
+		((visibleSize.height - (pQuitItem->getContentSize().height * 0.5f)) + origin.y) ) );*/
 
 	// create menu, it's an autorelease object
 	cocos2d::Menu* pMenu = cocos2d::Menu::create( pStartItem, pQuitItem, nullptr );
@@ -106,12 +111,12 @@ void CMainMenuSceneLayer::VOnCreate()
 	///////////////////////////////////////////////////////////////////////////
 
 	// create and initialize a label
-	cocos2d::Label* pLabel = cocos2d::Label::createWithTTF( "MAIN MENU", "fonts/arial.ttf", 100 );
+	cocos2d::Label* pLabel = cocos2d::Label::createWithTTF( "MANIC MINER", "fonts/arial.ttf", 100 );
 
 	// position the label on the center of the screen
-	pLabel->setPosition( cocos2d::Vec2( visibleSize.width / 2, visibleSize.height - 50 ) );
+	pLabel->setPosition( cocos2d::Vec2( visibleSize.width / 2, visibleSize.height - 200 ) );
 
-	pLabel->setColor( Color3B::MAGENTA );
+	pLabel->setColor( Color3B::WHITE );
 
 	// add the label as a child to this layer
 	this->addChild( pLabel, 1 );

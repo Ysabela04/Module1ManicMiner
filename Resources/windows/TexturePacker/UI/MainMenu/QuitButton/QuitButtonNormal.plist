@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>QuitButtonNormal.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{240,120}</string>
+                <key>spriteSourceSize</key>
+                <string>{240,120}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{240,120}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>QuitButtonNormal.png</string>
+            <key>size</key>
+            <string>{242,122}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:154e526dcec3439266a07d77c94a9303:f2b9748ba83674ab134a00538fedbf26:2b9e422eb0b30aa00527b31186d578fb$</string>
+            <key>textureFileName</key>
+            <string>QuitButtonNormal.png</string>
+        </dict>
+    </dict>
+</plist>
