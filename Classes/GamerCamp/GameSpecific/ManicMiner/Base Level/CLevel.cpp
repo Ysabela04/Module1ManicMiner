@@ -23,6 +23,8 @@
 #include "GamerCamp/GameSpecific/ManicMiner/Enemy/CEnemyGroup.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Sound/CSoundManager.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Player/Life.h"
+#include "GamerCamp/GameSpecific/ManicMiner/MainMenu/MainMenuScene.h"
+
 
 #include "AppDelegate.h"
 
@@ -347,13 +349,13 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 
 		case (EGameState::Won):
 			// Insert Game Logic while Game is completed
-			ReplaceScene(TransitionRotoZoom::create(1.0f, CMenuLayer::scene()));
+			ReplaceScene(TransitionRotoZoom::create(1.0f, TGCGameLayerSceneCreator< CMainMenuSceneLayer >::CreateScene() ));
 			COLLISIONTESTLOG("Game is Winner");
 			break;
 
 		case (EGameState::Over) :
 			// Insert Game Logic while Game is Over
-			ReplaceScene(TransitionRotoZoom::create(1.0f, CMenuLayer::scene()));
+			ReplaceScene(TransitionRotoZoom::create(1.0f, TGCGameLayerSceneCreator< CMainMenuSceneLayer >::CreateScene() ));
 			COLLISIONTESTLOG("Game is Over");
 			break;
 
