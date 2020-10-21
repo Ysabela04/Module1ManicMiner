@@ -10,10 +10,7 @@
 
 CTimer::CTimer()
 {
-	m_fMaximumTime = 600.0f;
-	//m_fMaximumTime = 6480.0f;
-
-
+	m_fMaximumTime = 6480.0f;
 	m_fCurrentTime = m_fMaximumTime;
 	m_bHasTimerEnded = false;
 

@@ -128,7 +128,7 @@ void CLevel::VOnCreate()
 	
 	// Sound Manager //
 	m_pcSoundManager = new CSoundManager();
-	//m_pcSoundManager->PlayBackgroundMusic();
+	m_pcSoundManager->PlayBackgroundMusic();
 
 	// Adding a Timer //
 	m_pcTimer = new CTimer();
@@ -301,6 +301,7 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 		{
 			VOnReset();
 			ResetRequestWasHandled();
+			m_pcTimer->ResetTimer();
 		}
 
 	switch (m_eGameState) 
@@ -315,9 +316,6 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 			if (m_pcTimer->TimerHasEnded())
 			{
 				m_pcPlayer->DecreaseLife();		
-								
-				m_pcTimer->ResetTimer();		
-		
 				RequestReset();
 			}
 
