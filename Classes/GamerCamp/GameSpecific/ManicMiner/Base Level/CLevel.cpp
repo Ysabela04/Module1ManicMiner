@@ -179,7 +179,7 @@ void CLevel::VOnCreate()
 	}
 
 	// Creating Player //
-	Vec2 v2MarioStartPos = (v2ScreenCentre_Pixels - Vec2(0.0f, (visibleSize.height * 0.45f)));
+	Vec2 v2MarioStartPos = (v2ScreenCentre_Pixels - Vec2(0.0f, (visibleSize.height * 0.2f)));
 
 	m_pcPlayer = new CPlayer();
 	m_pcPlayer->SetResetPosition(v2MarioStartPos);
