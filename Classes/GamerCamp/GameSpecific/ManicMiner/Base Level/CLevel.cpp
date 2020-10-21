@@ -127,7 +127,7 @@ void CLevel::VOnCreate()
 	this->addChild(m_pcTimer->GetTimerObj(), 1);
 
 	// Setting up the Background //
-	const char* pList_Background = "TexturePacker/Backgrounds/Placeholder/background.plist";
+	const char* pList_Background = "TexturePacker/Backgrounds/Placeholder(1980x1080)/SSBUBackground.plist";
 	{
 		m_pcDefaultGCBackground = new CGCObjSprite();
 		m_pcDefaultGCBackground->CreateSprite(pList_Background);

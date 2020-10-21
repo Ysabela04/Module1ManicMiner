@@ -10,7 +10,14 @@ using namespace CocosDenshion;
 
 CSoundManager::CSoundManager()
 {
-	pachSoundFiles[0] = {"Loose/BackgroundMusic.mp3"};
+	CSoundMap[ESoundList::BGM] = "Loose/BackgroundMusic.mp3";
+	CSoundMap[ESoundList::JumpSFX] = "Loose/JumpSFX.wav";
+	CSoundMap[ESoundList::FallingSFX] = "Loose/FallingSFX.wav";
+	CSoundMap[ESoundList::BarLoopSFX] = "Loose/BarLoopSFX.wav";
+	CSoundMap[ESoundList::CollectablesSFX] = "Loose/CollectablesSFX.wav";
+
+	pchSoundName = "";
+	pchBackgroundMusic = "";
 	m_cAudioEngine = SimpleAudioEngine::getInstance();
 }
 
@@ -25,10 +32,12 @@ void CSoundManager::EndSound()
 
 void CSoundManager::PlayBackgroundMusic()
 {
-	m_cAudioEngine->playEffect(pachSoundFiles[0], true);
+	pchBackgroundMusic = CSoundMap[ESoundList::BGM];
+	m_cAudioEngine->playEffect(pchBackgroundMusic, true);
 }
 
-void CSoundManager::PlaySoundEffect(int index)
+void CSoundManager::PlaySoundEffect(ESoundList index)
 {
-	m_cAudioEngine->playEffect(pachSoundFiles[index], false);
+	pchSoundName = CSoundMap[index];
+	m_cAudioEngine->playEffect(pchSoundName);
 }
