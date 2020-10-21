@@ -30,6 +30,8 @@ private:
 	cocos2d::Vec2	m_v2ThirdHazardPos;
 	cocos2d::Vec2	m_v2FourthHazardPos;
 	cocos2d::Vec2	m_v2FifthHazardPos;
+	cocos2d::Vec2	m_v2SixthHazardPos;
+
 
 
 public:
@@ -38,7 +40,8 @@ public:
 				   cocos2d::Vec2 v2SecondHazardPos, 
 				   cocos2d::Vec2 v2ThirdHazardPos, 
 				   cocos2d::Vec2 v2FourthHazardPos, 
-				   cocos2d::Vec2 v2FifthHazardPos );
+				   cocos2d::Vec2 v2FifthHazardPos,
+				   cocos2d::Vec2 v2SixthHazardPos );
 	virtual ~CGroupHazards();
 
 	//////////////////////////////////////////////////////////////////////////

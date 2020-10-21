@@ -8,8 +8,17 @@
 
 using namespace cocos2d;
 
-CGroupCollectables::CGroupCollectables() // int iNumCollectables )
-	: m_iNumCollectables( 5 )
+CGroupCollectables::CGroupCollectables( cocos2d::Vec2 v2FirstHazardPos,
+										cocos2d::Vec2 v2SecondHazardPos,
+										cocos2d::Vec2 v2ThirdHazardPos,
+										cocos2d::Vec2 v2FourthHazardPos,
+										cocos2d::Vec2 v2FifthHazardPos	)
+	 // int iNumCollectables )
+	: m_iNumCollectables	( 5 )
+	, m_v2SecondHazardPos	( v2SecondHazardPos )
+	, m_v2ThirdHazardPos	( v2ThirdHazardPos )
+	, m_v2FourthHazardPos	( v2FourthHazardPos )
+	, m_v2FifthHazardPos	( v2FifthHazardPos )
 	//: m_iMaxNumCollectables( 5 )	// iMaxNumCollectables )
 	// iMaxNumCollectables )
 {
@@ -105,11 +114,11 @@ void CGroupCollectables::CreateCollectables()
 	m_paCollectables = new CCollectable[m_iNumCollectables];
 
 	// manually setting positions of collectables
-	m_paCollectables[0].SetResetPosition( cocos2d::Vec2( 200.0f, 150.0f ) );
-	m_paCollectables[1].SetResetPosition( cocos2d::Vec2( 250.0f, 250.0f ) );
-	m_paCollectables[2].SetResetPosition( cocos2d::Vec2( 400.0f, 150.0f ) );
-	m_paCollectables[3].SetResetPosition( cocos2d::Vec2( 450.0f, 450.0f ) );
-	m_paCollectables[4].SetResetPosition( cocos2d::Vec2( 550.0f, 650.0f ) );
+	m_paCollectables[0].SetResetPosition( m_v2FirstHazardPos );
+	m_paCollectables[1].SetResetPosition( m_v2SecondHazardPos );
+	m_paCollectables[2].SetResetPosition( m_v2ThirdHazardPos );
+	m_paCollectables[3].SetResetPosition( m_v2FourthHazardPos );
+	m_paCollectables[4].SetResetPosition( m_v2FifthHazardPos );
 
 
 }

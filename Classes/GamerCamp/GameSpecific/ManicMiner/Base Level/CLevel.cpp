@@ -101,7 +101,12 @@ void CLevel::VOnCreate()
 	CGCObjectManager::ObjectGroupRegister(m_pcGCGroupProjectilePlayer);
 
 	// Create number of colleactables needed and set the position of each one
-	m_pcGroupCollectables = new CGroupCollectables();// 1 );
+	m_pcGroupCollectables = new CGroupCollectables( cocos2d::Vec2( 300.0f, 100.0f ),
+													cocos2d::Vec2( 450.0f, 350.0f ),
+													cocos2d::Vec2( 750.0f, 450.0f ),
+													cocos2d::Vec2( 950.0f, 250.0f ),
+													cocos2d::Vec2( 850.0f, 200.0f ) );
+	// 1 );
 	CGCObjectManager::ObjectGroupRegister(m_pcGroupCollectables);
 	//m_pcGroupCollectables->getpaCollectables( 0 )->SetResetPosition( cocos2d::Vec2( 100.0f, 200.0f ) );
 	//m_pcGroupCollectables->getpaCollectables( 1 )->SetResetPosition( cocos2d::Vec2( 250.0f, 450.0f ) );
@@ -115,7 +120,8 @@ void CLevel::VOnCreate()
 										  cocos2d::Vec2( 250.0f, 350.0f ),
 										  cocos2d::Vec2( 550.0f, 450.0f ),
 										  cocos2d::Vec2( 750.0f, 250.0f ),
-										  cocos2d::Vec2( 650.0f, 200.0f ) );
+										  cocos2d::Vec2( 650.0f, 200.0f ),
+										  cocos2d::Vec2( 950.0f, 700.0f ) );
 	CGCObjectManager::ObjectGroupRegister( m_pcGroupHazards );
 	
 	// Sound Manager //
