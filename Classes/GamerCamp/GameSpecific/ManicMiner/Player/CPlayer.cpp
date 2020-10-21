@@ -44,6 +44,7 @@ CPlayer::CPlayer()
 	, m_iLives(3)
 	, m_bIsCollecting(false)
 	, m_bIsColliding(false)
+	, m_bIsGrounded(false)
 {
 	
 
@@ -119,8 +120,8 @@ void CPlayer::VOnResourceRelease()
 
 // updates the movement of the CCSprite owned by this instance
 	f32 	g_CPlayer_fMass 				= 1.0f;			// kg
-	f32	g_CPlayer_fMaximumMoveForce_Horizontal 		= 20.0f;		// newton
-	f32	g_CPlayer_fMaximumMoveForce_Vertical 		= 40.0f;		// newton
+	f32	g_CPlayer_fMaximumMoveForce_Horizontal 		= 6.0f;		// newton
+	f32	g_CPlayer_fMaximumMoveForce_Vertical 		= 12.0f;		// newton
 	f32	g_CPlayer_fDragCoefficient_Linear 		= 0.25f;		// unitless
 	f32	g_CPlayer_fDragCoefficient_Square 		= 0.2f;			// unitless
 	f32	g_CPlayer_m_fNoInput_ExtraDrag_Square 		= 0.2f;			// unitless
@@ -167,11 +168,6 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 	}
 	else
 	{
-		if (pKeyManager->ActionIsPressed(CGCGameLayerPlatformer::EPA_Up))
-		{
-			v2ControlForceDirection.y = 1.0f;
-			fIsInputInactive = 0.0f;
-		}
 		if (pKeyManager->ActionIsPressed(CGCGameLayerPlatformer::EPA_Down))
 		{
 			v2ControlForceDirection.y = -1.0f;
@@ -187,6 +183,27 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 		{
 			v2ControlForceDirection.x = 1.0f;
 			fIsInputInactive = 0.0f;
+		}
+		if (m_bIsGrounded == true)
+		{
+			if (pKeyManager->ActionIsPressed(CGCGameLayerPlatformer::EPA_Up))
+			{
+				v2ControlForceDirection.y = 1.0f;
+				fIsInputInactive = 0.0f;
+			}
+			else
+			{
+				fIsInputInactive = 0.0f;
+				setIsGrounded(false);
+			}
+		}
+		if (m_bIsGrounded == false)
+		{
+			if (pKeyManager->ActionIsPressed(CGCGameLayerPlatformer::EPA_Up))
+			{
+				v2ControlForceDirection.y = 0.0f;
+				fIsInputInactive = 0.0f;
+			}
 		}
 	}
 
@@ -217,19 +234,6 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 
 	// physics calcs handled by box 2d based on force applied
 	ApplyForceToCenter(v2TotalForce);
-
-
-	// * set sprite flip based on velocity
-	// N.B. the else-if looks redundant, but we want the sprite's flip 
-	// state to stay the same if its velocity is set to (0.0f, 0.0f)
-	//if (GetVelocity().y >= 0.0f)
-	//{
-		//SetFlippedY(false);
-	//}
-	//else if (GetVelocity().y < 0.0f)
-	//{
-		//SetFlippedY(true);
-	//}
 
 	if (GetVelocity().x >= 0.0f)
 	{
