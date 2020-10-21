@@ -21,7 +21,7 @@ CTimer::CTimer()
 	m_cTimerBar->setMidpoint(Vec2(0.0f, 0.5f));
 	m_cTimerBar->setBarChangeRate(Vec2(1.0f, 0.0f));
 	m_cTimerBar->setPercentage(100.0f);
-	m_cTimerBar->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2, Director::getInstance()->getVisibleSize().height * 0.95));
+	m_cTimerBar->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2.0f, Director::getInstance()->getVisibleSize().height * 0.96f));
 }
 
 CTimer::~CTimer()
