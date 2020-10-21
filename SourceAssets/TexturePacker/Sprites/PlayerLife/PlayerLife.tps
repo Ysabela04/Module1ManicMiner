@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>cocos2d-x</string>
         <key>textureFileName</key>
-        <filename>../../../../Resources/windows/TexturePacker/Sprites/Lives/Heart.png</filename>
+        <filename></filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -130,10 +130,6 @@
         <key>dataFileNames</key>
         <map type="GFileNameMap">
             <key>data</key>
-            <struct type="DataFile">
-                <key>name</key>
-                <filename>../../../../Resources/windows/TexturePacker/Sprites/Lives/Heart.plist</filename>
-            </struct>
             <key>header</key>
             <key>source</key>
             <struct type="DataFile">
@@ -186,29 +182,9 @@
             <false/>
         </struct>
         <key>individualSpriteSettings</key>
-        <map type="IndividualSpriteSettingsMap">
-            <key type="filename">Frames/Moving/00.png</key>
-            <key type="filename">Frames/Moving/01.png</key>
-            <key type="filename">Frames/Moving/02.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>8,8,15,15</rect>
-                <key>scale9Paddings</key>
-                <rect>8,8,15,15</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-        </map>
+        <map type="IndividualSpriteSettingsMap"/>
         <key>fileList</key>
-        <array>
-            <filename>Frames/Moving</filename>
-        </array>
+        <array/>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>

@@ -174,15 +174,15 @@ void CLevel::VOnCreate()
 	// Player lives --- needs refactoring, put in livesmanager class??
 	m_pcaPlayerLives = new CLife[3];
 
-	float PosX = 850.0f;
-	float PosY = 650.0f;
-	float PosXIncrease = 50.0f;
+	float LifeStartPosX = 1650.0f;
+	float LifeStarPosY = 980.0f;
+	float LifePosXIncrease = 80.0f;
 
 	for (int i = 0; i < m_pcPlayer->getiLives(); i++)
 	{
-		Vec2 v2LivesPos( PosX, PosY );
+		Vec2 v2LivesPos( LifeStartPosX, LifeStarPosY );
 		m_pcaPlayerLives[i].SetResetPosition( v2LivesPos );
-		PosX += PosXIncrease;
+		LifeStartPosX += LifePosXIncrease;
 
 		//m_pcPlayerLives->SetVisible( true );
 	}

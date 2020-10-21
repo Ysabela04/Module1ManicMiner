@@ -14,7 +14,7 @@ CLife::~CLife()
 
 // -----
 
-IN_CPP_CREATION_PARAMS_DECLARE( CLife, "TexturePacker/Sprites/Mario/Mario.plist", "mario", b2_staticBody, true );
+IN_CPP_CREATION_PARAMS_DECLARE( CLife, "TexturePacker/Sprites/PlayerLife/Heart.plist", "heart", b2_staticBody, true );
 //IN_CPP_CREATION_PARAMS_DECLARE( CHazard, m_strPlistFilePath, "hazard", b2_staticBody, true );
 
 //////////////////////////////////////////////////////////////////////////
