@@ -41,6 +41,7 @@ private:
 
 	// Game Objects
 	CGCObjSprite*					m_pcDefaultGCBackground;
+	CGCObjSprite*					m_pcUIBar;
 	CPlayer*						m_pcPlayer;
 	CExit*							m_pcExit;
 

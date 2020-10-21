@@ -47,6 +47,7 @@ using namespace cocos2d;
 CLevel::CLevel()
 	: IGCGameLayer						( GetGCTypeIDOf ( CLevel ) )
 	, m_pcDefaultGCBackground			( nullptr )
+	, m_pcUIBar							( nullptr )
 	, m_pcGCGroupProjectilePlayer		( nullptr )
 	, m_eGameState						( EGameState::Running )
 	, m_pcGroupCollectables				( nullptr )
@@ -103,7 +104,7 @@ void CLevel::VOnCreate()
 	CGCObjectManager::ObjectGroupRegister(m_pcGCGroupProjectilePlayer);
 
 	// Create number of colleactables needed and set the position of each one
-	m_pcGroupCollectables = new CGroupCollectables( cocos2d::Vec2( 300.0f, 100.0f ),
+	m_pcGroupCollectables = new CGroupCollectables( cocos2d::Vec2( 1860.0f, 600.0f ),
 													cocos2d::Vec2( 450.0f, 350.0f ),
 													cocos2d::Vec2( 750.0f, 450.0f ),
 													cocos2d::Vec2( 950.0f, 250.0f ),
@@ -135,13 +136,24 @@ void CLevel::VOnCreate()
 	this->addChild(m_pcTimer->GetTimerObj(), 1);
 
 	// Setting up the Background //
-	const char* pList_Background = "TexturePacker/Backgrounds/Placeholder(1980x1080)/SSBUBackground.plist";
+	const char* pList_Background = "TexturePacker/Backgrounds/Placeholder/OceanBG.plist";
 	{
 		m_pcDefaultGCBackground = new CGCObjSprite();
 		m_pcDefaultGCBackground->CreateSprite(pList_Background);
 		m_pcDefaultGCBackground->SetResetPosition( Vec2( visibleSize.width / 2, visibleSize.height / 2 ) );
 		m_pcDefaultGCBackground->SetParent( IGCGameLayer::ActiveInstance() );
 	}
+
+
+	// UI Bar Blank - Placeholder Art
+	const char* pList_UIBar = "TexturePacker/UI/UIBar/UIBarBlank.plist";
+	{
+		m_pcUIBar = new CGCObjSprite();
+		m_pcUIBar->CreateSprite( pList_UIBar );
+		m_pcUIBar->SetResetPosition( Vec2( visibleSize.width / 2, 1020.0f ) );
+		m_pcUIBar->SetParent( IGCGameLayer::ActiveInstance() );
+	}
+
 
 	// Physics Setup //
 	B2dGetWorld()->SetContactListener( this );
@@ -172,7 +184,7 @@ void CLevel::VOnCreate()
 	m_pcPlayer->SetResetPosition(v2MarioStartPos);
 
 	// Player lives --- needs refactoring, put in livesmanager class??
-	m_pcaPlayerLives = new CLife[3];
+	m_pcaPlayerLives = new CLife[m_pcPlayer->getiLives()];
 
 	float LifeStartPosX = 1650.0f;
 	float LifeStarPosY = 980.0f;
@@ -189,7 +201,7 @@ void CLevel::VOnCreate()
 
 	// Creating Exit //
 	m_pcExit = new CExit();
-	m_pcExit->SetResetPosition( Vec2( 100.0f, 65.0f ) );
+	m_pcExit->SetResetPosition( Vec2( 1860.0f, 120.0f ) );
 	
 	// Creating Enemy //
 	m_pcEnemyGroup->SetFormationOrigin( v2ScreenCentre_Pixels + Vec2( -( visibleSize.width * 0.25f ), ( visibleSize.height * 0.25f ) ) );
@@ -243,17 +255,17 @@ void CLevel::VOnCreate()
 	);
 
 	// Collisions for Player and Exit
-	GetCollisionManager().AddCollisionHandler
-	(
-		[this]
-		(CPlayer& rcPlayer, CExit& rcExit, const b2Contact& rcContact) -> void
-		{
-			if (m_pcExit->getIsOpen() == true)
-			{
-				m_eGameState = EGameState::Won;
-			}
-		}
-	);
+	//GetCollisionManager().AddCollisionHandler
+	//(
+	//	[this]
+	//	(CPlayer& rcPlayer, CExit& rcExit, const b2Contact& rcContact) -> void
+	//	{
+	//		if (m_pcExit->getIsOpen() == true)
+	//		{
+	//			m_eGameState = EGameState::Won;
+	//		}
+	//	}
+	//);
 
 	// Collisions for Player and Hazard
 	GetCollisionManager().AddCollisionHandler
@@ -386,6 +398,9 @@ void CLevel::VOnDestroy()
 
 	delete m_pcDefaultGCBackground;
 	m_pcDefaultGCBackground = nullptr;
+
+	delete m_pcUIBar;
+	m_pcUIBar = nullptr;
 
 	// Don't forget to Unregister Groups Manually! //
 

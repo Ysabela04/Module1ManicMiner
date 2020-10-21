@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>UIBar.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{1920,120}</string>
+                <key>spriteSourceSize</key>
+                <string>{1920,120}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{1920,120}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>UIBarBlank.png</string>
+            <key>size</key>
+            <string>{1922,122}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:8b352d59817a88a014a57a89c08d595b:99a5bc3175ac4463bfd3fe491956092d:0b2142fc6c6bd59137fa932e8534511b$</string>
+            <key>textureFileName</key>
+            <string>UIBarBlank.png</string>
+        </dict>
+    </dict>
+</plist>

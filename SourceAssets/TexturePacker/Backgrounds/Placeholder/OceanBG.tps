@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>cocos2d-x</string>
         <key>textureFileName</key>
-        <filename>../../../../Resources/windows/TexturePacker/Sprites/PlayerLife/Heart.png</filename>
+        <filename>../../../../Resources/windows/TexturePacker/Backgrounds/Placeholder/OceanBG.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -132,7 +132,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../../Resources/windows/TexturePacker/Sprites/PlayerLife/Heart.plist</filename>
+                <filename>../../../../Resources/windows/TexturePacker/Backgrounds/Placeholder/OceanBG.plist</filename>
             </struct>
             <key>header</key>
             <key>source</key>
@@ -187,18 +187,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">Frames/MovingAround/00.png</key>
-            <key type="filename">Frames/MovingAround/01.png</key>
-            <key type="filename">Frames/MovingAround/02.png</key>
-            <key type="filename">Frames/MovingAround/03.png</key>
-            <key type="filename">Frames/MovingAround/04.png</key>
-            <key type="filename">Frames/MovingAround/05.png</key>
-            <key type="filename">Frames/MovingAround/06.png</key>
-            <key type="filename">Frames/MovingAround/07.png</key>
-            <key type="filename">Frames/MovingAround/08.png</key>
-            <key type="filename">Frames/MovingAround/09.png</key>
-            <key type="filename">Frames/MovingAround/10.png</key>
-            <key type="filename">Frames/MovingAround/11.png</key>
+            <key type="filename">OceanBG.jpg</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -207,16 +196,16 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>15,15,30,30</rect>
+                <rect>480,270,960,540</rect>
                 <key>scale9Paddings</key>
-                <rect>15,15,30,30</rect>
+                <rect>480,270,960,540</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>Frames</filename>
+            <filename>OceanBG.jpg</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
