@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>SSBU Background.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{1920,1080}</string>
+                <key>spriteSourceSize</key>
+                <string>{1920,1080}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{1920,1080}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>SSBUBackground.png</string>
+            <key>size</key>
+            <string>{1922,1082}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:7d1689f1ec91f23d1e9bd69758f4e218:6fe7db8ad015bc8e6b111edcf8730991:a018e2fdda79ac12484d680d4fd4dfde$</string>
+            <key>textureFileName</key>
+            <string>SSBUBackground.png</string>
+        </dict>
+    </dict>
+</plist>

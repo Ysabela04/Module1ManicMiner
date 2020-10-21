@@ -2,11 +2,23 @@
 #define _SOUND_MANAGER_H_
 
 #include "SimpleAudioEngine.h"
+#include <map>
+
+enum class ESoundList
+{
+	BGM,
+	JumpSFX,
+	FallingSFX,
+	BarLoopSFX,
+	CollectablesSFX
+};
 
 class CSoundManager
 {
 private:
-	char* pachSoundFiles[5];
+	char* pchSoundName;
+	char* pchBackgroundMusic;
+	std::map<ESoundList, char*> CSoundMap;
 	CocosDenshion::SimpleAudioEngine* m_cAudioEngine;
 
 public:
@@ -16,7 +28,7 @@ public:
 	void EndSound();
 
 	void PlayBackgroundMusic();
-	void PlaySoundEffect(int index);
+	void PlaySoundEffect(ESoundList index);
 
 };
 
