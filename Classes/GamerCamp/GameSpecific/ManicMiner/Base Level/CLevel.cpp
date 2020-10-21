@@ -57,9 +57,10 @@ CLevel::CLevel()
 	, m_iCollectablesNeeded				( 5 )
 	, m_bResetWasRequested				( false )
 	, m_pcEnemyGroup					( nullptr )
-	, m_pcSoundManager					(nullptr)
-	, m_pcaPlayerLives					( nullptr)
-	, m_pcPlatformGroup 					(nullptr)
+	, m_pcSoundManager					( nullptr )
+	, m_pcaPlayerLives					( nullptr )
+	, m_pcPlatformGroup 				( nullptr )
+	, m_pcBottomPlatforms				( nullptr )
 {
 }
 
@@ -204,7 +205,7 @@ void CLevel::VOnCreate()
 
 	// Creating Exit //
 	m_pcExit = new CExit();
-	m_pcExit->SetResetPosition( Vec2( 1770.0f, 120.0f ) );
+	m_pcExit->SetResetPosition( Vec2( 1800.0f, 120.0f ) );
 	
 	
 	// Creating Enemy //
@@ -236,6 +237,22 @@ void CLevel::VOnCreate()
 
 		fNextPlatformPos_x += fColumnSpacing;
 
+	}
+
+	// Bottom Platform 
+	m_pcBottomPlatforms = new CPlatform[32];
+
+	float BottomPlatsformStartPosX = 30.0f;
+	float BottomPlatsformStarPosY = 30.0f;
+	float BottomPlatsformPosXIncrease = 60.0f;
+
+	for (int i = 0; i < 32; i++)
+	{
+		Vec2 v2BottomPlatformsPos( BottomPlatsformStartPosX, BottomPlatsformStarPosY );
+		m_pcBottomPlatforms[i].SetResetPosition( v2BottomPlatformsPos );
+		BottomPlatsformStartPosX += BottomPlatsformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
 	}
 
 	// Adding in Collision Handlers //
@@ -421,6 +438,9 @@ void CLevel::VOnDestroy()
 
 	delete m_pcUIBar;
 	m_pcUIBar = nullptr;
+
+	delete[] m_pcBottomPlatforms;
+	m_pcBottomPlatforms = nullptr;
 
 	// Don't forget to Unregister Groups Manually! //
 	

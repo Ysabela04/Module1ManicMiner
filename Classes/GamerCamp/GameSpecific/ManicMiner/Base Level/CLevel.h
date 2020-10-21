@@ -34,6 +34,7 @@ private:
 
 	// Game Objects Groups
 	CPlatformGroup* 				m_pcPlatformGroup;
+	CPlatform*						m_pcBottomPlatforms;
 
 	CGroupCollectables*				m_pcGroupCollectables;
 
@@ -52,6 +53,8 @@ private:
 	CSoundManager*					m_pcSoundManager;
 
 	CLife*							m_pcaPlayerLives;
+
+
 
 public:
 	CLevel();

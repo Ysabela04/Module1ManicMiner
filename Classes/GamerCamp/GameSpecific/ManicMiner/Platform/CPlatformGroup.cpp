@@ -64,7 +64,7 @@ void CPlatformGroup::VOnGroupResourceRelease(void)
 {
 	// n.b. this must happen first, as will fail if objects destroyed before 
 	CGCObjectGroup::VOnGroupResourceRelease();
-	DestroyPlatforms();
+	//DestroyPlatforms();
 }
 
 

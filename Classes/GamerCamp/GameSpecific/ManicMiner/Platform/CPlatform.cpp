@@ -12,7 +12,7 @@ USING_NS_CC;
 //////////////////////////////////////////////////////////////////////////
 // 
 //////////////////////////////////////////////////////////////////////////
-IN_CPP_CREATION_PARAMS_DECLARE(CPlatform, "TexturePacker/Sprites/Platform/Platform.plist", "platform", b2_staticBody, true);
+IN_CPP_CREATION_PARAMS_DECLARE(CPlatform, "TexturePacker/Sprites/Platforms/Blue/CC_Platform_Regular.plist", "platformblue", b2_staticBody, true);
 //virtual 
 void CPlatform::VOnResourceAcquire(void)
 {
