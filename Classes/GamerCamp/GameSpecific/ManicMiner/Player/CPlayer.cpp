@@ -56,7 +56,7 @@ CPlayer::~CPlayer()
 }
 
 //	Macro
-IN_CPP_CREATION_PARAMS_DECLARE(CPlayer, "TexturePacker/Sprites/Mario/mario.plist", "mario", b2_dynamicBody, true);
+IN_CPP_CREATION_PARAMS_DECLARE(CPlayer, "TexturePacker/Sprites/Player/CC_Character_Willy.plist", "player", b2_dynamicBody, true);
 
 
 void CPlayer::VOnResourceAcquire()
@@ -66,13 +66,13 @@ void CPlayer::VOnResourceAcquire()
 	CGCObjSpritePhysics::VOnResourceAcquire();
 
 	//	Player
-	const char* pszAnim_player = "Jog";
-	
-	//	Animate Player
-	ValueMap dicPList = GCCocosHelpers::CreateDictionaryFromPlist(GetFactoryCreationParams()->strPlistFile);
-	RunAction(GCCocosHelpers::CreateAnimationActionLoop(GCCocosHelpers::CreateAnimation(dicPList, pszAnim_player)));
+	//const char* pszAnim_player = "Jog";
+	//
+	////	Animate Player
+	//ValueMap dicPList = GCCocosHelpers::CreateDictionaryFromPlist(GetFactoryCreationParams()->strPlistFile);
+	//RunAction(GCCocosHelpers::CreateAnimationActionLoop(GCCocosHelpers::CreateAnimation(dicPList, pszAnim_player)));
 
-	m_pcControllerActionToKeyMap = TCreateActionToKeyMap(s_aePlayerActions, s_aeKeys);
+	//m_pcControllerActionToKeyMap = TCreateActionToKeyMap(s_aePlayerActions, s_aeKeys);
 
 }
 
@@ -237,11 +237,11 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 
 	if (GetVelocity().x >= 0.0f)
 	{
-		SetFlippedX(true);
+		SetFlippedX(false);
 	}
 	else if (GetVelocity().x < 0.0f)
 	{
-		SetFlippedX(false);
+		SetFlippedX(true);
 	}
 
 }
