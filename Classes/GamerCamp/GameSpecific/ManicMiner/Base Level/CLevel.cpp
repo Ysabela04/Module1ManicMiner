@@ -306,12 +306,17 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 		case (EGameState::Running):
 			// Insert Game Logic while Game is Running
 			WinCondition();
+			// LoseCondition();
 
 			m_pcTimer->TimerUpdate(Director::getInstance()->getFrameRate() / 60);
 			if (m_pcTimer->TimerHasEnded() || m_pcPlayer->getiLives() <= 0)
 			{
 				m_eGameState = EGameState::Over;
 			}
+			// if (m_pcTimer->TimerHasEnded())
+			//{
+			//	m_pcPlayer->DecreaseLife();
+			//}
 
 			ManuallyHandleCollisions();
 
@@ -533,7 +538,7 @@ void CLevel::LoseCondition()
 {
 	if (m_pcPlayer->getiLives() <= 0)
 	{
-		ReplaceScene(TransitionRotoZoom::create(1.0f, CMenuLayer::scene()));
+		m_eGameState = EGameState::Over;
 	}
 }
 
