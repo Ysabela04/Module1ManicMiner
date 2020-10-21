@@ -15,6 +15,7 @@ CGroupCollectables::CGroupCollectables( cocos2d::Vec2 v2FirstHazardPos,
 										cocos2d::Vec2 v2FifthHazardPos	)
 	 // int iNumCollectables )
 	: m_iNumCollectables	( 5 )
+	, m_v2FirstHazardPos	( v2FirstHazardPos )
 	, m_v2SecondHazardPos	( v2SecondHazardPos )
 	, m_v2ThirdHazardPos	( v2ThirdHazardPos )
 	, m_v2FourthHazardPos	( v2FourthHazardPos )
