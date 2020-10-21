@@ -160,7 +160,7 @@ void CLevel::VOnCreate()
 		f32 fHalfScreenHeightB2d = (fScreenHeightB2d / 2.0f);
 
 		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Bottom, (v2ScreenCentre_B2d + Vec2(0.0f, -fHalfScreenHeightB2d)), fScreenWidthB2d, 0.5f, 0.0f);
-		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Top, (v2ScreenCentre_B2d + Vec2(0.0f, fHalfScreenHeightB2d)), fScreenWidthB2d, 0.5f, 0.0f);
+		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Top, (v2ScreenCentre_B2d + Vec2(0.0f, fHalfScreenHeightB2d * 0.89f)), fScreenWidthB2d, 0.5f, 0.0f);
 		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Left, (v2ScreenCentre_B2d + Vec2(-fHalfScreenWidthB2d, 0.0f)), 0.5f, fScreenHeightB2d, 0.0f);
 		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Right, (v2ScreenCentre_B2d + Vec2(fHalfScreenWidthB2d, 0.0f)), 0.5f, fScreenHeightB2d, 0.0f);
 	}
