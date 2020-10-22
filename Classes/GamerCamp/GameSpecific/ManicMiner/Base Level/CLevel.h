@@ -20,6 +20,7 @@ class CSoundManager;
 class CLife;
 class CPlatform;
 class CPlatformGroup;
+class CScore;
 
 class CLevel
 	: public IGCGameLayer
@@ -28,6 +29,7 @@ class CLevel
 private:
 	// Private Member Variables
 	int								m_iCollectablesNeeded;
+	int								m_iScore;
 
 	// Game States
 	EGameState						m_eGameState;
@@ -50,9 +52,6 @@ private:
 
 	CPlatform* m_pcTenthRowPlatforms;
 
-
-
-
 	CGroupCollectables*				m_pcGroupCollectables;
 
 	CGCObjGroupProjectilePlayer*	m_pcGCGroupProjectilePlayer;
@@ -68,6 +67,7 @@ private:
 	CTimer*							m_pcTimer;
 	CEnemyGroup*					m_pcEnemyGroup;
 	CSoundManager*					m_pcSoundManager;
+	CScore*							m_pcScore;
 
 	CLife*							m_pcaPlayerLives;
 

@@ -24,7 +24,7 @@
 #include "GamerCamp/GameSpecific/ManicMiner/MainMenu/MainMenuScene.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Platform/CPlatform.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Platform/CPlatformGroup.h"
-
+#include "GamerCamp/GameSpecific/ManicMiner/Score/CScore.h"
 
 #include "AppDelegate.h"
 
@@ -55,6 +55,7 @@ CLevel::CLevel()
 	, m_pcExit							( nullptr )
 	, m_pcGroupHazards					( nullptr )
 	, m_iCollectablesNeeded				( 5 )
+	, m_iScore							(0)
 	, m_bResetWasRequested				( false )
 	, m_pcEnemyGroup					( nullptr )
 	, m_pcSoundManager					( nullptr )
@@ -142,11 +143,15 @@ void CLevel::VOnCreate()
 	
 	// Sound Manager //
 	m_pcSoundManager = new CSoundManager();
-	//m_pcSoundManager->PlayBackgroundMusic();
+	m_pcSoundManager->PlayBackgroundMusic();
 
 	// Adding a Timer //
 	m_pcTimer = new CTimer();
 	this->addChild(m_pcTimer->GetTimerObj(), 1);
+
+	// Adding the Score text //
+	m_pcScore = new CScore();
+	this->addChild(m_pcScore->GetScoreObj(), 1);
 
 	// Setting up the Background //
 	const char* pList_Background = "TexturePacker/Backgrounds/Placeholder/OceanBG.plist";
@@ -222,32 +227,6 @@ void CLevel::VOnCreate()
 	m_pcEnemyGroup->SetRowsAndColumns( 1, 1, -40.0f, 40.0f );
 
 	// Creating Platforms //
-	//const u32 uNumColumns = 3;
-	//const u32 uNumRows = 4;
-	//
-	//float fColumnSpacing = ( visibleSize.width / ( ( (float) uNumColumns + 1.0f ) ) );
-	//float fRowSpacing = ( visibleSize.height / ( ( (float) uNumRows ) + 1.0f ) );
-
-	//float fNextPlatformPos_x = fColumnSpacing;
-	//float fRowStartPos_y = fRowSpacing;
-
-	//for ( u32 uColumn = 0; uColumn < uNumColumns; uColumn++ )
-	//{
-	//	Vec2 v2NextPlatformPos( fNextPlatformPos_x, fRowStartPos_y );
-
-	//	for ( u32 uRow = 0; uRow < uNumRows; uRow++ )
-	//	{
-	//		CPlatform* pPlatform = new CPlatform();
-
-	//		pPlatform->SetResetPosition( v2NextPlatformPos );
-
-	//		v2NextPlatformPos.y += fRowSpacing;
-	//	}
-
-	//	fNextPlatformPos_x += fColumnSpacing;
-
-	//}
-
 	// Bottom Platform 	
 	float PlatformPosXIncrease = 60.0f;
 
@@ -403,9 +382,6 @@ void CLevel::VOnCreate()
 
 		//m_pcPlayerLives->SetVisible( true );
 	}
-
-
-
 	// -----
 
 	// Adding in Collision Handlers //
@@ -422,6 +398,8 @@ void CLevel::VOnCreate()
 			{
 				m_pcPlayer->setbIsCollecting(true);
 				m_pcPlayer->IncreaseItemCollected(rcCollectable.getiRewardValue());
+				m_iScore += 100;
+				m_pcSoundManager->PlaySoundEffect(ESoundList::CollectablesSFX, false);
 				CGCObjectManager::ObjectKill(&rcCollectable);
 				CCLOG("Player Item Collected");
 			}
@@ -501,9 +479,11 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 
 	if (ResetWasRequested())
 		{
+			m_iScore = 0;
 			VOnReset();
 			ResetRequestWasHandled();
 			m_pcTimer->ResetTimer();
+			m_pcScore->ScoreReset();
 		}
 
 	switch (m_eGameState) 
@@ -521,6 +501,8 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 				RequestReset();
 			}
 
+			m_pcScore->ScoreUpdate(m_iScore);
+
 			ManuallyHandleCollisions();
 
 			UpdatePlayerLives();
@@ -532,6 +514,7 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 			break;
 
 		case (EGameState::Collected):
+			// Insert Game Logic while all Collectables have been collected
 			m_pcTimer->TimerUpdate(Director::getInstance()->getFrameRate() / 60);
 			if (m_pcTimer->TimerHasEnded() || m_pcPlayer->getiLives() <= 0)
 			{
@@ -550,7 +533,15 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 
 		case (EGameState::Won):
 			// Insert Game Logic while Game is completed
-			ReplaceScene(TransitionRotoZoom::create(1.0f, TGCGameLayerSceneCreator< CMainMenuSceneLayer >::CreateScene() ));
+			m_pcTimer->TimerUpdate(Director::getInstance()->getFrameRate() / 5);
+			if (m_pcTimer->TimerHasEnded())
+			{
+				ReplaceScene(TransitionRotoZoom::create(1.0f, TGCGameLayerSceneCreator< CMainMenuSceneLayer >::CreateScene() ));
+			}
+
+			m_iScore += 10;
+			m_pcScore->ScoreUpdate(m_iScore);
+			
 			COLLISIONTESTLOG("Game is Winner");
 			break;
 
@@ -578,6 +569,9 @@ void CLevel::VOnDestroy()
 
 	//delete m_pcHazard;
 	//m_pcHazard = nullptr;
+
+	delete m_pcScore;
+	m_pcScore = nullptr;
 
 	delete m_pcTimer;
 	m_pcTimer = nullptr;
