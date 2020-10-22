@@ -34,7 +34,24 @@ private:
 
 	// Game Objects Groups
 	CPlatformGroup* 				m_pcPlatformGroup;
+
 	CPlatform*						m_pcBottomPlatforms;
+	CPlatform* m_pcFirstRowPlatforms;
+	CPlatform* m_pcSecondRowPlatforms;
+	CPlatform* m_pcThirdRowPlatforms;
+
+	CPlatform* m_pcFourthRowPlatforms;
+	CPlatform* m_pcFifthRowPlatforms;
+	CPlatform* m_pcSixthRowPlatforms;
+
+	CPlatform* m_pcSeventhRowPlatforms;
+	CPlatform* m_pcEighthRowPlatforms;
+	CPlatform* m_pcNinthRowPlatforms;
+
+	CPlatform* m_pcTenthRowPlatforms;
+
+
+
 
 	CGroupCollectables*				m_pcGroupCollectables;
 
