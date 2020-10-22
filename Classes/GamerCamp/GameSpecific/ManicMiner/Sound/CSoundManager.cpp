@@ -14,7 +14,7 @@ CSoundManager::CSoundManager()
 	CSoundMap[ESoundList::JumpSFX] = "Loose/JumpSFX.wav";
 	CSoundMap[ESoundList::FallingSFX] = "Loose/FallingSFX.wav";
 	CSoundMap[ESoundList::BarLoopSFX] = "Loose/BarLoopSFX.wav";
-	CSoundMap[ESoundList::CollectablesSFX] = "Loose/CollectablesSFX.wav";
+	CSoundMap[ESoundList::CollectablesSFX] = "Loose/CollectableSFX.wav";
 
 	pchSoundName = "";
 	pchBackgroundMusic = "";
@@ -36,8 +36,8 @@ void CSoundManager::PlayBackgroundMusic()
 	m_cAudioEngine->playEffect(pchBackgroundMusic, true);
 }
 
-void CSoundManager::PlaySoundEffect(ESoundList index)
+void CSoundManager::PlaySoundEffect(ESoundList index, bool isLooping)
 {
 	pchSoundName = CSoundMap[index];
-	m_cAudioEngine->playEffect(pchSoundName);
+	m_cAudioEngine->playEffect(pchSoundName, isLooping);
 }

@@ -25,6 +25,7 @@ public:
 
 	cocos2d::ProgressTimer* GetTimerObj();
 	bool TimerHasEnded();
+
 };
 
 

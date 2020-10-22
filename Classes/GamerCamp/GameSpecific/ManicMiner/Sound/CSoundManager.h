@@ -28,7 +28,7 @@ public:
 	void EndSound();
 
 	void PlayBackgroundMusic();
-	void PlaySoundEffect(ESoundList index);
+	void PlaySoundEffect(ESoundList index, bool isLooping);
 
 };
 
