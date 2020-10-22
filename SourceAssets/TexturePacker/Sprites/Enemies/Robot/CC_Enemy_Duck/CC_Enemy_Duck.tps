@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>cocos2d-x</string>
         <key>textureFileName</key>
-        <filename></filename>
+        <filename>../../../../../../Resources/windows/TexturePacker/Sprites/Enemies/CC_Enemy_Duck/CC_Enemy_Duck.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -130,6 +130,10 @@
         <key>dataFileNames</key>
         <map type="GFileNameMap">
             <key>data</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../../../../../../Resources/windows/TexturePacker/Sprites/Enemies/CC_Enemy_Duck/CC_Enemy_Duck.plist</filename>
+            </struct>
             <key>header</key>
             <key>source</key>
             <struct type="DataFile">

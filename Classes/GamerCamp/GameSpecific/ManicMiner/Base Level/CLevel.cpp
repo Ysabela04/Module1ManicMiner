@@ -61,6 +61,17 @@ CLevel::CLevel()
 	, m_pcaPlayerLives					( nullptr )
 	, m_pcPlatformGroup 				( nullptr )
 	, m_pcBottomPlatforms				( nullptr )
+	, m_pcFirstRowPlatforms				( nullptr )
+	, m_pcSecondRowPlatforms			( nullptr )
+	, m_pcThirdRowPlatforms				( nullptr )
+	, m_pcFourthRowPlatforms			( nullptr )
+	, m_pcFifthRowPlatforms				( nullptr )
+	, m_pcSixthRowPlatforms				( nullptr )
+	, m_pcSeventhRowPlatforms           ( nullptr )
+	, m_pcEighthRowPlatforms			( nullptr )
+	, m_pcNinthRowPlatforms				( nullptr )
+	, m_pcTenthRowPlatforms				( nullptr )
+
 {
 }
 
@@ -106,11 +117,11 @@ void CLevel::VOnCreate()
 	CGCObjectManager::ObjectGroupRegister(m_pcGCGroupProjectilePlayer);
 
 	// Create number of colleactables needed and set the position of each one
-	m_pcGroupCollectables = new CGroupCollectables( cocos2d::Vec2( 450.0f, 930.0f ),
-													cocos2d::Vec2( 870.0f, 870.0f ),
-													cocos2d::Vec2( 1350.0f, 690.0f ),
-													cocos2d::Vec2( 1710.0f, 930.0f ),
-													cocos2d::Vec2( 1770.0f, 570.0f ) );
+	m_pcGroupCollectables = new CGroupCollectables( cocos2d::Vec2( 570.0f, 930.0f ),
+													cocos2d::Vec2( 990.0f, 870.0f ),
+													cocos2d::Vec2( 1470.0f, 690.0f ),
+													cocos2d::Vec2( 1770.0f, 930.0f ),
+													cocos2d::Vec2( 1830.0f, 570.0f ) );
 	// 1 );
 	CGCObjectManager::ObjectGroupRegister(m_pcGroupCollectables);
 	//m_pcGroupCollectables->getpaCollectables( 0 )->SetResetPosition( cocos2d::Vec2( 100.0f, 200.0f ) );
@@ -121,12 +132,12 @@ void CLevel::VOnCreate()
 	CGCObjectManager::ObjectGroupRegister( m_pcEnemyGroup );
 
 	// Create the CGroupHazards and set the position of the 5 CHazards
-	m_pcGroupHazards = new CGroupHazards( cocos2d::Vec2( 570.0f, 930.0f ),
-										  cocos2d::Vec2( 630.0f, 210.0f ),
-										  cocos2d::Vec2( 870.0f, 930.0f ),
-										  cocos2d::Vec2( 1170.0f, 450.0f ),
-										  cocos2d::Vec2( 1290.0f, 690.0f ),
-										  cocos2d::Vec2( 1590.0f, 690.0f ) );
+	m_pcGroupHazards = new CGroupHazards( cocos2d::Vec2( 690.0f, 930.0f ),
+										  cocos2d::Vec2( 750.0f, 210.0f ),
+										  cocos2d::Vec2( 990.0f, 930.0f ),
+										  cocos2d::Vec2( 1290.0f, 450.0f ),
+										  cocos2d::Vec2( 1410.0f, 690.0f ),
+										  cocos2d::Vec2( 1650.0f, 690.0f ) );
 	CGCObjectManager::ObjectGroupRegister( m_pcGroupHazards );
 	
 	// Sound Manager //
@@ -180,10 +191,10 @@ void CLevel::VOnCreate()
 	}
 
 	// Creating Player //
-	Vec2 v2MarioStartPos = (v2ScreenCentre_Pixels - Vec2(0.0f, (visibleSize.height * 0.2f)));
+	//Vec2 v2MarioStartPos = (v2ScreenCentre_Pixels - Vec2(0.0f, (visibleSize.height * 0.2f)));
 
 	m_pcPlayer = new CPlayer();
-	m_pcPlayer->SetResetPosition(v2MarioStartPos);
+	m_pcPlayer->SetResetPosition( cocos2d::Vec2( 150.0f, 150.0f ) );
 
 	// Player lives --- needs refactoring, put in livesmanager class??
 	m_pcaPlayerLives = new CLife[m_pcPlayer->getiLives()];
@@ -201,8 +212,6 @@ void CLevel::VOnCreate()
 		//m_pcPlayerLives->SetVisible( true );
 	}
 
-
-
 	// Creating Exit //
 	m_pcExit = new CExit();
 	m_pcExit->SetResetPosition( Vec2( 1800.0f, 120.0f ) );
@@ -213,47 +222,191 @@ void CLevel::VOnCreate()
 	m_pcEnemyGroup->SetRowsAndColumns( 1, 1, -40.0f, 40.0f );
 
 	// Creating Platforms //
-	const u32 uNumColumns = 3;
-	const u32 uNumRows = 4;
-	
-	float fColumnSpacing = ( visibleSize.width / ( ( (float) uNumColumns + 1.0f ) ) );
-	float fRowSpacing = ( visibleSize.height / ( ( (float) uNumRows ) + 1.0f ) );
+	//const u32 uNumColumns = 3;
+	//const u32 uNumRows = 4;
+	//
+	//float fColumnSpacing = ( visibleSize.width / ( ( (float) uNumColumns + 1.0f ) ) );
+	//float fRowSpacing = ( visibleSize.height / ( ( (float) uNumRows ) + 1.0f ) );
 
-	float fNextPlatformPos_x = fColumnSpacing;
-	float fRowStartPos_y = fRowSpacing;
+	//float fNextPlatformPos_x = fColumnSpacing;
+	//float fRowStartPos_y = fRowSpacing;
 
-	for ( u32 uColumn = 0; uColumn < uNumColumns; uColumn++ )
-	{
-		Vec2 v2NextPlatformPos( fNextPlatformPos_x, fRowStartPos_y );
+	//for ( u32 uColumn = 0; uColumn < uNumColumns; uColumn++ )
+	//{
+	//	Vec2 v2NextPlatformPos( fNextPlatformPos_x, fRowStartPos_y );
 
-		for ( u32 uRow = 0; uRow < uNumRows; uRow++ )
-		{
-			CPlatform* pPlatform = new CPlatform();
+	//	for ( u32 uRow = 0; uRow < uNumRows; uRow++ )
+	//	{
+	//		CPlatform* pPlatform = new CPlatform();
 
-			pPlatform->SetResetPosition( v2NextPlatformPos );
+	//		pPlatform->SetResetPosition( v2NextPlatformPos );
 
-			v2NextPlatformPos.y += fRowSpacing;
-		}
+	//		v2NextPlatformPos.y += fRowSpacing;
+	//	}
 
-		fNextPlatformPos_x += fColumnSpacing;
+	//	fNextPlatformPos_x += fColumnSpacing;
 
-	}
+	//}
 
-	// Bottom Platform 
+	// Bottom Platform 	
+	float PlatformPosXIncrease = 60.0f;
+
 	m_pcBottomPlatforms = new CPlatform[32];
 
-	float BottomPlatsformStartPosX = 30.0f;
-	float BottomPlatsformStarPosY = 30.0f;
-	float BottomPlatsformPosXIncrease = 60.0f;
+	float BottomPlatformStartPosX = 30.0f;
+	float BottomPlatformStarPosY = 30.0f;	
 
 	for (int i = 0; i < 32; i++)
 	{
-		Vec2 v2BottomPlatformsPos( BottomPlatsformStartPosX, BottomPlatsformStarPosY );
+		Vec2 v2BottomPlatformsPos( BottomPlatformStartPosX, BottomPlatformStarPosY );
 		m_pcBottomPlatforms[i].SetResetPosition( v2BottomPlatformsPos );
-		BottomPlatsformStartPosX += BottomPlatsformPosXIncrease;
+		BottomPlatformStartPosX += PlatformPosXIncrease;
 
 		//m_pcPlayerLives->SetVisible( true );
 	}
+
+	// First Row Platforms
+	m_pcFirstRowPlatforms = new CPlatform[15];
+
+	float FirstRowPlaformStartPosX = 330.0f;
+	float FirstRowPlaformStarPosY = 150.0f;
+
+	for (int i = 0; i < 15; i++)
+	{
+		Vec2 v2FirstRowPlatformsPos( FirstRowPlaformStartPosX, FirstRowPlaformStarPosY );
+		m_pcFirstRowPlatforms[i].SetResetPosition( v2FirstRowPlatformsPos );
+		FirstRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Second Row
+	m_pcSecondRowPlatforms = new CPlatform[3];
+
+	float SecondRowPlaformStartPosX = 1230.0f;
+	float SecondRowPlaformStarPosY = 210.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Vec2 v2SecondRowPlatformsPos( SecondRowPlaformStartPosX, SecondRowPlaformStarPosY );
+		m_pcSecondRowPlatforms[i].SetResetPosition( v2SecondRowPlatformsPos );
+		SecondRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Third Row
+	m_pcThirdRowPlatforms = new CPlatform[3];
+
+	float ThirdRowPlaformStartPosX = 1710.0f;
+	float ThirdRowPlaformStarPosY = 210.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Vec2 v2ThirdRowPlatformsPos( ThirdRowPlaformStartPosX, ThirdRowPlaformStarPosY );
+		m_pcThirdRowPlatforms[i].SetResetPosition( v2ThirdRowPlatformsPos );
+		ThirdRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Fourth
+	m_pcFourthRowPlatforms = new CPlatform[2];
+
+	float FourthRowPlaformStartPosX = 1770.0f;
+	float FourthRowPlaformStarPosY = 330.0f;
+
+	for (int i = 0; i < 2; i++)
+	{
+		Vec2 v2FourthRowPlatformsPos( FourthRowPlaformStartPosX, FourthRowPlaformStarPosY );
+		m_pcFourthRowPlatforms[i].SetResetPosition( v2FourthRowPlatformsPos );
+		FourthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Fifth
+	m_pcFifthRowPlatforms = new CPlatform[4];
+
+	float FifthRowPlaformStartPosX = 90.0f;
+	float FifthRowPlaformStarPosY = 390.0f;
+
+	for (int i = 0; i < 4; i++)
+	{
+		Vec2 v2FifthRowPlatformsPos( FifthRowPlaformStartPosX, FifthRowPlaformStarPosY );
+		m_pcFifthRowPlatforms[i].SetResetPosition( v2FifthRowPlatformsPos );
+		FifthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Sixth
+	m_pcSixthRowPlatforms = new CPlatform[3];
+
+	float SixthRowPlaformStartPosX = 90.0f;
+	float SixthRowPlaformStarPosY = 510.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Vec2 v2SixthRowPlatformsPos( SixthRowPlaformStartPosX, SixthRowPlaformStarPosY );
+		m_pcSixthRowPlatforms[i].SetResetPosition( v2SixthRowPlatformsPos );
+		SixthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Seventh
+	m_pcSeventhRowPlatforms = new CPlatform[13];
+
+	float SeventhRowPlaformStartPosX = 90.0f;
+	float SeventhRowPlaformStarPosY = 630.0f;
+
+	for (int i = 0; i < 13; i++)
+	{
+		Vec2 v2SeventhRowPlatformsPos( SeventhRowPlaformStartPosX, SeventhRowPlaformStarPosY );
+		m_pcSeventhRowPlatforms[i].SetResetPosition( v2SeventhRowPlatformsPos );
+		SeventhRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Eigth
+	m_pcEighthRowPlatforms = new CPlatform();
+	m_pcEighthRowPlatforms->SetResetPosition( cocos2d::Vec2( 1110.0f, 630.0f ) );
+
+	// Ninth
+	m_pcNinthRowPlatforms = new CPlatform[8];
+
+	float NinthRowPlaformStartPosX = 1410.0f;
+	float NinthRowPlaformStarPosY = 630.0f;
+
+	for (int i = 0; i < 8; i++)
+	{
+		Vec2 v2NinthRowPlatformsPos( NinthRowPlaformStartPosX, NinthRowPlaformStarPosY );
+		m_pcNinthRowPlatforms[i].SetResetPosition( v2NinthRowPlatformsPos );
+		NinthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Tenth
+	m_pcTenthRowPlatforms = new CPlatform[3];
+
+	float TenthRowPlaformStartPosX = 1050.0f;
+	float TenthRowPlaformStarPosY = 450.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Vec2 v2TenthRowPlatformsPos( TenthRowPlaformStartPosX, TenthRowPlaformStarPosY );
+		m_pcTenthRowPlatforms[i].SetResetPosition( v2TenthRowPlatformsPos );
+		TenthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+
+
+	// -----
 
 	// Adding in Collision Handlers //
 
@@ -441,6 +594,37 @@ void CLevel::VOnDestroy()
 
 	delete[] m_pcBottomPlatforms;
 	m_pcBottomPlatforms = nullptr;
+
+	delete[] m_pcFirstRowPlatforms;
+	m_pcFirstRowPlatforms = nullptr;
+
+	delete[] m_pcSecondRowPlatforms;
+	m_pcSecondRowPlatforms = nullptr;
+
+	delete[] m_pcThirdRowPlatforms;
+	m_pcThirdRowPlatforms = nullptr;
+
+	delete[] m_pcFourthRowPlatforms;
+	m_pcFourthRowPlatforms = nullptr;
+
+	delete[] m_pcFifthRowPlatforms;
+	m_pcFifthRowPlatforms = nullptr;
+
+	delete[] m_pcSixthRowPlatforms;
+	m_pcSixthRowPlatforms = nullptr;
+
+	delete[] m_pcSeventhRowPlatforms;
+	m_pcSeventhRowPlatforms = nullptr;
+
+	delete m_pcEighthRowPlatforms;
+	m_pcEighthRowPlatforms = nullptr;
+
+	delete[] m_pcNinthRowPlatforms;
+	m_pcNinthRowPlatforms = nullptr;
+
+	delete[] m_pcTenthRowPlatforms;
+	m_pcTenthRowPlatforms = nullptr;
+
 
 	// Don't forget to Unregister Groups Manually! //
 	
