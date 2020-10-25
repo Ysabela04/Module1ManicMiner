@@ -41,7 +41,7 @@ CPlayer::CPlayer()
 	, m_fNoInput_VelocityThreshold(0.25f)
 	, m_pcControllerActionToKeyMap(nullptr)
 	, m_iItemsCollected(0)
-	, m_iLives(3)
+	, m_iCurrentLives(3)
 	, m_bIsCollecting(false)
 	, m_bIsColliding(false)
 	, m_bIsGrounded(false)
@@ -82,6 +82,8 @@ void CPlayer::VOnReset()
 {
 	CGCObjSpritePhysics::VOnReset();
 
+	// Set the number of items the player has collected back to 0
+	// Reset the number of items the player needs to collect when they restart the level
 	m_iItemsCollected = 0;
 
 	//	reset velocity and flip state
@@ -246,6 +248,8 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 
 }
 
+// -----
+
 void CPlayer::IncreaseItemCollected(int numItemCollected)
 {
 	m_iItemsCollected += numItemCollected;
@@ -253,14 +257,14 @@ void CPlayer::IncreaseItemCollected(int numItemCollected)
 
 void CPlayer::IncreaseLife()
 {
-	m_iLives += 1;
+	m_iCurrentLives += 1;
 
 	CCLOG(" Player has increased a life!");
 }
 
 void CPlayer::DecreaseLife()
 {
-	m_iLives -= 1;
+	m_iCurrentLives -= 1;
 
 	CCLOG(" Player has decreased a life!");
 }

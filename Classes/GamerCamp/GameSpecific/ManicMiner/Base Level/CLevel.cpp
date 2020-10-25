@@ -202,13 +202,13 @@ void CLevel::VOnCreate()
 	m_pcPlayer->SetResetPosition( cocos2d::Vec2( 150.0f, 150.0f ) );
 
 	// Player lives --- needs refactoring, put in livesmanager class??
-	m_pcaPlayerLives = new CLife[m_pcPlayer->getiLives()];
+	m_pcaPlayerLives = new CLife[m_pcPlayer->getCurrentLives()];
 
 	float LifeStartPosX = 1650.0f;
 	float LifeStarPosY = 990.0f;
 	float LifePosXIncrease = 80.0f;
 
-	for (int i = 0; i < m_pcPlayer->getiLives(); i++)
+	for (int i = 0; i < m_pcPlayer->getCurrentLives(); i++)
 	{
 		Vec2 v2LivesPos( LifeStartPosX, LifeStarPosY );
 		m_pcaPlayerLives[i].SetResetPosition( v2LivesPos );
@@ -226,162 +226,9 @@ void CLevel::VOnCreate()
 	m_pcEnemyGroup->SetFormationOrigin( v2ScreenCentre_Pixels + Vec2( -( visibleSize.width * 0.25f ), ( visibleSize.height * 0.25f ) ) );
 	m_pcEnemyGroup->SetRowsAndColumns( 1, 1, -40.0f, 40.0f );
 
-	// Creating Platforms //
-	// Bottom Platform 	
-	float PlatformPosXIncrease = 60.0f;
+	// Create Platforms
+	CreatePlatforms();
 
-	m_pcBottomPlatforms = new CPlatform[32];
-
-	float BottomPlatformStartPosX = 30.0f;
-	float BottomPlatformStarPosY = 30.0f;	
-
-	for (int i = 0; i < 32; i++)
-	{
-		Vec2 v2BottomPlatformsPos( BottomPlatformStartPosX, BottomPlatformStarPosY );
-		m_pcBottomPlatforms[i].SetResetPosition( v2BottomPlatformsPos );
-		BottomPlatformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
-
-	// First Row Platforms
-	m_pcFirstRowPlatforms = new CPlatform[15];
-
-	float FirstRowPlaformStartPosX = 330.0f;
-	float FirstRowPlaformStarPosY = 150.0f;
-
-	for (int i = 0; i < 15; i++)
-	{
-		Vec2 v2FirstRowPlatformsPos( FirstRowPlaformStartPosX, FirstRowPlaformStarPosY );
-		m_pcFirstRowPlatforms[i].SetResetPosition( v2FirstRowPlatformsPos );
-		FirstRowPlaformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
-
-	// Second Row
-	m_pcSecondRowPlatforms = new CPlatform[3];
-
-	float SecondRowPlaformStartPosX = 1230.0f;
-	float SecondRowPlaformStarPosY = 210.0f;
-
-	for (int i = 0; i < 3; i++)
-	{
-		Vec2 v2SecondRowPlatformsPos( SecondRowPlaformStartPosX, SecondRowPlaformStarPosY );
-		m_pcSecondRowPlatforms[i].SetResetPosition( v2SecondRowPlatformsPos );
-		SecondRowPlaformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
-
-	// Third Row
-	m_pcThirdRowPlatforms = new CPlatform[3];
-
-	float ThirdRowPlaformStartPosX = 1710.0f;
-	float ThirdRowPlaformStarPosY = 210.0f;
-
-	for (int i = 0; i < 3; i++)
-	{
-		Vec2 v2ThirdRowPlatformsPos( ThirdRowPlaformStartPosX, ThirdRowPlaformStarPosY );
-		m_pcThirdRowPlatforms[i].SetResetPosition( v2ThirdRowPlatformsPos );
-		ThirdRowPlaformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
-
-	// Fourth
-	m_pcFourthRowPlatforms = new CPlatform[2];
-
-	float FourthRowPlaformStartPosX = 1770.0f;
-	float FourthRowPlaformStarPosY = 330.0f;
-
-	for (int i = 0; i < 2; i++)
-	{
-		Vec2 v2FourthRowPlatformsPos( FourthRowPlaformStartPosX, FourthRowPlaformStarPosY );
-		m_pcFourthRowPlatforms[i].SetResetPosition( v2FourthRowPlatformsPos );
-		FourthRowPlaformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
-
-	// Fifth
-	m_pcFifthRowPlatforms = new CPlatform[4];
-
-	float FifthRowPlaformStartPosX = 90.0f;
-	float FifthRowPlaformStarPosY = 390.0f;
-
-	for (int i = 0; i < 4; i++)
-	{
-		Vec2 v2FifthRowPlatformsPos( FifthRowPlaformStartPosX, FifthRowPlaformStarPosY );
-		m_pcFifthRowPlatforms[i].SetResetPosition( v2FifthRowPlatformsPos );
-		FifthRowPlaformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
-
-	// Sixth
-	m_pcSixthRowPlatforms = new CPlatform[3];
-
-	float SixthRowPlaformStartPosX = 90.0f;
-	float SixthRowPlaformStarPosY = 510.0f;
-
-	for (int i = 0; i < 3; i++)
-	{
-		Vec2 v2SixthRowPlatformsPos( SixthRowPlaformStartPosX, SixthRowPlaformStarPosY );
-		m_pcSixthRowPlatforms[i].SetResetPosition( v2SixthRowPlatformsPos );
-		SixthRowPlaformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
-
-	// Seventh
-	m_pcSeventhRowPlatforms = new CPlatform[13];
-
-	float SeventhRowPlaformStartPosX = 90.0f;
-	float SeventhRowPlaformStarPosY = 630.0f;
-
-	for (int i = 0; i < 13; i++)
-	{
-		Vec2 v2SeventhRowPlatformsPos( SeventhRowPlaformStartPosX, SeventhRowPlaformStarPosY );
-		m_pcSeventhRowPlatforms[i].SetResetPosition( v2SeventhRowPlatformsPos );
-		SeventhRowPlaformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
-
-	// Eigth
-	m_pcEighthRowPlatforms = new CPlatform();
-	m_pcEighthRowPlatforms->SetResetPosition( cocos2d::Vec2( 1110.0f, 630.0f ) );
-
-	// Ninth
-	m_pcNinthRowPlatforms = new CPlatform[8];
-
-	float NinthRowPlaformStartPosX = 1410.0f;
-	float NinthRowPlaformStarPosY = 630.0f;
-
-	for (int i = 0; i < 8; i++)
-	{
-		Vec2 v2NinthRowPlatformsPos( NinthRowPlaformStartPosX, NinthRowPlaformStarPosY );
-		m_pcNinthRowPlatforms[i].SetResetPosition( v2NinthRowPlatformsPos );
-		NinthRowPlaformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
-
-	// Tenth
-	m_pcTenthRowPlatforms = new CPlatform[3];
-
-	float TenthRowPlaformStartPosX = 1050.0f;
-	float TenthRowPlaformStarPosY = 450.0f;
-
-	for (int i = 0; i < 3; i++)
-	{
-		Vec2 v2TenthRowPlatformsPos( TenthRowPlaformStartPosX, TenthRowPlaformStarPosY );
-		m_pcTenthRowPlatforms[i].SetResetPosition( v2TenthRowPlatformsPos );
-		TenthRowPlaformStartPosX += PlatformPosXIncrease;
-
-		//m_pcPlayerLives->SetVisible( true );
-	}
 	// -----
 
 	// Adding in Collision Handlers //
@@ -394,11 +241,12 @@ void CLevel::VOnCreate()
 		{
 			// check if the player is not collecting anything else before collecting the item, then get the value of the collectable
 			// and increase the players itemscollected
-			if (m_pcPlayer->getbIsCollecting() == false)
+			if (m_pcPlayer->getIsCollecting() == false)
 			{
-				m_pcPlayer->setbIsCollecting(true);
-				m_pcPlayer->IncreaseItemCollected(rcCollectable.getiRewardValue());
-				m_iScore += 100;
+				m_pcPlayer->setIsCollecting(true);
+				m_pcPlayer->IncreaseItemCollected(rcCollectable.getRewardValue());
+				//m_iScore += 100;
+				m_iScore += rcCollectable.getPointsValue();
 				m_pcSoundManager->PlaySoundEffect(ESoundList::CollectablesSFX, false);
 				CGCObjectManager::ObjectKill(&rcCollectable);
 				CCLOG("Player Item Collected");
@@ -425,9 +273,9 @@ void CLevel::VOnCreate()
 		[this]
 		(CPlayer& rcPlayer, CHazard& rcHazard, const b2Contact& rcContact) -> void
 		{
-			if (m_pcPlayer->getbIsCollecting() == false)
+			if (m_pcPlayer->getIsColliding() == false)
 			{
-				m_pcPlayer->setbIsCollecting(true);
+				m_pcPlayer->setIsColliding(true);
 				m_pcPlayer->DecreaseLife();
 
 				RequestReset();
@@ -443,9 +291,9 @@ void CLevel::VOnCreate()
 		[this]
 	(CPlayer& rcPlayer, CEnemy& rcEnemy, const b2Contact& rcContact) -> void
 		{
-			if (m_pcPlayer->getbIsCollecting() == false)
+			if (m_pcPlayer->getIsColliding() == false)
 			{
-				m_pcPlayer->setbIsCollecting(true);
+				m_pcPlayer->setIsColliding(true);
 				m_pcPlayer->DecreaseLife();
 
 				RequestReset();
@@ -507,8 +355,8 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 
 			UpdatePlayerLives();
 
-			m_pcPlayer->setbIsCollecting(false);
-			m_pcPlayer->setbIsColliding(false);
+			m_pcPlayer->setIsCollecting(false);
+			m_pcPlayer->setIsColliding(false);
 
 			COLLISIONTESTLOG("Game is Running");
 			break;
@@ -516,7 +364,7 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 		case (EGameState::Collected):
 			// Insert Game Logic while all Collectables have been collected
 			m_pcTimer->TimerUpdate(Director::getInstance()->getFrameRate() / 60);
-			if (m_pcTimer->TimerHasEnded() || m_pcPlayer->getiLives() <= 0)
+			if (m_pcTimer->TimerHasEnded() || m_pcPlayer->getCurrentLives() <= 0)
 			{
 				m_eGameState = EGameState::Over;
 			}
@@ -525,8 +373,8 @@ void CLevel::VOnUpdate(f32 fTimeStep)
 
 			ManuallyHandleCollisions();
 
-			m_pcPlayer->setbIsCollecting(false);
-			m_pcPlayer->setbIsColliding(false);
+			m_pcPlayer->setIsCollecting(false);
+			m_pcPlayer->setIsColliding(false);
 
 			COLLISIONTESTLOG("Game has Collected All Objects");
 			break;
@@ -752,9 +600,171 @@ void CLevel::ManuallyHandleCollisions()
 	}
 }
 
+// -----
+
+void CLevel::CreatePlatforms()
+{
+	// Creating Platforms //
+// Bottom Platform 	
+	float PlatformPosXIncrease = 60.0f;
+
+	m_pcBottomPlatforms = new CPlatform[32];
+
+	float BottomPlatformStartPosX = 30.0f;
+	float BottomPlatformStarPosY = 30.0f;
+
+	for (int i = 0; i < 32; i++)
+	{
+		Vec2 v2BottomPlatformsPos( BottomPlatformStartPosX, BottomPlatformStarPosY );
+		m_pcBottomPlatforms[i].SetResetPosition( v2BottomPlatformsPos );
+		BottomPlatformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// First Row Platforms
+	m_pcFirstRowPlatforms = new CPlatform[15];
+
+	float FirstRowPlaformStartPosX = 330.0f;
+	float FirstRowPlaformStarPosY = 150.0f;
+
+	for (int i = 0; i < 15; i++)
+	{
+		Vec2 v2FirstRowPlatformsPos( FirstRowPlaformStartPosX, FirstRowPlaformStarPosY );
+		m_pcFirstRowPlatforms[i].SetResetPosition( v2FirstRowPlatformsPos );
+		FirstRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Second Row
+	m_pcSecondRowPlatforms = new CPlatform[3];
+
+	float SecondRowPlaformStartPosX = 1230.0f;
+	float SecondRowPlaformStarPosY = 210.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Vec2 v2SecondRowPlatformsPos( SecondRowPlaformStartPosX, SecondRowPlaformStarPosY );
+		m_pcSecondRowPlatforms[i].SetResetPosition( v2SecondRowPlatformsPos );
+		SecondRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Third Row
+	m_pcThirdRowPlatforms = new CPlatform[3];
+
+	float ThirdRowPlaformStartPosX = 1710.0f;
+	float ThirdRowPlaformStarPosY = 210.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Vec2 v2ThirdRowPlatformsPos( ThirdRowPlaformStartPosX, ThirdRowPlaformStarPosY );
+		m_pcThirdRowPlatforms[i].SetResetPosition( v2ThirdRowPlatformsPos );
+		ThirdRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Fourth
+	m_pcFourthRowPlatforms = new CPlatform[2];
+
+	float FourthRowPlaformStartPosX = 1770.0f;
+	float FourthRowPlaformStarPosY = 330.0f;
+
+	for (int i = 0; i < 2; i++)
+	{
+		Vec2 v2FourthRowPlatformsPos( FourthRowPlaformStartPosX, FourthRowPlaformStarPosY );
+		m_pcFourthRowPlatforms[i].SetResetPosition( v2FourthRowPlatformsPos );
+		FourthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Fifth
+	m_pcFifthRowPlatforms = new CPlatform[4];
+
+	float FifthRowPlaformStartPosX = 90.0f;
+	float FifthRowPlaformStarPosY = 390.0f;
+
+	for (int i = 0; i < 4; i++)
+	{
+		Vec2 v2FifthRowPlatformsPos( FifthRowPlaformStartPosX, FifthRowPlaformStarPosY );
+		m_pcFifthRowPlatforms[i].SetResetPosition( v2FifthRowPlatformsPos );
+		FifthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Sixth
+	m_pcSixthRowPlatforms = new CPlatform[3];
+
+	float SixthRowPlaformStartPosX = 90.0f;
+	float SixthRowPlaformStarPosY = 510.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Vec2 v2SixthRowPlatformsPos( SixthRowPlaformStartPosX, SixthRowPlaformStarPosY );
+		m_pcSixthRowPlatforms[i].SetResetPosition( v2SixthRowPlatformsPos );
+		SixthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Seventh
+	m_pcSeventhRowPlatforms = new CPlatform[13];
+
+	float SeventhRowPlaformStartPosX = 90.0f;
+	float SeventhRowPlaformStarPosY = 630.0f;
+
+	for (int i = 0; i < 13; i++)
+	{
+		Vec2 v2SeventhRowPlatformsPos( SeventhRowPlaformStartPosX, SeventhRowPlaformStarPosY );
+		m_pcSeventhRowPlatforms[i].SetResetPosition( v2SeventhRowPlatformsPos );
+		SeventhRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Eigth
+	m_pcEighthRowPlatforms = new CPlatform();
+	m_pcEighthRowPlatforms->SetResetPosition( cocos2d::Vec2( 1110.0f, 630.0f ) );
+
+	// Ninth
+	m_pcNinthRowPlatforms = new CPlatform[8];
+
+	float NinthRowPlaformStartPosX = 1410.0f;
+	float NinthRowPlaformStarPosY = 630.0f;
+
+	for (int i = 0; i < 8; i++)
+	{
+		Vec2 v2NinthRowPlatformsPos( NinthRowPlaformStartPosX, NinthRowPlaformStarPosY );
+		m_pcNinthRowPlatforms[i].SetResetPosition( v2NinthRowPlatformsPos );
+		NinthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+
+	// Tenth
+	m_pcTenthRowPlatforms = new CPlatform[3];
+
+	float TenthRowPlaformStartPosX = 1050.0f;
+	float TenthRowPlaformStarPosY = 450.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Vec2 v2TenthRowPlatformsPos( TenthRowPlaformStartPosX, TenthRowPlaformStarPosY );
+		m_pcTenthRowPlatforms[i].SetResetPosition( v2TenthRowPlatformsPos );
+		TenthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+}
+
 void CLevel::UpdatePlayerLives()
 {
-	for (int i = 2; i >= m_pcPlayer->getiLives(); i--)
+	for (int i = 2; i >= m_pcPlayer->getCurrentLives(); i--)
 	{
 		m_pcaPlayerLives[i].SetVisible( false );
 	}
@@ -762,7 +772,7 @@ void CLevel::UpdatePlayerLives()
 
 void CLevel::WinCondition()
 {
-	if (m_pcPlayer->getiItemsCollected() >= m_iCollectablesNeeded)
+	if (m_pcPlayer->getItemsCollected() >= m_iCollectablesNeeded)
 	{
 		m_eGameState = EGameState::Collected;
 	}
@@ -770,12 +780,10 @@ void CLevel::WinCondition()
 
 void CLevel::LoseCondition()
 {
-	if (m_pcPlayer->getiLives() <= 0)
+	if (m_pcPlayer->getCurrentLives() <= 0)
 	{
 		m_eGameState = EGameState::Over;
 	}
-
-
 }
 
 void CLevel::SetGameState(EGameState newGameState)

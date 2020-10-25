@@ -323,13 +323,13 @@ void CGCGameLayerPlatformer::VOnCreate()
 		{		
 			// check if the player is not collecting anything else before collecting the item, then get the value of the collectable
 			// and increase the players itemscollected
-			if ( m_pcCObjPlayer->getbIsCollecting() == false )	// !m_pcGCOPlayer->getbIsCollecting()
+			if ( m_pcCObjPlayer->getIsCollecting() == false )	// !m_pcGCOPlayer->getbIsCollecting()
 			{
-				m_pcCObjPlayer->setbIsCollecting( true );	
+				m_pcCObjPlayer->setIsCollecting( true );	
 
 				//rcPlayer.setbIsCollecting( true );
 
-				m_pcCObjPlayer->IncreaseItemCollected( rcCollectable.getiRewardValue() );
+				m_pcCObjPlayer->IncreaseItemCollected( rcCollectable.getRewardValue() );
 
 				//rcPlayer.IncreaseItemCollected( rcCollectable.getiValue() );
 				
@@ -370,9 +370,9 @@ void CGCGameLayerPlatformer::VOnCreate()
 			//m_pcGCOPlayer->pos
 
 
-			if (m_pcCObjPlayer->getbIsColliding() == false)	// !m_pcGCOPlayer->getbIsCollecting()
+			if (m_pcCObjPlayer->getIsColliding() == false)	// !m_pcGCOPlayer->getbIsCollecting()
 			{
-				m_pcCObjPlayer->setbIsColliding(true);
+				m_pcCObjPlayer->setIsColliding(true);
 
 				m_pcCObjPlayer->DecreaseLife();
 
@@ -408,8 +408,8 @@ void CGCGameLayerPlatformer::VOnUpdate( f32 fTimeStep )
 	ManuallyHandleCollisions();	
 
 
-	m_pcCObjPlayer->setbIsCollecting( false );
-	m_pcCObjPlayer->setbIsColliding( false );
+	m_pcCObjPlayer->setIsCollecting( false );
+	m_pcCObjPlayer->setIsColliding( false );
 
 	WinCondition();
 	LoseCondition();
@@ -632,7 +632,7 @@ void CGCGameLayerPlatformer::ManuallyHandleCollisions()
 
 void CGCGameLayerPlatformer::WinCondition()
 {
-	if ( m_pcCObjPlayer->getiItemsCollected() >= m_iCollectablesNeeded )	// ==
+	if ( m_pcCObjPlayer->getItemsCollected() >= m_iCollectablesNeeded )	// ==
 	{
 		m_pcExit->setIsOpen( true );
 	}
@@ -640,7 +640,7 @@ void CGCGameLayerPlatformer::WinCondition()
 
 void CGCGameLayerPlatformer::LoseCondition()
 {
-	if (m_pcCObjPlayer->getiLives() <= 0)
+	if (m_pcCObjPlayer->getCurrentLives() <= 0)
 	{
 		ReplaceScene(TransitionRotoZoom::create(1.0f, CMenuLayer::scene()));
 	}

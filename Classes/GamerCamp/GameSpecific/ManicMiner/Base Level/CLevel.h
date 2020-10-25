@@ -37,21 +37,20 @@ private:
 	// Game Objects Groups
 	CPlatformGroup* 				m_pcPlatformGroup;
 
+	// Platforms
 	CPlatform*						m_pcBottomPlatforms;
-	CPlatform* m_pcFirstRowPlatforms;
-	CPlatform* m_pcSecondRowPlatforms;
-	CPlatform* m_pcThirdRowPlatforms;
+	CPlatform*						m_pcFirstRowPlatforms;
+	CPlatform*						m_pcSecondRowPlatforms;
+	CPlatform*						m_pcThirdRowPlatforms;
+	CPlatform*						m_pcFourthRowPlatforms;
+	CPlatform*						m_pcFifthRowPlatforms;
+	CPlatform*						m_pcSixthRowPlatforms;
+	CPlatform*						m_pcSeventhRowPlatforms;
+	CPlatform*						m_pcEighthRowPlatforms;
+	CPlatform*						m_pcNinthRowPlatforms;
+	CPlatform*						m_pcTenthRowPlatforms;
 
-	CPlatform* m_pcFourthRowPlatforms;
-	CPlatform* m_pcFifthRowPlatforms;
-	CPlatform* m_pcSixthRowPlatforms;
-
-	CPlatform* m_pcSeventhRowPlatforms;
-	CPlatform* m_pcEighthRowPlatforms;
-	CPlatform* m_pcNinthRowPlatforms;
-
-	CPlatform* m_pcTenthRowPlatforms;
-
+	// Group of collectables
 	CGroupCollectables*				m_pcGroupCollectables;
 
 	CGCObjGroupProjectilePlayer*	m_pcGCGroupProjectilePlayer;
@@ -59,18 +58,21 @@ private:
 	// Game Objects
 	CGCObjSprite*					m_pcDefaultGCBackground;
 	CGCObjSprite*					m_pcUIBar;
+
 	CPlayer*						m_pcPlayer;
+	// Holds the player lives
+	CLife*							m_pcaPlayerLives;
+
+	// Exit - For getting to the next level
 	CExit*							m_pcExit;
 
+	// Group of hazards
 	CGroupHazards*					m_pcGroupHazards;
 
 	CTimer*							m_pcTimer;
 	CEnemyGroup*					m_pcEnemyGroup;
 	CSoundManager*					m_pcSoundManager;
 	CScore*							m_pcScore;
-
-	CLife*							m_pcaPlayerLives;
-
 
 
 public:
@@ -103,9 +105,19 @@ public:
 	virtual void PreSolve(b2Contact* pB2Contact, const b2Manifold* pOldManifold);
 	virtual void PostSolve(b2Contact* pB2Contact, const b2ContactImpulse* pImpulse);
 
+	// Create the platforms
+	// Call in VOnCreate();
+	void CreatePlatforms();
+
+	// Give visual feedback to the player, showing them how many lives they currently have
 	void UpdatePlayerLives();
 
+	// The condition needed to win the level
+	// Collecting the number of CCollectables
 	void WinCondition();
+
+	// The condition to lose the level
+	// Lose when the number of player lives has hit 0
 	void LoseCondition();
 
 	void SetGameState(EGameState newGameState);

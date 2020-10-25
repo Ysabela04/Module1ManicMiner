@@ -45,8 +45,17 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 	// Functions
 	//////////////////////////////////////////////////////////////////////////
+
+	// Increase the number of m_iItemsCollected by what is passed in (int numItemCollected)
+	// This is done everytime the player collides (collects) a CCollectable.
 	void IncreaseItemCollected(int numItemCollected);
+
+	// Increase the players life (m_iCurrentLives) by 1
+	// This can be called everytime the player gets 10,000 points
 	void IncreaseLife();
+
+	// Decrease the players life (m_iCurrentLives) by 1
+	// This can be called when the player collides with a CHazard
 	void DecreaseLife();
 
 	// ---
@@ -57,20 +66,22 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 	// Getters
 	//
-	int getiLives() { return m_iLives; }
-	int getiItemsCollected() { return m_iItemsCollected; }
-	bool getbIsCollecting() { return m_bIsCollecting; }
-	bool getbIsColliding() { return m_bIsColliding; }
-	bool getbIsGrounded() { return m_bIsGrounded; }
+	int		getItemsCollected()	const { return m_iItemsCollected; }
+	int		getCurrentLives()	const { return m_iCurrentLives; }
+	int		getMaxLives()		const { return m_iMaxLives; }
+	bool	getIsCollecting()	const { return m_bIsCollecting; }
+	bool	getIsColliding()	const { return m_bIsColliding; }
+	bool	getbIsGrounded() { return m_bIsGrounded; }
 
 	//////////////////////////////////////////////////////////////////////////
 	// Setters
 	//
-	void setiItemsCollected(int ivalue) { m_iItemsCollected = ivalue; }
-	void setiLives(int iLives) { m_iLives = iLives; }
-	void setbIsCollecting(bool bIsCollecting) { m_bIsCollecting = bIsCollecting; }
-	void setbIsColliding(bool bIsColliding) { m_bIsColliding = bIsColliding; }
-	void setIsGrounded(bool bIsGrounded) { m_bIsGrounded = bIsGrounded; }
+	void	setItemsCollected	( int ivalue )			{ m_iItemsCollected = ivalue; }
+	void	setCurrentLives		( int iLives )			{ m_iCurrentLives = iLives; }
+	void	setMaxLives			( int iMaxLives )		{ m_iMaxLives = iMaxLives; }
+	void	setIsCollecting		( bool bIsCollecting )	{ m_bIsCollecting = bIsCollecting; }
+	void	setIsColliding		( bool bIsColliding )	{ m_bIsColliding = bIsColliding; }
+	void	setIsGrounded(bool bIsGrounded) { m_bIsGrounded = bIsGrounded; }
 
 private:
 
@@ -86,15 +97,16 @@ private:
 	// action map for controllers
 	TGCActionToKeyMap< EPlayerActions >* m_pcControllerActionToKeyMap;
 
-	int m_iItemsCollected;	// the number of items the player has collected
+	int		m_iItemsCollected;	// the number of items the player has collected
 
-	int m_iLives;
+	int		m_iCurrentLives;	// the current number of lives the player has
+	int		m_iMaxLives;		// the max number of lives the player can have
 
-	bool m_bIsCollecting;	// if the player is currently collecting an item
+	bool	m_bIsCollecting;	// if the player is currently collecting an item
 
-	bool m_bIsColliding;	// check to see if the player is colliding with anything
+	bool	m_bIsColliding;		// check to see if the player is colliding with anything
 	
-	bool m_bIsGrounded;		//check to see if the player is grounded 
+	bool	m_bIsGrounded;		//check to see if the player is grounded 
 };
 
 #endif

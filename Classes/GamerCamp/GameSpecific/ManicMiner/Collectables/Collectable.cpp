@@ -5,7 +5,7 @@
 CCollectable::CCollectable()
 	: CGCObjSpritePhysics	( GetGCTypeIDOf( CCollectable ) )
 	, m_iRewardValue		( 1 )
-	, m_iPointsValue		(100)
+	, m_iPointsValue		( 100 )
 {
 
 
