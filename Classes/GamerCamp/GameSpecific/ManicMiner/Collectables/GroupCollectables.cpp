@@ -1,52 +1,38 @@
 #include "GroupCollectables.h"
 
-#include "GamerCamp/GameSpecific/ManicMiner/Collectables/Collectable.h"
 #include "GamerCamp/Core/GCTypes.h"
-#include "GamerCamp/GCCocosInterface/GCCocosHelpers.h"
 #include "GamerCamp/GameSpecific/GCGameLayerPlatformer.h"
-
+#include "GamerCamp/GameSpecific/ManicMiner/Collectables/Collectable.h"
+#include "GamerCamp/GCCocosInterface/GCCocosHelpers.h"
 
 using namespace cocos2d;
+
+// -----
 
 CGroupCollectables::CGroupCollectables( cocos2d::Vec2 v2FirstCollectablePos,
 										cocos2d::Vec2 v2SecondCollectablePos,
 										cocos2d::Vec2 v2ThirdCollectablePos,
 										cocos2d::Vec2 v2FourthCollectablePos,
 										cocos2d::Vec2 v2FifthCollectablePos	)
-	 // int iNumCollectables )
 	: m_iNumCollectables	( 5 )
 	, m_v2FirstCollectablePos	( v2FirstCollectablePos )
 	, m_v2SecondCollectablePos	( v2SecondCollectablePos )
 	, m_v2ThirdCollectablePos	( v2ThirdCollectablePos )
 	, m_v2FourthCollectablePos	( v2FourthCollectablePos )
 	, m_v2FifthCollectablePos	( v2FifthCollectablePos )
-	//: m_iMaxNumCollectables( 5 )	// iMaxNumCollectables )
-	// iMaxNumCollectables )
+
 {
-	//m_paCollectables = new CCollectable[m_iMaxNumCollectables];
 
-	//m_pReturnCollectables = m_paCollectables;
-
-	//m_pReturnCollectables = m_paCollectables;
 }
 
 CGroupCollectables::~CGroupCollectables()
 {
-	//for (int i = 0; i < m_iMaxNumCollectables; i++)
-	//{
-	//	delete m_paCollectables[i];
-
-	//	m_paCollectables[i] = nullptr;
-
-	//}
-
-	delete[] m_paCollectables;
-	m_paCollectables = nullptr;
-
-
+	// Delete pointer
+	delete[] m_pcaCollectables;
+	m_pcaCollectables = nullptr;
 }
 
-// ---
+// -----
 
 //////////////////////////////////////////////////////////////////////////
 // Handle only - Collectables
@@ -106,22 +92,18 @@ void CGroupCollectables::VOnGroupResourceAcquire_PostObject()
 	);
 }
 
-
-// ---
+// -----
 
 void CGroupCollectables::CreateCollectables()
 {	
+	m_pcaCollectables = new CCollectable[m_iNumCollectables];
 
-	m_paCollectables = new CCollectable[m_iNumCollectables];
-
-	// manually setting positions of collectables
-	m_paCollectables[0].SetResetPosition( m_v2FirstCollectablePos );
-	m_paCollectables[1].SetResetPosition( m_v2SecondCollectablePos );
-	m_paCollectables[2].SetResetPosition( m_v2ThirdCollectablePos );
-	m_paCollectables[3].SetResetPosition( m_v2FourthCollectablePos );
-	m_paCollectables[4].SetResetPosition( m_v2FifthCollectablePos );
-
-
+	// Manually setting positions of collectables,
+	m_pcaCollectables[0].SetResetPosition( m_v2FirstCollectablePos );
+	m_pcaCollectables[1].SetResetPosition( m_v2SecondCollectablePos );
+	m_pcaCollectables[2].SetResetPosition( m_v2ThirdCollectablePos );
+	m_pcaCollectables[3].SetResetPosition( m_v2FourthCollectablePos );
+	m_pcaCollectables[4].SetResetPosition( m_v2FifthCollectablePos );
 }
 
 void CGroupCollectables::DestroyCollectables()
@@ -134,13 +116,3 @@ void CGroupCollectables::DestroyCollectables()
 	//		GCASSERT( GetGCTypeIDOf( CCollectable ) == pObject->GetGCTypeID(), "wrong type!" );
 	//});
 }
-
-//CCollectable* CGroupCollectables::ReturnCollectables()
-//{
-//	//for (int i = 0; i < m_iMaxNumCollectables; i++)
-//	//{
-//	//	return m_paCollectables;
-//	//}
-//
-//	return m_paCollectables;
-//}

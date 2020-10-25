@@ -2,12 +2,10 @@
 
 // -----
 
-CCollectable::CCollectable()	//std::string strClassName)	//, std::string strPlistFilePath)
+CCollectable::CCollectable()
 	: CGCObjSpritePhysics	( GetGCTypeIDOf( CCollectable ) )
 	, m_iRewardValue		( 1 )
 	, m_iPointsValue		(100)
-	//, m_strClassName( strClassName )
-	//, m_strPlistFilePath( strPlistFilePath )
 {
 
 
@@ -23,10 +21,7 @@ CCollectable::~CCollectable()
 //////////////////////////////////////////////////////////////////////////
 // 
 //////////////////////////////////////////////////////////////////////////
-// So that when a collectable is made the right texture and phyiscs is used
-//IN_CPP_CREATION_PARAMS_DECLARE( CCollectable, "TexturePacker/Sprites/Coin/Coin.plist", "coin", b2_staticBody, true );	// b2_dynamicBody
-//IN_CPP_CREATION_PARAMS_DECLARE( CCollectable, "TexturePacker/Sprites/Collectables/Key/Key.plist", "key", b2_staticBody, true );	// b2_dynamicBody // how to change name to key?
-IN_CPP_CREATION_PARAMS_DECLARE( CCollectable, "TexturePacker/Sprites/Collectables/Key/Key.plist", "key", b2_staticBody, true );	// b2_dynamicBody // how to change name to key?
+IN_CPP_CREATION_PARAMS_DECLARE( CCollectable, "TexturePacker/Sprites/Collectables/Key/Key.plist", "key", b2_staticBody, true );	
 
 //////////////////////////////////////////////////////////////////////////
 // Virtual 
