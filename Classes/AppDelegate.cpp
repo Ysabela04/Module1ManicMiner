@@ -59,8 +59,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	//static_cast<GLViewImpl*>(cocos2d::Director::getInstance()->getOpenGLView())) //->setFullscreen();
 
+	// Change resolution to 1920x1080
 	Director::getInstance()->getOpenGLView()->setFrameSize( 1920, 1080 );
-
 	Director::getInstance()->getOpenGLView()->setDesignResolutionSize( 1920, 1080, ResolutionPolicy::EXACT_FIT );
 
     // Set the design resolution
@@ -138,7 +138,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 		//Scene* pScene = CMainMenuSceneLayer::scene();
 
 	// run
-    //pDirector->runWithScene( TGCGameLayerSceneCreator< CGCGameLayerPlatformer >::CreateScene() );
+	// CMainMenuSceneLayer - Run Main Menu
 	pDirector->runWithScene( TGCGameLayerSceneCreator< CMainMenuSceneLayer >::CreateScene() );
 
     return true;
