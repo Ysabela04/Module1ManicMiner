@@ -3,6 +3,7 @@
 
 #include "GamerCamp/GCCocosInterface/GCObjSpritePhysics.h"
 
+// -----
 
 //////////////////////////////////////////////////////////////////////////
 // Class: CHazard
@@ -13,21 +14,15 @@
 //////////////////////////////////////////////////////////////////////////
 class CHazard : public CGCObjSpritePhysics
 {
-private:
-    //std::string m_strClassName;
-    //std::string m_strPlistFilePath;
-
-
 public:
+    // Constructor & Deconstructor
 	CHazard();
-    //CHazard(std::string strPlistFilePath);
 	virtual ~CHazard();
+    
+    // -----
 
-	//////////////////////////////////////////////////////////////////////////
-    // Functions
-    //
     //////////////////////////////////////////////////////////////////////////
-    // Virtual
+    // Virtual Functions
     //
     virtual void VOnResourceAcquire( void ) override;
 

@@ -98,7 +98,7 @@ void CGroupCollectables::CreateCollectables()
 {	
 	m_pcaCollectables = new CCollectable[m_iNumCollectables];
 
-	// Manually setting positions of collectables,
+	// Manually setting positions of collectables
 	m_pcaCollectables[0].SetResetPosition( m_v2FirstCollectablePos );
 	m_pcaCollectables[1].SetResetPosition( m_v2SecondCollectablePos );
 	m_pcaCollectables[2].SetResetPosition( m_v2ThirdCollectablePos );

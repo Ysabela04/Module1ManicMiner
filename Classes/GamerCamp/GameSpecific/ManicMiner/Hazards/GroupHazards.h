@@ -18,13 +18,13 @@ class CGroupHazards : public CGCObjectGroup
 {
 private:
 	// Create the member variable that will store the CHazards
-	CHazard* m_paHazards;
+	CHazard*		m_paHazards;
 	
 	// The maximum number if hazards that can be handles in this class
 	// Set to 5 in the constructor
-	int m_iMaxNumHazards;
+	int				m_iMaxNumHazards;
 
-	// The positions of the 
+	// The positions of the hazards
 	cocos2d::Vec2	m_v2FirstHazardPos;
 	cocos2d::Vec2	m_v2SecondHazardPos;
 	cocos2d::Vec2	m_v2ThirdHazardPos;
@@ -35,7 +35,12 @@ private:
 
 
 public:
+	// Constructor & Deconstructor
 	//CGroupHazards();
+
+	// -----
+
+	// Set positions of 5 CHazard when constructed
 	CGroupHazards( cocos2d::Vec2 v2FirstHazardPos, 
 				   cocos2d::Vec2 v2SecondHazardPos, 
 				   cocos2d::Vec2 v2ThirdHazardPos, 
@@ -43,6 +48,8 @@ public:
 				   cocos2d::Vec2 v2FifthHazardPos,
 				   cocos2d::Vec2 v2SixthHazardPos );
 	virtual ~CGroupHazards();
+
+	// -----
 
 	//////////////////////////////////////////////////////////////////////////
 	// Functions
@@ -69,14 +76,12 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 	// Getters
 	//
-	//CHazard*	getpaHazards(int index)		{ return m_paHazards; }
-	int			getiMaxNumHazards()			{ return m_iMaxNumHazards; }
-
+	int	getMaxNumHazards()	const { return m_iMaxNumHazards; }
 
 	//////////////////////////////////////////////////////////////////////////
 	// Setters
 	//
-	void setiMaxNumHazards( int iMaxNumHazards ) { m_iMaxNumHazards = iMaxNumHazards; }
+	void setMaxNumHazards( int iMaxNumHazards ) { m_iMaxNumHazards = iMaxNumHazards; }
 	
 };
 

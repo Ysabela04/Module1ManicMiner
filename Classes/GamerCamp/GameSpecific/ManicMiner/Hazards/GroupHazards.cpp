@@ -1,5 +1,7 @@
 #include "GroupHazards.h"
 
+// -----
+
 CGroupHazards::CGroupHazards( cocos2d::Vec2 v2FirstHazardPos,
 							  cocos2d::Vec2 v2SecondHazardPos,
 							  cocos2d::Vec2 v2ThirdHazardPos,
@@ -13,7 +15,6 @@ CGroupHazards::CGroupHazards( cocos2d::Vec2 v2FirstHazardPos,
 	, m_v2FourthHazardPos	( v2FourthHazardPos )
 	, m_v2FifthHazardPos	( v2FifthHazardPos )
 	, m_v2SixthHazardPos	( v2SixthHazardPos )
-
 {
 
 }
@@ -26,7 +27,7 @@ CGroupHazards::~CGroupHazards()
 	m_paHazards = nullptr;
 }
 
-// ---
+// -----
 
 //////////////////////////////////////////////////////////////////////////
 // Handle only - Hazards
@@ -63,24 +64,21 @@ void CGroupHazards::VOnGroupResourceRelease()
 void CGroupHazards::VOnGroupResourceAcquire_PostObject()
 {
 	CGCObjectGroup::VOnGroupResourceAcquire_PostObject();
-
-
 }
 
-// ---
+// -----
 
 void CGroupHazards::CreateHazards()
 {
 	m_paHazards = new CHazard[ m_iMaxNumHazards ];
 
+	// Manually set the position of the hazards
 	m_paHazards[0].SetResetPosition( m_v2FirstHazardPos );
 	m_paHazards[1].SetResetPosition( m_v2SecondHazardPos );
 	m_paHazards[2].SetResetPosition( m_v2ThirdHazardPos );
 	m_paHazards[3].SetResetPosition( m_v2FourthHazardPos );
 	m_paHazards[4].SetResetPosition( m_v2FifthHazardPos );
 	m_paHazards[5].SetResetPosition( m_v2SixthHazardPos );
-
-
 }
 
 void CGroupHazards::DestroyHazards()

@@ -33,7 +33,7 @@ public:
 	// Constructor & Destructor
 	//CGroupCollectables();
 
-	// Set positions of 5 CCollaectable when constructed.
+	// Set positions of 5 CCollectable when constructed
 	CGroupCollectables( cocos2d::Vec2 v2FirstCollectablePos,
 						cocos2d::Vec2 v2SecondCollectablePos,
 						cocos2d::Vec2 v2ThirdCollectablePos,
