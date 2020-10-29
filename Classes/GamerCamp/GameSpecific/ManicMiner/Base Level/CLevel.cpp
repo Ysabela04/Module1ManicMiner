@@ -131,6 +131,7 @@ void CLevel::VOnCreate()
 	//m_pcGroupCollectables->getpaCollectables( 1 )->SetResetPosition( cocos2d::Vec2( 250.0f, 450.0f ) );
 	//m_pcGroupCollectable->getpaCollectables( 1 )->SetResetPosition( cocos2d::Vec2( 100.0f, 200.0f ) );
 	
+	// Create Enemy group 
 	m_pcEnemyGroup = new CEnemyGroup( 64 );
 	CGCObjectManager::ObjectGroupRegister( m_pcEnemyGroup );
 
@@ -197,9 +198,10 @@ void CLevel::VOnCreate()
 		new CGCObjScreenBound(CGCObjScreenBound::EScreenBoundType::Right, (v2ScreenCentre_B2d + Vec2(fHalfScreenWidthB2d, 0.0f)), 0.5f, fScreenHeightB2d, 0.0f);
 	}
 
-	// Creating Player //
+	// Creating Player // Old Mario player
 	//Vec2 v2MarioStartPos = (v2ScreenCentre_Pixels - Vec2(0.0f, (visibleSize.height * 0.2f)));
-
+	
+	// Create new player with new sprite
 	m_pcPlayer = new CPlayer();
 	m_pcPlayer->SetResetPosition( cocos2d::Vec2( 150.0f, 150.0f ) );
 
@@ -311,6 +313,7 @@ void CLevel::VOnCreate()
 		[this]
 	(CPlayer& rcPlayer, CPlatform& rcPlatform, const b2Contact& rcContact) -> void
 		{
+			// If the player collides with the platform, player IsGrounded
 			if (m_pcPlayer->getbIsGrounded() == false)
 			{
 				m_pcPlayer->setIsGrounded(true);
@@ -328,6 +331,7 @@ void CLevel::VOnCreate()
 		{
 			if (m_pcPlayer->getbIsGrounded() == false)
 			{
+				// If player IsGrounded the platform disappears
 				m_pcPlayer->setIsGrounded(true);
 				CGCObjectManager::ObjectKill(&rcDisappearPlatform);
 				CCLOG("Platform Disappears!");
@@ -781,8 +785,10 @@ void CLevel::CreatePlatforms()
 	}
 	
 	// Disappearing Platforms
+	// Create platforms/Number of platform blocks
 	m_pcDisappearPlatforms = new CDisappearPlatform[3];
-
+	
+	// Platforms position
 	float DisappearPlaformStartPosX = 450.0f;
 	float DisappearPlaformStarPosY = 450.0f;
 
