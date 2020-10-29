@@ -1,11 +1,14 @@
 #ifndef	_EPLAYERACTIONS_H_
 #define	_EPLAYERACTIONS_H_
 
+/////////////////////////////////////////////////////
+// Enum Class ///////////////////////////////////////
+/////////////////////////////////////////////////////
 enum class EPlayerActions
 {
-	MoveRight,
-	MoveLeft,
-	Jump
+	MoveRight, // Move Right Action
+	MoveLeft,  // Move Left Action
+	Jump	   // Jump Action
 };
 
-#endif
+#endif // _EPLAYERACTIONS_H_
