@@ -62,8 +62,10 @@ private:
 	// Game Objects
 	CGCObjSprite*					m_pcDefaultGCBackground;
 	CGCObjSprite*					m_pcUIBar;
-
+	
+	// Player 
 	CPlayer*						m_pcPlayer;
+	
 	// Holds the player lives
 	CLife*							m_pcaPlayerLives;
 
@@ -74,6 +76,8 @@ private:
 	CGroupHazards*					m_pcGroupHazards;
 
 	CTimer*							m_pcTimer;
+	
+	// Group of Enemy
 	CEnemyGroup*					m_pcEnemyGroup;
 	CSoundManager*					m_pcSoundManager;
 	CScore*							m_pcScore;
