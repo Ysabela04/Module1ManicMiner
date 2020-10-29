@@ -1,5 +1,6 @@
 #include <string.h>
 
+// Include Files 
 #include "GamerCamp/GameSpecific/ManicMiner/Platform/CPlatformGroup.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Platform/CPlatform.h"
 #include "GamerCamp/GCObject/GCObjectManager.h"
@@ -9,57 +10,33 @@
 #include "GamerCamp/GCObject/GCObject.h"
 #include "GamerCamp/GCCocosInterface/GCCocosHelpers.h"
 
-
-//////////////////////////////////////////////////////////////////////////
-// using
+// Using Cocos2d Library
 using namespace cocos2d;
 
-
-
-//////////////////////////////////////////////////////////////////////////
-//
-//////////////////////////////////////////////////////////////////////////
+// Constructor 
 CPlatformGroup::CPlatformGroup()
 {
 }
 
-
-
-//////////////////////////////////////////////////////////////////////////
-//
-//////////////////////////////////////////////////////////////////////////
-// virtual
+// Virtual Destructor 
 CPlatformGroup::~CPlatformGroup()
 {}
 
-
-
-//////////////////////////////////////////////////////////////////////////
-// only handle platforms
-//////////////////////////////////////////////////////////////////////////
-//virtual 
+// Only handle platforms
+// Virtual Boolean
 bool CPlatformGroup::VHandlesThisTypeId(GCTypeID idQueryType)
 {
 	return(GetGCTypeIDOf(CPlatform) == idQueryType);
 }
 
-
-
-//////////////////////////////////////////////////////////////////////////
-// must return the typeid of the CGCObjectGroup derived class
-//////////////////////////////////////////////////////////////////////////
-//virtual 
+// Must return the typeid of the CGCObjectGroup derived class
+// Virtual TypeID
 GCTypeID CPlatformGroup::VGetTypeId(void)
 {
 	return GetGCTypeIDOf(CPlatformGroup);
 }
 
-
-
-//////////////////////////////////////////////////////////////////////////
-//
-//////////////////////////////////////////////////////////////////////////
-//virtual 
+// Virtual Function VOnGroupResourceRelease
 void CPlatformGroup::VOnGroupResourceRelease(void)
 {
 	// n.b. this must happen first, as will fail if objects destroyed before 
@@ -67,17 +44,14 @@ void CPlatformGroup::VOnGroupResourceRelease(void)
 	//DestroyPlatforms();
 }
 
-
-//////////////////////////////////////////////////////////////////////////
-//
-//////////////////////////////////////////////////////////////////////////
+// DestroyPlatforms Function
 void CPlatformGroup::DestroyPlatforms(void)
 {
-	// this iterates the array of registered CGCObjects 
-	// calling the supplied functor then deleting them
+	// This iterates the array of registered CGCObjects 
+	// Calling the supplied functor then deleting them
 	DestroyObjectsReverseOrder([&](CGCObject* pObject)
 		{
-			// do nothing - DestroyObjectsReverseOrder calls delete!
+			// Do nothing - DestroyObjectsReverseOrder calls delete!
 			GCASSERT(GetGCTypeIDOf(CPlatform) == pObject->GetGCTypeID(), "wrong type!");
 		});
 }
