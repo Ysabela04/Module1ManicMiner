@@ -7,7 +7,7 @@
 
 #include "AppDelegate.h"
 
-
+// Creating the timer bar and setting it's type, midpoint, rate the bar changes, percentage and position.
 CTimer::CTimer()
 {
 	m_fMaximumTime = 6480.0f;
@@ -28,9 +28,11 @@ CTimer::~CTimer()
 {
 }
 
-void CTimer::TimerUpdate(float dt)
+// Takes in a float parameter that decrements the time and sets how much the bar is filled
+// Checks if the timer has ended. If it has, then set the bool variable to true
+void CTimer::TimerUpdate(float deltaTime)
 {
-	m_fCurrentTime -= dt;
+	m_fCurrentTime -= deltaTime;
 	m_cTimerBar->setPercentage(100 * m_fCurrentTime / m_fMaximumTime);
 	if (m_fCurrentTime <= 0.0f && m_bHasTimerEnded == false)
 	{
@@ -38,6 +40,7 @@ void CTimer::TimerUpdate(float dt)
 	}
 }
 
+// Reset Timer when level is reset
 void CTimer::ResetTimer()
 {
 	m_fCurrentTime = m_fMaximumTime;
