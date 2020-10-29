@@ -231,6 +231,9 @@
     <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Score\CScore.cpp">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Score</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Platform\CDisappearPlatform.cpp">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -391,6 +394,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Score\CScore.h">
       <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamerCamp\GameSpecific\ManicMiner\Platform\CDisappearPlatform.h">
+      <Filter>Classes\GamerCamp\GameSpecific\ManicMiner\Platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
