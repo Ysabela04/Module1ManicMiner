@@ -3,6 +3,9 @@
 
 #include "GamerCamp/GCCocosInterface/GCObjSpritePhysics.h"
 
+///////////////////////////////////////////////////////////
+// CPlatform class ////////////////////////////////////////
+///////////////////////////////////////////////////////////
 class CPlatform
 	: public CGCObjSpritePhysics
 {
@@ -10,10 +13,10 @@ public:
 	CPlatform(void)
 		: CGCObjSpritePhysics(GetGCTypeIDOf(CPlatform))
 	{}
-
+	// Virtual Function
 	virtual void VOnResourceAcquire(void) override;
 };
 
 
-#endif
+#endif // _CPLATFROM_H_
 
