@@ -191,7 +191,7 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 			if (pKeyManager->ActionIsPressed(CGCGameLayerPlatformer::EPA_Up))
 			{
 				v2ControlForceDirection.y = 4.5f;
-				fIsInputInactive = 0.0f;
+				fIsInputInactive = 7.0f;
 			}
 			else
 			{
