@@ -10,41 +10,38 @@
 #include "GamerCamp/GCObject/GCObjectGroup.h"
 #endif
 
-
 //////////////////////////////////////////////////////////////////////////
-// forward declare
+// CPlatform Group derived from GCObjectGroup ////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+// Forward declare
 class CGCObjSprite;
 class CPlatform;
 
-
-//////////////////////////////////////////////////////////////////////////
-// 
+// CPlatformGroup
 class CPlatformGroup
 	: public CGCObjectGroup
 {
-	// destroy managed platforms
+	// Destroy managed platforms
 	void DestroyPlatforms(void);
 
 public:
-	//// number of platforms
-	//static const u32 k_uNumInvaders = 16;
-
+	//Constructor
+	// Number of platforms
 	CPlatformGroup();
+	
+	// Virtual Destructor
 	virtual ~CPlatformGroup();
 
-	//////////////////////////////////////////////////////////////////////////
-	// overrides for CGCObjectGroup public interface
-
-		// handles GCObjPlatform
+	// Overrides for CGCObjectGroup public interface
+	// Virtual Boolean that Handles GCObjPlatform
 	virtual bool		VHandlesThisTypeId(GCTypeID idQueryType);
 
-	// must return the typeid of the CGCObjectGroup derived class
+	// Must return the typeid of the CGCObjectGroup derived class
 	virtual GCTypeID	VGetTypeId(void);
-
+	
+	// Virtual Function
 	virtual void		VOnGroupResourceRelease(void);
-
-	// CGCObjectGroup public interface
-	//////////////////////////////////////////////////////////////////////////
 };
 
-#endif
+#endif // _CPLATFORMGROUP_H_
