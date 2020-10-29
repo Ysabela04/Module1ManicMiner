@@ -24,6 +24,7 @@
 #include "GamerCamp/GameSpecific/ManicMiner/MainMenu/MainMenuScene.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Platform/CPlatform.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Platform/CPlatformGroup.h"
+#include "GamerCamp/GameSpecific/ManicMiner/Platform/CDisappearPlatform.h"
 #include "GamerCamp/GameSpecific/ManicMiner/Score/CScore.h"
 
 #include "AppDelegate.h"
@@ -68,11 +69,12 @@ CLevel::CLevel()
 	, m_pcFourthRowPlatforms			( nullptr )
 	, m_pcFifthRowPlatforms				( nullptr )
 	, m_pcSixthRowPlatforms				( nullptr )
-	, m_pcSeventhRowPlatforms           ( nullptr )
+	, m_pcSeventhRowPlatforms           		( nullptr )
 	, m_pcEighthRowPlatforms			( nullptr )
 	, m_pcNinthRowPlatforms				( nullptr )
 	, m_pcTenthRowPlatforms				( nullptr )
-
+	, m_pcDisappearPlatforms			( nullptr )
+		
 {
 }
 
@@ -318,6 +320,21 @@ void CLevel::VOnCreate()
 		}
 	);
 	
+	// Collisions for Player and Disappearing Platforms
+	GetCollisionManager().AddCollisionHandler
+	(
+		[this]
+	(CPlayer& rcPlayer, CDisappearPlatform& rcDisappearPlatform, const b2Contact& rcContact) -> void
+		{
+			if (m_pcPlayer->getbIsGrounded() == false)
+			{
+				m_pcPlayer->setIsGrounded(true);
+				CGCObjectManager::ObjectKill(&rcDisappearPlatform);
+				CCLOG("Platform Disappears!");
+			}
+		}
+	);
+	
 }
 // End VOnCreate();
 
@@ -467,7 +484,9 @@ void CLevel::VOnDestroy()
 	delete[] m_pcTenthRowPlatforms;
 	m_pcTenthRowPlatforms = nullptr;
 
-
+	delete[] m_pcDefaultGCBackground;
+	m_pcDisappearPlatforms = nullptr;
+	
 	// Don't forget to Unregister Groups Manually! //
 	
 	CGCObjectManager::ObjectGroupUnRegister(m_pcPlatformGroup);
@@ -757,6 +776,21 @@ void CLevel::CreatePlatforms()
 		Vec2 v2TenthRowPlatformsPos( TenthRowPlaformStartPosX, TenthRowPlaformStarPosY );
 		m_pcTenthRowPlatforms[i].SetResetPosition( v2TenthRowPlatformsPos );
 		TenthRowPlaformStartPosX += PlatformPosXIncrease;
+
+		//m_pcPlayerLives->SetVisible( true );
+	}
+	
+	// Disappearing Platforms
+	m_pcDisappearPlatforms = new CDisappearPlatform[3];
+
+	float DisappearPlaformStartPosX = 450.0f;
+	float DisappearPlaformStarPosY = 450.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Vec2 v2DisappearPlatformsPos(DisappearPlaformStartPosX, DisappearPlaformStarPosY);
+		m_pcDisappearPlatforms[i].SetResetPosition(v2DisappearPlatformsPos);
+		DisappearPlaformStartPosX += PlatformPosXIncrease;
 
 		//m_pcPlayerLives->SetVisible( true );
 	}
