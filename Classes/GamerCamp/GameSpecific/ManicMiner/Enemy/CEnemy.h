@@ -7,7 +7,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////
-// This is a sample class derived from CGCObject.
+// CEnemy class derived from CGCObject ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 class CEnemy
 	: public CGCObjSpritePhysics
@@ -15,18 +15,24 @@ class CEnemy
 private:
 
 public:
+	//	Constructor
 	CEnemy();
 
-	//////////////////////////////////////////////////////////////////////////
-	// we need a virtual destructor since delete will be called on pointers of 
-	// this class to delete derived types.
+	//	Destructor
+	// Need a virtual destructor since delete will be called on pointers 
+	// Used to delete derived types
+	
 	virtual ~CEnemy()
 	{}
 
-	//////////////////////////////////////////////////////////////////////////
-	// overridden virtuals from the game object interface
+	// Overridden virtuals from the game object interface
+	// VOnResourceAcquire virtual function
 	virtual void VOnResourceAcquire(void)			override;
+	
+	// VOnResurrected virtual function
 	virtual void VOnResurrected(void)			override;
+	
+	// VOnUpdate virtual function
 	virtual void VOnUpdate(f32 fTimestep)	override;
 
 };
