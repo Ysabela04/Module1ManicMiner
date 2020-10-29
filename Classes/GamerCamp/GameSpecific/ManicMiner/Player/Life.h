@@ -5,10 +5,10 @@
 
 
 //////////////////////////////////////////////////////////////////////////
-// Class: CHazard
+// Class: CLife
 //
-// This is a base class for Hazards. The player should avoid these
-// obstacles, otherwise they will lose a life and restart the level.
+// This class handles the life of the player - for visual feedback
+// in the level.
 //
 //////////////////////////////////////////////////////////////////////////
 class CLife : public CGCObjSpritePhysics

@@ -33,7 +33,6 @@ private:
 	cocos2d::Vec2	m_v2SixthHazardPos;
 
 
-
 public:
 	// Constructor & Deconstructor
 	//CGroupHazards();
