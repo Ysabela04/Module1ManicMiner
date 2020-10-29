@@ -12,12 +12,12 @@
 
 USING_NS_CC;
 
-// action/button map arrays must match in length
+// Action/Button map arrays must match in length
 static EPlayerActions s_aePlayerActions[] = 
 {
-	EPlayerActions::MoveLeft, 
-	EPlayerActions::MoveRight,  
-	EPlayerActions::Jump, 
+	EPlayerActions::MoveLeft, 	//Move Left
+	EPlayerActions::MoveRight,  	//Move Right
+	EPlayerActions::Jump, 		//Jump
 };
 
 
@@ -50,6 +50,7 @@ CPlayer::CPlayer()
 
 }
 
+// Destructor
 CPlayer::~CPlayer()
 {
 
@@ -64,7 +65,8 @@ void CPlayer::VOnResourceAcquire()
 	IN_CPP_CREATION_PARAMS_AT_TOP_OF_VONRESOURCEACQUIRE(CPlayer);
 
 	CGCObjSpritePhysics::VOnResourceAcquire();
-
+	
+	//	Old Player animation when Mario was  used
 	//	Player
 	//const char* pszAnim_player = "Jog";
 	//
@@ -86,12 +88,12 @@ void CPlayer::VOnReset()
 	// Reset the number of items the player needs to collect when they restart the level
 	m_iItemsCollected = 0;
 
-	//	reset velocity and flip state
+	//	Reset velocity and flip state
 	SetFlippedX(false);
 	SetFlippedY(false);
 
 
-	//	reset
+	//	Reset
 	if (GetPhysicsBody())
 	{
 		Vec2 v2SpritePos = GetSpritePosition();
@@ -109,7 +111,7 @@ void CPlayer::VOnUpdate(f32 fTimeStep)
 	UpdateMovement(fTimeStep);
 }
 
-// called immediately before the managing object group releases its own assets. (Note from GCFramework)
+// Called immediately before the managing object group releases its own assets. (Note from GCFramework)
 void CPlayer::VOnResourceRelease()
 {
 	CGCObjSpritePhysics::VOnResourceRelease();
@@ -120,7 +122,7 @@ void CPlayer::VOnResourceRelease()
 }
 
 
-// updates the movement of the CCSprite owned by this instance
+// Updates the movement of the CCSprite owned by this instance
 	f32 	g_CPlayer_fMass 				= 1.0f;			// kg
 	f32	g_CPlayer_fMaximumMoveForce_Horizontal 		= 6.0f;		// newton
 	f32	g_CPlayer_fMaximumMoveForce_Vertical 		= 12.0f;		// newton
@@ -142,18 +144,18 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 	m_fNoInput_VelocityThreshold 	= 		g_CPlayer_fNoInput_VelocityThreshold;
 
 
-	// we accumulate total force over the frame and apply it at the end
+	// We accumulate total force over the frame and apply it at the end (Note from GCFramework)
 	Vec2 v2TotalForce(0.0f, 0.0f);
 
 
-	// * calculate the control force direction
+	// * Calculate the control force direction (Note from GCFramework)
 	Vec2 v2ControlForceDirection(0.0f, 0.0f);
 
-	// this float is used to add / remove the effect of various terms 
-	// in equations based on whether input has been applied this frame
+	// This float is used to add / remove the effect of various terms (Note from GCFramework) 
+	// In equations based on whether input has been applied this frame (Note from GCFramework)
 	f32 fIsInputInactive = 1.0f;
 
-	// instantiating templates is one of the few use cases where auto is a big improvement & arguably the best thing to do
+	// Instantiating templates is one of the few use cases where auto is a big improvement & arguably the best thing to do
 	const CGCKeyboardManager* pKeyManager = AppDelegate::GetKeyboardManager();
 	TGCController< EPlayerActions > cController = TGetActionMappedController(CGCControllerManager::eControllerOne, (*m_pcControllerActionToKeyMap));
 
@@ -186,6 +188,7 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 			v2ControlForceDirection.x = 1.0f;
 			fIsInputInactive = 0.0f;
 		}
+		//	If player is grounded, player can jump
 		if (m_bIsGrounded == true)
 		{
 			if (pKeyManager->ActionIsPressed(CGCGameLayerPlatformer::EPA_Up))
@@ -193,12 +196,14 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 				v2ControlForceDirection.y = 4.5f;
 				fIsInputInactive = 7.0f;
 			}
+			//	If player is not grounded while jumping, player cannot jump anymore
 			else
 			{
 				fIsInputInactive = 0.0f;
 				setIsGrounded(false);
 			}
 		}
+		//	If player is not grounded, player cannot jump
 		if (m_bIsGrounded == false)
 		{
 			if (pKeyManager->ActionIsPressed(CGCGameLayerPlatformer::EPA_Up))
@@ -210,31 +215,31 @@ void CPlayer::UpdateMovement(f32 fTimeStep)
 	}
 
 
-	// normalise the control vector and multiply by movement force
+	// Normalise the control vector and multiply by movement force (Note from GCFramework)
 	v2ControlForceDirection.x *= m_fMaximumMoveForce_Horizontal;
 	v2ControlForceDirection.y *= m_fMaximumMoveForce_Vertical;
 
-	// accumulate the force
+	// Accumulate the force (Note from GCFramework)
 	v2TotalForce += v2ControlForceDirection;
 
 
-	// * calculate drag force
+	// * Calculate drag force (Note from GCFramework)
 	Vec2 v2Velocity_Unit = GetVelocity();
 	f32 fVelocity = v2Velocity_Unit.normalize();
 
-	// N.B. the last term evaluates to 0.0f if there is controller input
+	// N.B. the last term evaluates to 0.0f if there is controller input (Note from GCFramework)
 
 	f32 fDragForce = ((m_fDragCoefficient_Linear * fVelocity)
 		+ (m_fDragCoefficient_Square * (fVelocity * fVelocity))
 		+ (m_fNoInput_ExtraDrag_Square * (fVelocity * fVelocity) * fIsInputInactive));
 
-	// drag is applied in the opposite direction to the current velocity of the object
-	// so scale out unit version of the object's velocity by -fDragForce
+	// Drag is applied in the opposite direction to the current velocity of the object (Note from GCFramework)
+	// So scale out unit version of the object's velocity by -fDragForce
 	// N.B. operator* is only defined for (float, Vec2) and not for (Vec2, float) !?!
 	v2TotalForce += (-fDragForce * v2Velocity_Unit);
 
 
-	// physics calcs handled by box 2d based on force applied
+	// Physics calcs handled by box 2d based on force applied
 	ApplyForceToCenter(v2TotalForce);
 
 	if (GetVelocity().x >= 0.0f)
