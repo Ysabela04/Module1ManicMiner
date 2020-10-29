@@ -1,5 +1,5 @@
-#ifndef _Life_H_
-#define _Life_H_
+#ifndef _LIFE_H_
+#define _LIFE_H_
 
 #include "GamerCamp/GCCocosInterface/GCObjSpritePhysics.h"
 
@@ -14,13 +14,9 @@
 class CLife : public CGCObjSpritePhysics
 {
 private:
-    //std::string m_strClassName;
-    //std::string m_strPlistFilePath;
-
 
 public:
     CLife();
-    //CHazard(std::string strPlistFilePath);
     virtual ~CLife();
 
     //////////////////////////////////////////////////////////////////////////
@@ -33,4 +29,4 @@ public:
 
 };
 
-#endif //_HAZARD_H_
+#endif //_LIFE_H_

@@ -1,8 +1,7 @@
 #include "Life.h"
 
-CLife::CLife()	// std::string strPlistFilePath )
+CLife::CLife()
 	: CGCObjSpritePhysics( GetGCTypeIDOf( CLife ) )
-	//, m_strPlistFilePath( strPlistFilePath )
 {
 
 }
