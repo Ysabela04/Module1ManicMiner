@@ -23,12 +23,17 @@ public:
 
 	//	CPlayer Constructor
 	CPlayer();
+	
+	//	Virtual Destructor
+	// 	Used to delete derived types
 	virtual ~CPlayer();
 
 	//	VOnResourceAcquire derived function
+	// 	Call of CGCObject derived class instance
 	virtual void VOnResourceAcquire() override;
 
 	//	VOnReset derived function
+	//	Called to reset CGCObject
 	virtual void VOnReset() override;
 
 	//	VOnUpdate derived function
