@@ -2,6 +2,7 @@
 #include "CPlatform.h"
 #endif
 
+// Include Files
 #include "GamerCamp/GCCocosInterface/GCCocosHelpers.h"
 #include "GamerCamp/GCObject/GCObjectManager.h"
 #include "GamerCamp/GCCocosInterface/IGCGameLayer.h"
@@ -9,11 +10,10 @@
 
 USING_NS_CC;
 
-//////////////////////////////////////////////////////////////////////////
-// 
-//////////////////////////////////////////////////////////////////////////
+// Platform sprite implentation
 IN_CPP_CREATION_PARAMS_DECLARE(CPlatform, "TexturePacker/Sprites/Platforms/Blue/CC_Platform_Regular.plist", "platformblue", b2_staticBody, true);
-//virtual 
+
+// Virtual Function
 void CPlatform::VOnResourceAcquire(void)
 {
 	IN_CPP_CREATION_PARAMS_AT_TOP_OF_VONRESOURCEACQUIRE(CPlatform);
