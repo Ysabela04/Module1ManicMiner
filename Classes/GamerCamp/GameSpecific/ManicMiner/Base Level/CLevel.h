@@ -20,6 +20,7 @@ class CSoundManager;
 class CLife;
 class CPlatform;
 class CPlatformGroup;
+class CDisappearPlatform;
 class CScore;
 
 class CLevel
@@ -49,6 +50,9 @@ private:
 	CPlatform*						m_pcEighthRowPlatforms;
 	CPlatform*						m_pcNinthRowPlatforms;
 	CPlatform*						m_pcTenthRowPlatforms;
+	
+	//Disappearing Platform
+	CDisappearPlatform*					m_pcDisappearPlatforms;
 
 	// Group of collectables
 	CGroupCollectables*				m_pcGroupCollectables;
